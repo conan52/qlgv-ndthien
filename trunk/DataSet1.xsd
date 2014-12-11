@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="STT" msprop:Generator_ColumnVarNameInTable="columnSTT" msprop:Generator_ColumnPropNameInRow="STT" msprop:Generator_ColumnPropNameInTable="STTColumn" msprop:Generator_UserColumnName="STT" type="xs:string" minOccurs="0" />
+              <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" type="xs:string" minOccurs="0" />
+              <xs:element name="HangDonVi" msprop:Generator_ColumnVarNameInTable="columnHangDonVi" msprop:Generator_ColumnPropNameInRow="HangDonVi" msprop:Generator_ColumnPropNameInTable="HangDonViColumn" msprop:Generator_UserColumnName="HangDonVi" type="xs:string" minOccurs="0" />
+              <xs:element name="TongSoDuocGiao" msprop:Generator_ColumnVarNameInTable="columnTongSoDuocGiao" msprop:Generator_ColumnPropNameInRow="TongSoDuocGiao" msprop:Generator_ColumnPropNameInTable="TongSoDuocGiaoColumn" msprop:Generator_UserColumnName="TongSoDuocGiao" type="xs:string" minOccurs="0" />
+              <xs:element name="DuocGiaoCB" msprop:Generator_ColumnVarNameInTable="columnDuocGiaoCB" msprop:Generator_ColumnPropNameInRow="DuocGiaoCB" msprop:Generator_ColumnPropNameInTable="DuocGiaoCBColumn" msprop:Generator_UserColumnName="DuocGiaoCB" type="xs:string" minOccurs="0" />
+              <xs:element name="DuocGiaoHC" msprop:Generator_ColumnVarNameInTable="columnDuocGiaoHC" msprop:Generator_ColumnPropNameInRow="DuocGiaoHC" msprop:Generator_ColumnPropNameInTable="DuocGiaoHCColumn" msprop:Generator_UserColumnName="DuocGiaoHC" type="xs:string" minOccurs="0" />
+              <xs:element name="DuocGiaoCNTT" msprop:Generator_ColumnVarNameInTable="columnDuocGiaoCNTT" msprop:Generator_ColumnPropNameInRow="DuocGiaoCNTT" msprop:Generator_ColumnPropNameInTable="DuocGiaoCNTTColumn" msprop:Generator_UserColumnName="DuocGiaoCNTT" type="xs:string" minOccurs="0" />
+              <xs:element name="CoMatCB" msprop:Generator_ColumnVarNameInTable="columnCoMatCB" msprop:Generator_ColumnPropNameInRow="CoMatCB" msprop:Generator_ColumnPropNameInTable="CoMatCBColumn" msprop:Generator_UserColumnName="CoMatCB" type="xs:string" minOccurs="0" />
+              <xs:element name="CoMatHC" msprop:Generator_ColumnVarNameInTable="columnCoMatHC" msprop:Generator_ColumnPropNameInRow="CoMatHC" msprop:Generator_ColumnPropNameInTable="CoMatHCColumn" msprop:Generator_UserColumnName="CoMatHC" type="xs:string" minOccurs="0" />
+              <xs:element name="CoMatCNTT" msprop:Generator_ColumnVarNameInTable="columnCoMatCNTT" msprop:Generator_ColumnPropNameInRow="CoMatCNTT" msprop:Generator_ColumnPropNameInTable="CoMatCNTTColumn" msprop:Generator_UserColumnName="CoMatCNTT" type="xs:string" minOccurs="0" />
+              <xs:element name="TongSoCoMat" msprop:Generator_ColumnVarNameInTable="columnTongSoCoMat" msprop:Generator_ColumnPropNameInRow="TongSoCoMat" msprop:Generator_ColumnPropNameInTable="TongSoCoMatColumn" msprop:Generator_UserColumnName="TongSoCoMat" type="xs:string" minOccurs="0" />
+              <xs:element name="TongTT" msprop:Generator_ColumnVarNameInTable="columnTongTT" msprop:Generator_ColumnPropNameInRow="TongTT" msprop:Generator_ColumnPropNameInTable="TongTTColumn" msprop:Generator_UserColumnName="TongTT" type="xs:string" minOccurs="0" />
+              <xs:element name="TTCB" msprop:Generator_ColumnVarNameInTable="columnTTCB" msprop:Generator_ColumnPropNameInRow="TTCB" msprop:Generator_ColumnPropNameInTable="TTCBColumn" msprop:Generator_UserColumnName="TTCB" type="xs:string" minOccurs="0" />
+              <xs:element name="TTHC" msprop:Generator_ColumnVarNameInTable="columnTTHC" msprop:Generator_ColumnPropNameInRow="TTHC" msprop:Generator_ColumnPropNameInTable="TTHCColumn" msprop:Generator_UserColumnName="TTHC" type="xs:string" minOccurs="0" />
+              <xs:element name="TTCNTT" msprop:Generator_ColumnVarNameInTable="columnTTCNTT" msprop:Generator_ColumnPropNameInRow="TTCNTT" msprop:Generator_ColumnPropNameInTable="TTCNTTColumn" msprop:Generator_UserColumnName="TTCNTT" type="xs:string" minOccurs="0" />
+              <xs:element name="DuocGiaoCBQL" msprop:Generator_ColumnVarNameInTable="columnDuocGiaoCBQL" msprop:Generator_ColumnPropNameInRow="DuocGiaoCBQL" msprop:Generator_ColumnPropNameInTable="DuocGiaoCBQLColumn" msprop:Generator_UserColumnName="DuocGiaoCBQL" type="xs:string" minOccurs="0" />
+              <xs:element name="DuocGiaoTPT" msprop:Generator_ColumnVarNameInTable="columnDuocGiaoTPT" msprop:Generator_ColumnPropNameInRow="DuocGiaoTPT" msprop:Generator_ColumnPropNameInTable="DuocGiaoTPTColumn" msprop:Generator_UserColumnName="DuocGiaoTPT" type="xs:string" minOccurs="0" />
+              <xs:element name="CoMatCBQL" msprop:Generator_ColumnVarNameInTable="columnCoMatCBQL" msprop:Generator_ColumnPropNameInRow="CoMatCBQL" msprop:Generator_ColumnPropNameInTable="CoMatCBQLColumn" msprop:Generator_UserColumnName="CoMatCBQL" type="xs:string" minOccurs="0" />
+              <xs:element name="CoMatTPT" msprop:Generator_ColumnVarNameInTable="columnCoMatTPT" msprop:Generator_ColumnPropNameInRow="CoMatTPT" msprop:Generator_ColumnPropNameInTable="CoMatTPTColumn" msprop:Generator_UserColumnName="CoMatTPT" type="xs:string" minOccurs="0" />
+              <xs:element name="TTCBQL" msprop:Generator_ColumnVarNameInTable="columnTTCBQL" msprop:Generator_ColumnPropNameInRow="TTCBQL" msprop:Generator_ColumnPropNameInTable="TTCBQLColumn" msprop:Generator_UserColumnName="TTCBQL" type="xs:string" minOccurs="0" />
+              <xs:element name="TS" msprop:Generator_ColumnVarNameInTable="columnTS" msprop:Generator_ColumnPropNameInRow="TS" msprop:Generator_ColumnPropNameInTable="TSColumn" msprop:Generator_UserColumnName="TS" type="xs:string" minOccurs="0" />
+              <xs:element name="TS1" msprop:Generator_ColumnVarNameInTable="columnTS1" msprop:Generator_ColumnPropNameInRow="TS1" msprop:Generator_ColumnPropNameInTable="TS1Column" msprop:Generator_UserColumnName="TS1" type="xs:string" minOccurs="0" />
+              <xs:element name="TS2" msprop:Generator_ColumnVarNameInTable="columnTS2" msprop:Generator_ColumnPropNameInRow="TS2" msprop:Generator_ColumnPropNameInTable="TS2Column" msprop:Generator_UserColumnName="TS2" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
