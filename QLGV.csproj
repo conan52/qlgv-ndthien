@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{32EEAFF1-7A54-4EC3-954F-131D8A1D5A15}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QLGV</RootNamespace>
+    <AssemblyName>QLGV</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>DLL\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common.cs" />
+    <Compile Include="Controllers\Class1.cs" />
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_ChucVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_ChucVu.designer.cs">
+      <DependentUpon>Add_ChucVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_ChuyenNghanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_ChuyenNghanh.designer.cs">
+      <DependentUpon>Add_ChuyenNghanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_DanToc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_DanToc.designer.cs">
+      <DependentUpon>Add_DanToc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_CanBo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_CanBo.designer.cs">
+      <DependentUpon>Add_CanBo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_LyLuanChinhTri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_LyLuanChinhTri.designer.cs">
+      <DependentUpon>Add_LyLuanChinhTri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_NgoaiNgu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_NgoaiNgu.designer.cs">
+      <DependentUpon>Add_NgoaiNgu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_TinHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_TinHoc.designer.cs">
+      <DependentUpon>Add_TinHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_TonGiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_TonGiao.designer.cs">
+      <DependentUpon>Add_TonGiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_TrinhDoChuyenMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_TrinhDoChuyenMon.designer.cs">
+      <DependentUpon>Add_TrinhDoChuyenMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_Truong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_Truong.designer.cs">
+      <DependentUpon>Add_Truong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChangeCB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeCB.designer.cs">
+      <DependentUpon>ChangeCB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SysChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SysChangePass.designer.cs">
+      <DependentUpon>SysChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_ChuyenNghanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_ChuyenNghanh.designer.cs">
+      <DependentUpon>List_ChuyenNghanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_DanToc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_DanToc.designer.cs">
+      <DependentUpon>List_DanToc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_ChucVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_ChucVu.designer.cs">
+      <DependentUpon>List_ChucVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_LyLuanChinhTri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_LyLuanChinhTri.designer.cs">
+      <DependentUpon>List_LyLuanChinhTri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_NgoaiNgu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_NgoaiNgu.designer.cs">
+      <DependentUpon>List_NgoaiNgu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_TinHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_TinHoc.designer.cs">
+      <DependentUpon>List_TinHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_TonGiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_TonGiao.designer.cs">
+      <DependentUpon>List_TonGiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_TrinhDoChuyenMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_TrinhDoChuyenMon.designer.cs">
+      <DependentUpon>List_TrinhDoChuyenMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_Truong_CanBo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_Truong_CanBo.Designer.cs">
+      <DependentUpon>List_Truong_CanBo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ShowReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShowReport.Designer.cs">
+      <DependentUpon>ShowReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SysErrorMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SysErrorMessage.designer.cs">
+      <DependentUpon>SysErrorMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUIController.cs" />
+    <Compile Include="Forms\SysLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SysLogin.Designer.cs">
+      <DependentUpon>SysLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalVariables.cs" />
+    <Compile Include="Forms\SysMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SysMain.Designer.cs">
+      <DependentUpon>SysMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListItem.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Add_ChucVu.resx">
+      <DependentUpon>Add_ChucVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_ChuyenNghanh.resx">
+      <DependentUpon>Add_ChuyenNghanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_DanToc.resx">
+      <DependentUpon>Add_DanToc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_CanBo.resx">
+      <DependentUpon>Add_CanBo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_LyLuanChinhTri.resx">
+      <DependentUpon>Add_LyLuanChinhTri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_NgoaiNgu.resx">
+      <DependentUpon>Add_NgoaiNgu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_TinHoc.resx">
+      <DependentUpon>Add_TinHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_TonGiao.resx">
+      <DependentUpon>Add_TonGiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_TrinhDoChuyenMon.resx">
+      <DependentUpon>Add_TrinhDoChuyenMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_Truong.resx">
+      <DependentUpon>Add_Truong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeCB.resx">
+      <DependentUpon>ChangeCB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SysChangePass.resx">
+      <DependentUpon>SysChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_ChuyenNghanh.resx">
+      <DependentUpon>List_ChuyenNghanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_DanToc.resx">
+      <DependentUpon>List_DanToc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_ChucVu.resx">
+      <DependentUpon>List_ChucVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_LyLuanChinhTri.resx">
+      <DependentUpon>List_LyLuanChinhTri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_NgoaiNgu.resx">
+      <DependentUpon>List_NgoaiNgu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_TinHoc.resx">
+      <DependentUpon>List_TinHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_TonGiao.resx">
+      <DependentUpon>List_TonGiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_TrinhDoChuyenMon.resx">
+      <DependentUpon>List_TrinhDoChuyenMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_Truong_CanBo.resx">
+      <DependentUpon>List_Truong_CanBo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShowReport.resx">
+      <DependentUpon>ShowReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SysErrorMessage.resx">
+      <DependentUpon>SysErrorMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SysLogin.resx">
+      <DependentUpon>SysLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SysMain.resx">
+      <DependentUpon>SysMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ThongKeSoLuong.rdlc" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DLL\QLGV.db" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SQLiteSupport.cs" />
+    <Compile Include="UserControls\NDThienDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\NDThienDateTimePicker.Designer.cs">
+      <DependentUpon>NDThienDateTimePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NDThienComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\NDThienComboBox.Designer.cs">
+      <DependentUpon>NDThienComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NDThienDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\NDThienDataGridView.Designer.cs">
+      <DependentUpon>NDThienDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NDThienDataGridViewColumn.cs" />
+    <Compile Include="UserControls\NDThienDataGridViewColumn.Designer.cs">
+      <DependentUpon>NDThienDataGridViewColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NDThienPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\NDThienPictureBox.Designer.cs">
+      <DependentUpon>NDThienPictureBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NDThienTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\NDThienTextBox.Designer.cs">
+      <DependentUpon>NDThienTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\FileUtilities.cs" />
+    <Compile Include="Utilities\HashSalt.cs" />
+    <Compile Include="Utilities\RegistryServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\System.Data.SQLite.DLL" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
