@@ -28,7 +28,8 @@ namespace QLGV.Forms
         private void btLogin_Click(object sender, EventArgs e)
         {
             bool success = txtUserName.Text.ToLower() == "admin";
-            if (!success)
+            //if (!success)
+            if (!true)
             {
                 _currentUser = null;
                 GUIController.ShowMessageBox("Đăng nhập thất bại!");
