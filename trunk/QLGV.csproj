@@ -358,7 +358,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SQLiteSupport.cs" />
+    <Compile Include="Utilities\SQLiteSupport.cs" />
     <Compile Include="UserControls\NDThienDateTimePicker.cs">
       <SubType>Component</SubType>
     </Compile>

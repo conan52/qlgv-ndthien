@@ -4,17 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Data.SQLite;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 namespace QLGV
 {
     public static class SQLiteUtils
     {
         //public static string strConnection = "Data Source=duykhanh\\express2008sp1;Initial Catalog=QLGV;User ID=sa;Password=abc123-";
-       public static string strConnection = @"Data Source=D:\Recnaleerf\QL Giao Vien\DLL\QLGV.db;Version=3;UseUTF8Encoding=True";
+
+        public static string StrConnection
+        {
+            get
+            {
+                string datasource = Application.StartupPath.Replace("bin\\Debug", "DLL\\QLGV.db");
+                return @"Data Source=" + datasource + ";Version=3;UseUTF8Encoding=True";
+            }
+        }
         public static bool TestConnection()
         {
             try
             {
-                SQLiteConnection conn = new SQLiteConnection(strConnection);
+                SQLiteConnection conn = new SQLiteConnection(StrConnection);
                 conn.Open();
                 conn.Close();
                 conn.Dispose();
@@ -28,7 +37,7 @@ namespace QLGV
 
         public static int ExcuteNonQuery(string commandText, params object[] pars)
         {
-            SQLiteConnection conn = new SQLiteConnection(strConnection);
+            SQLiteConnection conn = new SQLiteConnection(StrConnection);
             SQLiteCommand co = CommandBuilder(conn, commandText, pars);
 
             if (conn.State == System.Data.ConnectionState.Open)
@@ -44,7 +53,7 @@ namespace QLGV
 
         public static object ExcuteScalar(string commandText, params object[] pars)
         {
-            SQLiteConnection conn = new SQLiteConnection(strConnection);
+            SQLiteConnection conn = new SQLiteConnection(StrConnection);
             SQLiteCommand co = CommandBuilder(conn, commandText, pars);
 
             if (conn.State == System.Data.ConnectionState.Open)
@@ -60,7 +69,7 @@ namespace QLGV
 
         public static System.Data.DataTable GetTable(string commandText, params object[] pars)
         {
-            SQLiteConnection conn = new SQLiteConnection(strConnection);
+            SQLiteConnection conn = new SQLiteConnection(StrConnection);
             SQLiteCommand co = CommandBuilder(conn, commandText, pars);
 
             SQLiteDataAdapter da = new SQLiteDataAdapter(co);
