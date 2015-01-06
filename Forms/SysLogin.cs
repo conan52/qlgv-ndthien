@@ -50,6 +50,7 @@ namespace QLGV.Forms
         private void Login_Form_Load(object sender, EventArgs e)
         {
             _currentUser = null;
+            this.Close();
         }
     }
 }
