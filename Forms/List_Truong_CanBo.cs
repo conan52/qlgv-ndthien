@@ -220,16 +220,16 @@ namespace QLGV.Forms
             if (id == 0) return;
 
             SQLiteUtils.ExcuteNonQuery(@"update TruongInfo set Title=@title,NhomTruongID=@NhomTruongID,hangtruong=@hangtruong,
-SoLop=@SoLop,SoHocSinh=@SoHocSinh,DuocGiaoCB=@DuocGiaoCB,DuocGiaoHC=@DuocGiaoHC,DuocGiaoCNTT=@DuocGiaoCNTT,
-CoMatCB=@CoMatCB,CoMatHC=@CoMatHC,CoMatCNTT=@CoMatCNTT,
-KeHoachCB=@KeHoachCB,KeHoachHC=@KeHoachHC,
-KeHoachCNTT=@KeHoachCNTT 
+SoLop=@SoLop,SoHocSinh=@SoHocSinh,
+DuocGiaoCB=@DuocGiaoCB,DuocGiaoGV=@DuocGiaoGV,DuocGiaoTPT=@DuocGiaoTPT,DuocGiaoHC=@DuocGiaoHC,DuocGiaoCNTT=@DuocGiaoCNTT,
+CoMatCB=@CoMatCB,CoMatGV=@CoMatGV,CoMatTPT=@CoMatTPT,CoMatHC=@CoMatHC,CoMatCNTT=@CoMatCNTT,
+KeHoachCB=@KeHoachCB,KeHoachGV=@KeHoachGV,KeHoachTPT=@KeHoachTPT,KeHoachHC=@KeHoachHC,KeHoachCNTT=@KeHoachCNTT 
 where id=@id",
                 "@title", txtTenTruong.Text, "@NhomTruongID", cbLoaiTruong.SelectedValue, "@hangtruong", cbHangTruong.SelectedValue,
                 "@SoLop", nudSoLop.Value, "@SoHocSinh", nudSoHS.Value,
-                "@DuocGiaoCB", nudDuocGiaoCB.Value, "@DuocGiaoHC", nudDuocGiaoHC.Value, "@DuocGiaoCNTT", nudDuocGiaoCNTT.Value,
-                "@CoMatCB", nudCoMatCB.Value, "@CoMatHC", nudCoMatHC.Value, "@CoMatCNTT", nudCoMatCNTT.Value,
-                "@KeHoachCB", nudKeHoachCB.Value, "@KeHoachHC", nudKeHoachHC.Value, "@KeHoachCNTT", nudKeHoachCNTT.Value
+                "@DuocGiaoCB", nudDuocGiaoCB.Value, "@DuocGiaoGV", nudDuocGiaoGV.Value, "@DuocGiaoTPT", nudDuocGiaoTPT.Value, "@DuocGiaoHC", nudDuocGiaoHC.Value, "@DuocGiaoCNTT", nudDuocGiaoCNTT.Value,
+                "@CoMatCB", nudCoMatCB.Value, "@CoMatGV", nudCoMatGV.Value, "@CoMatTPT", nudCoMatTPT.Value, "@CoMatHC", nudCoMatHC.Value, "@CoMatCNTT", nudCoMatCNTT.Value,
+                "@KeHoachCB", nudKeHoachCB.Value, "@KeHoachGV", nudKeHoachGV.Value, "@KeHoachTPT", nudKeHoachTPT.Value, "@KeHoachHC", nudKeHoachHC.Value, "@KeHoachCNTT", nudKeHoachCNTT.Value
                 , "@id", id);
 
             GUIController.ShowMessageBox("Sửa thông tin trường thành công!");
