@@ -41,6 +41,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.nudKeHoachGV = new System.Windows.Forms.NumericUpDown();
+            this.nudCoMatGV = new System.Windows.Forms.NumericUpDown();
+            this.nudDuocGiaoGV = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.nudKeHoachTPT = new System.Windows.Forms.NumericUpDown();
+            this.nudCoMatTPT = new System.Windows.Forms.NumericUpDown();
+            this.nudDuocGiaoTPT = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.btSave = new System.Windows.Forms.Button();
             this.nudKeHoachCNTT = new System.Windows.Forms.NumericUpDown();
             this.nudKeHoachHC = new System.Windows.Forms.NumericUpDown();
@@ -80,24 +92,18 @@
             this.btnEditCB = new System.Windows.Forms.Button();
             this.btnAddCB = new System.Windows.Forms.Button();
             this.viewItemsCB = new QLGV.UserControls.NDThienDataGridView(this.components);
-            this.nudKeHoachTPT = new System.Windows.Forms.NumericUpDown();
-            this.nudCoMatTPT = new System.Windows.Forms.NumericUpDown();
-            this.nudDuocGiaoTPT = new System.Windows.Forms.NumericUpDown();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.nudKeHoachGV = new System.Windows.Forms.NumericUpDown();
-            this.nudCoMatGV = new System.Windows.Forms.NumericUpDown();
-            this.nudDuocGiaoGV = new System.Windows.Forms.NumericUpDown();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewItemsTruong)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCoMatGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDuocGiaoGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachTPT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCoMatTPT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDuocGiaoTPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachCNTT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachHC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachCB)).BeginInit();
@@ -111,12 +117,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLop)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewItemsCB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachTPT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCoMatTPT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDuocGiaoTPT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCoMatGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDuocGiaoGV)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -238,7 +238,7 @@
             this.cbNhomTruong.Location = new System.Drawing.Point(49, 5);
             this.cbNhomTruong.Name = "cbNhomTruong";
             this.cbNhomTruong.Size = new System.Drawing.Size(121, 21);
-            this.cbNhomTruong.TabIndex = 2;
+            this.cbNhomTruong.TabIndex = 100;
             this.cbNhomTruong.SelectedIndexChanged += new System.EventHandler(this.cbNhomTruong_SelectedIndexChanged);
             // 
             // label1
@@ -314,6 +314,102 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông tin chung";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // nudKeHoachGV
+            // 
+            this.nudKeHoachGV.Location = new System.Drawing.Point(650, 294);
+            this.nudKeHoachGV.Name = "nudKeHoachGV";
+            this.nudKeHoachGV.Size = new System.Drawing.Size(74, 20);
+            this.nudKeHoachGV.TabIndex = 139;
+            // 
+            // nudCoMatGV
+            // 
+            this.nudCoMatGV.Location = new System.Drawing.Point(384, 294);
+            this.nudCoMatGV.Name = "nudCoMatGV";
+            this.nudCoMatGV.Size = new System.Drawing.Size(74, 20);
+            this.nudCoMatGV.TabIndex = 138;
+            // 
+            // nudDuocGiaoGV
+            // 
+            this.nudDuocGiaoGV.Location = new System.Drawing.Point(131, 294);
+            this.nudDuocGiaoGV.Name = "nudDuocGiaoGV";
+            this.nudDuocGiaoGV.Size = new System.Drawing.Size(74, 20);
+            this.nudDuocGiaoGV.TabIndex = 137;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(558, 299);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(52, 13);
+            this.label22.TabIndex = 136;
+            this.label22.Text = "Giáo viên";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(292, 299);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(52, 13);
+            this.label23.TabIndex = 135;
+            this.label23.Text = "Giáo viên";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(29, 299);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(52, 13);
+            this.label24.TabIndex = 134;
+            this.label24.Text = "Giáo viên";
+            // 
+            // nudKeHoachTPT
+            // 
+            this.nudKeHoachTPT.Location = new System.Drawing.Point(650, 330);
+            this.nudKeHoachTPT.Name = "nudKeHoachTPT";
+            this.nudKeHoachTPT.Size = new System.Drawing.Size(74, 20);
+            this.nudKeHoachTPT.TabIndex = 133;
+            // 
+            // nudCoMatTPT
+            // 
+            this.nudCoMatTPT.Location = new System.Drawing.Point(384, 330);
+            this.nudCoMatTPT.Name = "nudCoMatTPT";
+            this.nudCoMatTPT.Size = new System.Drawing.Size(74, 20);
+            this.nudCoMatTPT.TabIndex = 132;
+            // 
+            // nudDuocGiaoTPT
+            // 
+            this.nudDuocGiaoTPT.Location = new System.Drawing.Point(131, 330);
+            this.nudDuocGiaoTPT.Name = "nudDuocGiaoTPT";
+            this.nudDuocGiaoTPT.Size = new System.Drawing.Size(74, 20);
+            this.nudDuocGiaoTPT.TabIndex = 131;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(558, 335);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(46, 13);
+            this.label19.TabIndex = 130;
+            this.label19.Text = "TPT đội";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(292, 335);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(46, 13);
+            this.label20.TabIndex = 129;
+            this.label20.Text = "TPT đội";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(29, 335);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(46, 13);
+            this.label21.TabIndex = 128;
+            this.label21.Text = "TPT đội";
             // 
             // btSave
             // 
@@ -726,102 +822,6 @@
             this.viewItemsCB.TabIndex = 5;
             this.viewItemsCB.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.viewItemsCB_MouseDoubleClick);
             // 
-            // nudKeHoachTPT
-            // 
-            this.nudKeHoachTPT.Location = new System.Drawing.Point(650, 330);
-            this.nudKeHoachTPT.Name = "nudKeHoachTPT";
-            this.nudKeHoachTPT.Size = new System.Drawing.Size(74, 20);
-            this.nudKeHoachTPT.TabIndex = 133;
-            // 
-            // nudCoMatTPT
-            // 
-            this.nudCoMatTPT.Location = new System.Drawing.Point(384, 330);
-            this.nudCoMatTPT.Name = "nudCoMatTPT";
-            this.nudCoMatTPT.Size = new System.Drawing.Size(74, 20);
-            this.nudCoMatTPT.TabIndex = 132;
-            // 
-            // nudDuocGiaoTPT
-            // 
-            this.nudDuocGiaoTPT.Location = new System.Drawing.Point(131, 330);
-            this.nudDuocGiaoTPT.Name = "nudDuocGiaoTPT";
-            this.nudDuocGiaoTPT.Size = new System.Drawing.Size(74, 20);
-            this.nudDuocGiaoTPT.TabIndex = 131;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(558, 335);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(46, 13);
-            this.label19.TabIndex = 130;
-            this.label19.Text = "TPT đội";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(292, 335);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(46, 13);
-            this.label20.TabIndex = 129;
-            this.label20.Text = "TPT đội";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(29, 335);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(46, 13);
-            this.label21.TabIndex = 128;
-            this.label21.Text = "TPT đội";
-            // 
-            // nudKeHoachGV
-            // 
-            this.nudKeHoachGV.Location = new System.Drawing.Point(650, 294);
-            this.nudKeHoachGV.Name = "nudKeHoachGV";
-            this.nudKeHoachGV.Size = new System.Drawing.Size(74, 20);
-            this.nudKeHoachGV.TabIndex = 139;
-            // 
-            // nudCoMatGV
-            // 
-            this.nudCoMatGV.Location = new System.Drawing.Point(384, 294);
-            this.nudCoMatGV.Name = "nudCoMatGV";
-            this.nudCoMatGV.Size = new System.Drawing.Size(74, 20);
-            this.nudCoMatGV.TabIndex = 138;
-            // 
-            // nudDuocGiaoGV
-            // 
-            this.nudDuocGiaoGV.Location = new System.Drawing.Point(131, 294);
-            this.nudDuocGiaoGV.Name = "nudDuocGiaoGV";
-            this.nudDuocGiaoGV.Size = new System.Drawing.Size(74, 20);
-            this.nudDuocGiaoGV.TabIndex = 137;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(558, 299);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(52, 13);
-            this.label22.TabIndex = 136;
-            this.label22.Text = "Giáo viên";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(292, 299);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(52, 13);
-            this.label23.TabIndex = 135;
-            this.label23.Text = "Giáo viên";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(29, 299);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(52, 13);
-            this.label24.TabIndex = 134;
-            this.label24.Text = "Giáo viên";
-            // 
             // List_Truong_CanBo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -840,6 +840,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCoMatGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDuocGiaoGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachTPT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCoMatTPT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDuocGiaoTPT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachCNTT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachHC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachCB)).EndInit();
@@ -853,12 +859,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLop)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.viewItemsCB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachTPT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCoMatTPT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDuocGiaoTPT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudKeHoachGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCoMatGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDuocGiaoGV)).EndInit();
             this.ResumeLayout(false);
 
         }
