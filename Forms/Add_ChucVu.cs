@@ -27,6 +27,7 @@ namespace QLGV.Forms
                 {
                     var dt = SQLiteUtils.GetTable("select * from ChucVu where ID = @id", "@id", ID);
                     txtTitle.Text = (string)dt.Rows[0]["Title"];
+                    txtCode.Text = (string)dt.Rows[0]["Code"];
                 }
             }
             catch (Exception ex)
@@ -47,14 +48,14 @@ namespace QLGV.Forms
             //Trường hợp sửa cán bộ
             if (ID != 0)
             {
-                SQLiteUtils.ExcuteNonQuery("update ChucVu set Title = @title where ID=@id", "@title", txtTitle.Text, "@id", ID);
+                SQLiteUtils.ExcuteNonQuery("update ChucVu set Title = @title, Code=@code where ID=@id", "@title", txtTitle.Text, "@id", ID, "@code", txtCode.Text);
 
                 GUIController.ShowMessageBox("Sửa chức vụ thành công!");
             }
             //Trường hợp thêm cán bộ
             else
             {
-                SQLiteUtils.ExcuteNonQuery("insert into ChucVu (title) values(@title)", "@title", txtTitle.Text);
+                SQLiteUtils.ExcuteNonQuery("insert into ChucVu (title, Code) values(@title, @code)", "@title", txtTitle.Text, "@code", txtCode.Text);
 
                 GUIController.ShowMessageBox("Thêm chức vụ thành công!");
             }

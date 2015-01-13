@@ -28,12 +28,12 @@ namespace QLGV.Forms
             {
                 cbDanToc.PopulateData(SQLiteUtils.GetTable("select * from DanToc"), null, null);
                 cbTonGiao.PopulateData(SQLiteUtils.GetTable("select * from TonGiao"), null, null);
-                cbChuyenMon.PopulateData(SQLiteUtils.GetTable("select * from TrinhDoChuyenMon"), null, null);
+                cbChuyenMon.PopulateData(SQLiteUtils.GetTable("select * from TrinhDoChuyenMon"), "Title", "Code");
                 cbChuyenNghanh.PopulateData(SQLiteUtils.GetTable("select * from ChuyenNghanh"), null, null);
                 cbChinhTri.PopulateData(SQLiteUtils.GetTable("select * from LyLuanChinhTri"), null, null);
                 cbNgoaiNgu.PopulateData(SQLiteUtils.GetTable("select * from NgoaiNgu"), null, null);
                 cbTinHoc.PopulateData(SQLiteUtils.GetTable("select * from TinHoc"), null, null);
-                cbChucVu.PopulateData(SQLiteUtils.GetTable("select * from ChucVu"), null, null);
+                cbChucVu.PopulateData(SQLiteUtils.GetTable("select * from ChucVu"), "Title", "Code");
                 cbGioiTinh.PopulateData(new List<Models.ListItem>() { new Models.ListItem { Value = true, Text = "Nam" }, new Models.ListItem { Value = false, Text = "Nữ" } });
                 if (ID != 0)
                 {
@@ -59,12 +59,12 @@ namespace QLGV.Forms
 
                     cbDanToc.SelectedValue = int.Parse("0" + item["DanToc"]);
                     cbTonGiao.SelectedValue = int.Parse("0" + item["TonGiao"]);
-                    cbChuyenMon.SelectedValue = int.Parse("0" + item["ChuyenMon"]);
+                    cbChuyenMon.SelectedValue = item["ChuyenMon"];
                     cbChuyenNghanh.SelectedValue = int.Parse("0" + item["ChuyenNghanh"]);
                     cbChinhTri.SelectedValue = int.Parse("0" + item["ChinhTri"]);
                     cbNgoaiNgu.SelectedValue = int.Parse("0" + item["NgoaiNgu"]);
                     cbTinHoc.SelectedValue = int.Parse("0" + item["TinHoc"]);
-                    cbChucVu.SelectedValue = int.Parse("0" + item["ChucVu"]);
+                    cbChucVu.SelectedValue = item["ChucVu"];
                 }
             }
             catch (Exception ex)
