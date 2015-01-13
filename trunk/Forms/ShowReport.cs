@@ -16,19 +16,53 @@ namespace QLGV.Forms
         {
             InitializeComponent();
         }
-
+        public ShowReport(string reportname)
+        {
+            InitializeComponent();
+            this.ReportName = reportname;
+        }
+        public string ReportName { get; set; }
         private void ShowReport_Load(object sender, EventArgs e)
         {
+            DataTable dt = null;
+            List<ReportParameter> para = null;
+            switch (ReportName)
+            {
+                case "ThongKeSoLuong":
+                    dt = ThongKeSoLuong(out para);
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.ThongKeSoLuong.rdlc";
+                    break;
+                case "DacDiem":
+                    dt = DacDiem(out para);
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.DacDiem.rdlc";
+                    break;
+                case "SoLuong":
+                    dt = ThongKeSoLuong(out para);
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.SoLuong.rdlc";
+                    break;
+                default:
+                    throw new Exception("No report");
+            }
             reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
             //reportViewer1.LocalReport.ReportPath = Server.MapPath("/Reports/" + reportName + ".rdlc");
             reportViewer1.LocalReport.DataSources.Clear();
             //ReportParameter[] parameters = null;
+            reportViewer1.LocalReport.DataSources.Add(
+            new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", (DataTable)dt));
+            this.reportViewer1.LocalReport.SetParameters(para);
+            this.reportViewer1.RefreshReport();
+        }
+
+        DataTable ThongKeSoLuong(out List<ReportParameter> para)
+        {
             int duocgiaotong = 0, duocgiaocbql = 0, duocgiaogv = 0, duocgiaotpt = 0, duocgiaohc = 0, duocgiaocntt = 0,
                 comattong = 0, comatcbql = 0, comatgv = 0, comathc = 0, comattpt = 0, comatcntt = 0,
                 tttong = 0, ttcbql = 0, ttgv = 0, tthc = 0, ttcntt = 0, ts = 0, ts1 = 0, ts2 = 0;
             var dtloai = SQLiteUtils.GetTable("select * from nhomtruong");
             var dt = new DataSet1().DataTable1;
             int k = 1;
+
+            #region Repeat
             foreach (DataRow row in dtloai.Rows)
             {
                 int duocgiaotong1 = 0, duocgiaocbql1 = 0, duocgiaogv1 = 0, duocgiaotpt1 = 0, duocgiaohc1 = 0, duocgiaocntt1 = 0,
@@ -87,6 +121,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                     dt.Rows.Add(dr1);
                     i++;
                 }
+                #region Sum
                 tsx = comattpt1; ts11 = comatcbql1 + comatgv1 + comattpt1; ts21 = comathc1 + comatcntt1;
                 dr["STT"] = GetLaMa(k);
                 dr["Title"] = "     " + row["Title"];
@@ -116,7 +151,10 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 ttgv += ttgv1;
                 tthc += tthc1;
                 ttcntt += ttcntt1;
+                #endregion
             }
+            #endregion
+            #region para
             ts = comattong; ts1 = comatcbql + comatgv + comattpt; ts2 = comathc + comatcntt;
             var rparam = new List<ReportParameter>();
             rparam.Add(new ReportParameter("duocgiaotong", duocgiaotong + ""));
@@ -140,12 +178,17 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             rparam.Add(new ReportParameter("ts1", ts1 + ""));
             rparam.Add(new ReportParameter("ts2", ts2 + ""));
             rparam.Add(new ReportParameter("ngay", DateTime.Now.ToString("dd/MM/yyyy") + ""));
-            reportViewer1.LocalReport.DataSources.Add(
-            new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", (DataTable)dt));
-            this.reportViewer1.LocalReport.SetParameters(rparam);
-            this.reportViewer1.RefreshReport();
+            #endregion
+            para = rparam;
+            return dt;
         }
+        DataTable DacDiem(out List<ReportParameter> para)
+        {
+            var dt = new DataSet1().DacDiem;
 
+            para = new List<ReportParameter>();
+            return dt;
+        }
         string GetLaMa(int k)
         {
             return k == 1 ? "I" : k == 2 ? "II" : "III";
