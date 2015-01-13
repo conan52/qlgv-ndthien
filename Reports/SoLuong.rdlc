@@ -4006,7 +4006,7 @@ chính</Value>
         <DataSetName>DataSet1</DataSetName>
         <Top>3.19299cm</Top>
         <Height>4.37408cm</Height>
-        <Width>29.66404cm</Width>
+        <Width>29.66408cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -4138,7 +4138,7 @@ chính</Value>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <Width>11.67876in</Width>
+  <Width>11.67877in</Width>
   <Page>
     <PageHeight>21cm</PageHeight>
     <PageWidth>29.7cm</PageWidth>
