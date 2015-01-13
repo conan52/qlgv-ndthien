@@ -180,13 +180,14 @@ namespace QLGV.Forms
         }
 
         //--------------------------------------- BÁO CÁO ---------------------------------------------
+        //Bao cao bien che
         private void báoCáoBiênChếToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ShowReport().Show();
+            new ShowReport("ThongKeSoLuong").Show();
         }
         private void bcDacDiem_Click(object sender, EventArgs e)
         {
-            new ShowReport().Show();
+            new ShowReport("DacDiem").Show();
         }
 
         //Số lượng sheet M1
