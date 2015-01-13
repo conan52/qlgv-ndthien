@@ -169,22 +169,39 @@ namespace QLGV.Forms
 
         #endregion
 
-        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new SysChangePass().ShowDialog();
-        }
-
         private void cấuHìnhHệThốngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ShowReport().Show();
         }
 
         //--------------------------------------- BÁO CÁO ---------------------------------------------
-        //Bao cao bien che
-        private void báoCáoBiênChếToolStripMenuItem_Click(object sender, EventArgs e)
+        #region báo cáo biên chế
+        //Tong hop
+        private void tổngHợpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ShowReport("ThongKeSoLuong").Show();
         }
+
+        private void c0ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ShowReport("C0").Show();
+        }
+
+        private void c1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ShowReport("C1").Show();
+        }
+
+        private void c2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ShowReport("C2").Show();
+        }
+
+        private void thừaThiếuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ShowReport("ThuaThieu").Show();
+        }
+        #endregion
         private void bcDacDiem_Click(object sender, EventArgs e)
         {
             new ShowReport("DacDiem").Show();
@@ -201,32 +218,8 @@ namespace QLGV.Forms
             new ShowReport().Show();
         }
 
-        #region Trình độ
-        private void tổngHợpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void c0ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void c1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void c2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void thừaThiếuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
+        
+        
     }
 }
 

@@ -32,6 +32,22 @@ namespace QLGV.Forms
                     dt = ThongKeSoLuong(out para);
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.ThongKeSoLuong.rdlc";
                     break;
+                case "C0":
+                    dt = C0(out para);
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.C0.rdlc";
+                    break;
+                case "C1":
+                    dt = C1(out para);
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.C1.rdlc";
+                    break;
+                case "C2":
+                    dt = C2(out para);
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.C2.rdlc";
+                    break;
+                case "ThuaThieu":
+                    dt = ThuaThieu(out para);
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.ThuaThieu.rdlc";
+                    break;
                 case "DacDiem":
                     dt = DacDiem(out para);
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.DacDiem.rdlc";
@@ -180,6 +196,34 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             rparam.Add(new ReportParameter("ngay", DateTime.Now.ToString("dd/MM/yyyy") + ""));
             #endregion
             para = rparam;
+            return dt;
+        }
+        DataTable C0(out List<ReportParameter> para)
+        {
+            var dt = new DataSet1().DacDiem;
+
+            para = new List<ReportParameter>();
+            return dt;
+        }
+        DataTable C1(out List<ReportParameter> para)
+        {
+            var dt = new DataSet1().DacDiem;
+
+            para = new List<ReportParameter>();
+            return dt;
+        }
+        DataTable C2(out List<ReportParameter> para)
+        {
+            var dt = new DataSet1().DacDiem;
+
+            para = new List<ReportParameter>();
+            return dt;
+        }
+        DataTable ThuaThieu(out List<ReportParameter> para)
+        {
+            var dt = new DataSet1().DacDiem;
+
+            para = new List<ReportParameter>();
             return dt;
         }
         DataTable DacDiem(out List<ReportParameter> para)
