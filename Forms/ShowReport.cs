@@ -200,7 +200,52 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
         }
         DataTable C0(out List<ReportParameter> para)
         {
-            var dt = new DataSet1().DacDiem;
+            DataTable dt = new DataSet1().C0;
+            int TongSoLop = 0, TSHS = 0, TongBienChe = 0, CBQL = 0, HanhChinh = 0, TongSo = 0, GVVH = 0, GVK = 0;
+
+            var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 1);
+            #region Repeat
+            int i = 1;
+            foreach (DataRow item in dttruong.Rows)
+            {
+                var dr1 = dt.NewRow();
+                dr1["STT"] = i + "";
+                dr1["Title"] = item["Title"];
+                dr1["HangTruong"] = GetLaMa(int.Parse("0" + item["HangTruong"]));
+
+                int TongSoLop1 = 0, TSHS1 = 0, TongBienChe1 = 0, CBQL1 = 0, HanhChinh1 = 0, TongSo1 = 0, GVVH1 = 0, GVK1 = 0;
+                TongSoLop1 = int.Parse("0" + item["SoLop"]);
+                dr1["TongSoLop"] = TongSoLop1; TongSoLop += TongSoLop1; ;
+
+                TSHS1 += int.Parse("0" + item["SoHocSinh"]);
+                dr1["TSHS"] = TSHS1; TSHS += TSHS1;
+
+                CBQL1 += int.Parse("0" + item["CoMatCB"]);
+                dr1["CBQL"] = CBQL1; CBQL += CBQL1;
+
+                CBQL1 += int.Parse("0" + item["CoMatHC"]);
+                dr1["HanhChinh"] = HanhChinh1; HanhChinh += HanhChinh1;
+
+                GVVH1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.GV));
+                dr1["GVVH"] = GVVH1; GVVH += GVVH1;
+
+                GVK1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.HopDong));
+                dr1["GVK"] = GVK1; GVK += GVK1;
+
+                TongSo1 = GVVH1 + GVK1;
+                dr1["TongSo"] = TongSo1; TongSo += TongSo1;
+
+                TongBienChe1 = CBQL1 + HanhChinh1 + GVVH1 + GVK1;
+                dr1["TongBienChe"] = TongBienChe1; TongBienChe += TongBienChe1;
+                dt.Rows.Add(dr1);
+                i++;
+            }
+            var dr = dt.NewRow();
+            dr["Title"] = "Tổng số";
+            dr["TongSoLop"] = TongSoLop; dr["TSHS"] = TSHS; dr["TongBienChe"] = TongBienChe; dr["CBQL"] = CBQL;
+            dr["HanhChinh"] = HanhChinh; dr["TongSo"] = TongSo; dr["GVVH"] = GVVH; dr["GVK"] = GVK;
+            dt.Rows.Add(dr);
+            #endregion
 
             para = new List<ReportParameter>();
             return dt;
