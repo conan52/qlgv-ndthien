@@ -326,7 +326,7 @@
     <EmbeddedResource Include="Reports\DacDiem.rdlc" />
     <EmbeddedResource Include="Reports\SoLuong.rdlc" />
     <EmbeddedResource Include="Reports\ThongKeSoLuong.rdlc" />
-    <EmbeddedResource Include="Reports\TongHopTrinhDo.rdlc" />
+    <EmbeddedResource Include="Reports\ThongKeTrinhDo.rdlc" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>

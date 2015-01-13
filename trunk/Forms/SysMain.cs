@@ -169,11 +169,6 @@ namespace QLGV.Forms
 
         #endregion
 
-        private void thốngKêSốLượngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new ShowReport().Show();
-        }
-
         private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new SysChangePass().ShowDialog();
@@ -181,9 +176,56 @@ namespace QLGV.Forms
 
         private void cấuHìnhHệThốngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            new ShowReport().Show();
         }
 
+        //--------------------------------------- BÁO CÁO ---------------------------------------------
+        private void báoCáoBiênChếToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ShowReport().Show();
+        }
+        private void bcDacDiem_Click(object sender, EventArgs e)
+        {
+            new ShowReport().Show();
+        }
+
+        //Số lượng sheet M1
+        private void thốngKêSốLượngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ShowReport().Show();
+        }
+        //Số lượng sheet M2
+        private void bcSLM2_Click(object sender, EventArgs e)
+        {
+            new ShowReport().Show();
+        }
+
+        #region Trình độ
+        private void tổngHợpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void c0ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void c1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void c2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void thừaThiếuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }
 
