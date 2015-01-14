@@ -217,13 +217,13 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 TongSoLop1 = int.Parse("0" + item["SoLop"]);
                 dr1["TongSoLop"] = TongSoLop1; TongSoLop += TongSoLop1; ;
 
-                TSHS1 += int.Parse("0" + item["SoHocSinh"]);
+                TSHS1 = int.Parse("0" + item["SoHocSinh"]);
                 dr1["TSHS"] = TSHS1; TSHS += TSHS1;
 
-                CBQL1 += int.Parse("0" + item["CoMatCB"]);
+                CBQL1 = int.Parse("0" + item["CoMatCB"]);
                 dr1["CBQL"] = CBQL1; CBQL += CBQL1;
 
-                CBQL1 += int.Parse("0" + item["CoMatHC"]);
+                CBQL1 = int.Parse("0" + item["CoMatHC"]);
                 dr1["HanhChinh"] = HanhChinh1; HanhChinh += HanhChinh1;
 
                 GVVH1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.GV));
@@ -253,10 +253,9 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
         DataTable C1(out List<ReportParameter> para)
         {
             DataTable dt = new DataSet1().C1;
-            int TSL_TS = 0, TSL_LH = 0, TSHS = 0, TongSo = 0, CBQL = 0, HanhChinh = 0, TPTDoi = 0, TongSo1 = 0, AmNhac = 0, MiThuat = 0,
-            NgoaiNgu = 0, TinHoc = 0, TheDuc = 0, VanHoa = 0;
-
             var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 2);
+            int TSL_TS = 0, TSL_LH = 0, TSHS = 0, TongSo = 0, CBQL = 0, HanhChinh = 0, TPTDoi = 0, TongSo1 = 0,
+                AmNhac = 0, MiThuat = 0, NgoaiNgu = 0, TinHoc = 0, TheDuc = 0, VanHoa = 0;
             #region Repeat
             int i = 1;
             foreach (DataRow item in dttruong.Rows)
@@ -284,8 +283,10 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 int TPTDoi1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.TPTDoi));
                 dr1["TPTDoi"] = TPTDoi1; TPTDoi += TPTDoi1;
 
+                int VanHoa1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.VanHoa));
+                dr1["VanHoa"] = VanHoa1; VanHoa += VanHoa1;
                 int AmNhac1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.AmNhac));
-                dr1["AmNhac"] = AmNhac1; TPTDoi += AmNhac1;
+                dr1["AmNhac"] = AmNhac1; AmNhac += AmNhac1;
                 int MiThuat1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.MyThuat));
                 dr1["MiThuat"] = MiThuat1; MiThuat += MiThuat1;
                 int NgoaiNgu1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.NN));
@@ -295,27 +296,94 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 int TheDuc1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.TD));
                 dr1["TheDuc"] = TheDuc1; TheDuc += TheDuc1;
 
-                int TongSo11 = CBQL1 + HanhChinh1;
-                dr1["TongSo"] = TongSo1; TongSo += TongSo1;
-
-                TongBienChe1 = CBQL1 + HanhChinh1 + GVVH1 + GVK1;
-                dr1["TongBienChe"] = TongBienChe1; TSHS += TongBienChe1;
+                int TongSo11 = VanHoa1 + AmNhac1 + NgoaiNgu1 + MiThuat1 + TinHoc1 + TheDuc1;
+                dr1["TongSo1"] = TongSo11; TongSo1 += TongSo11;
+                int TongSo_ = VanHoa1 + AmNhac1 + NgoaiNgu1 + MiThuat1 + TinHoc1 + TheDuc1;
+                dr1["TongSo"] = TongSo_; TongSo += TongSo_;
                 dt.Rows.Add(dr1);
                 i++;
             }
+            #endregion
             var dr = dt.NewRow();
             dr["Title"] = "Tổng số";
-            dr["TongSoLop"] = TSL_TS; dr["TSHS"] = TSL_LH; dr["TongBienChe"] = TSHS; dr["CBQL"] = TongSo;
-            dr["HanhChinh"] = CBQL; dr["TongSo"] = TongSo; dr["GVVH"] = TPTDoi; dr["GVK"] = GVK;
+            dr["TSL_TS"] = TSL_TS; dr["TSL_LH"] = TSL_LH; dr["TSHS"] = TSHS; dr["TongSo"] = TongSo;
+            dr["CBQL"] = CBQL; dr["HanhChinh"] = HanhChinh; dr["TPTDoi"] = TPTDoi; dr["TongSo1"] = TongSo1;
+            dr["VanHoa"] = VanHoa; dr["AmNhac"] = AmNhac; dr["MiThuat"] = MiThuat; dr["NgoaiNgu"] = NgoaiNgu; dr["TinHoc"] = TinHoc; dr["TheDuc"] = TheDuc;
             dt.Rows.Add(dr);
-            #endregion
 
             para = new List<ReportParameter>();
             return dt;
         }
         DataTable C2(out List<ReportParameter> para)
         {
-            var dt = new DataSet1().DacDiem;
+            DataTable dt = new DataSet1().C2;
+            var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 3);
+            int TSL = 0, TongSo = 0, CBQL = 0, HanhChinh = 0, TPTDoi = 0, TSGV = 0, Van = 0, Su = 0, Dia = 0, GDCD = 0, TD = 0,
+               NgoaiNgu = 0, Toan = 0, Ly = 0, Hoa = 0, Sinh = 0, KTCN = 0, KTNN = 0, Tin = 0, AmNhac = 0, MiThuat = 0, CNTT = 0;
+            int i = 1;
+            foreach (DataRow item in dttruong.Rows)
+            {
+                #region
+                var dr1 = dt.NewRow();
+                dr1["STT"] = i + "";
+                dr1["Title"] = item["Title"];
+                dr1["HangTruong"] = GetLaMa(int.Parse("0" + item["HangTruong"]));
+                int TSL1 = int.Parse("0" + item[tf.SoLop]);
+                dr1["TSL"] = TSL1; TSL = TSL1; ;
+                int CBQL1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL));
+                dr1["CBQL"] = CBQL1; CBQL += CBQL1;
+                int HanhChinh1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.HanhChinh));
+                dr1["HanhChinh"] = HanhChinh1; HanhChinh += HanhChinh1;
+                int TPTDoi1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.TPTDoi));
+                dr1["TPTDoi"] = TPTDoi1; TPTDoi += TPTDoi1;
+                #endregion
+                int Van1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.Van));
+                dr1["Van"] = Van1; Van += Van1;
+                int Su1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.Su));
+                dr1["Su"] = Su1; Su += Su1;
+                int Dia1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.Dia));
+                dr1["Dia"] = Dia1; Dia += Dia1;
+                int GDCD1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.GDCD));
+                dr1["GDCD"] = GDCD1; GDCD += GDCD1;
+                int TD1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.TD));
+                dr1["TD"] = TD1; TD1 += TD1;
+                int NgoaiNgu1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.NN));
+                dr1["NN"] = NgoaiNgu1; NgoaiNgu += NgoaiNgu1;
+                dr1["Su"] = Su1; Su += Su1;
+                int Toan1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.Toan));
+                dr1["Toan"] = Toan1; Toan1 += Toan1;
+                int Ly1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.Ly));
+                dr1["Ly"] = Ly1; Ly += Ly1;
+                int Hoa1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.MyThuat));
+                dr1["Hoa"] = Hoa1; Hoa += Hoa1;
+                int Sinh1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.MyThuat));
+                dr1["Sinh"] = Sinh1; Sinh += Sinh1;
+                int KTCN1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.KTCN));
+                dr1["KTCN"] = KTCN1; KTCN += KTCN1;
+                int KTNN1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.MyThuat));
+                dr1["KTNN"] = KTNN1; KTNN += KTNN1;
+                int Tin1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.Tin));
+                dr1["Tin"] = Tin1; Tin += Tin1;
+                int AmNhac1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.AmNhac));
+                dr1["AmNhac"] = AmNhac1; AmNhac += AmNhac1;
+                int MiThuat1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.TD));
+                dr1["MyThuat"] = MiThuat1; MiThuat += MiThuat1;
+                int CNTT1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.TD));
+                dr1["CNTT"] = CNTT1; CNTT += CNTT1;
+                int TSGV1 = Van1 + Su1 + Dia1 + GDCD1 + TD1 + NgoaiNgu1 + Toan1 + Ly1 + Hoa1 + Sinh1 + KTCN1 + KTNN1 + Tin1 + AmNhac1 + MiThuat1;
+                dr1["TSGV"] = TSGV1; TSGV += TSGV1;
+                int TongSo1 = CBQL1 + HanhChinh1 + TPTDoi1 + TSGV1;
+                dr1["TongSo"] = TongSo1; TongSo += TongSo1;
+                dt.Rows.Add(dr1);
+                i++;
+            }
+            var dr = dt.NewRow();
+            dr["Title"] = "Tổng số";
+            dr["TSL"] = TSL; dr["TongSo"] = TongSo; dr["TSGV"] = TSGV; dr["CBQL"] = CBQL; dr["HanhChinh"] = HanhChinh; dr["TPTDoi"] = TPTDoi; dr["TSGV"] = TSGV;
+            dr["Van"] = Van; dr["Su"] = Su; dr["Dia"] = Dia; dr["GDCD"] = GDCD; dr["TD"] = TD; dr["NN"] = NgoaiNgu;
+            dr["Toan"] = Toan; dr["Ly"] = Ly; dr["Hoa"] = Hoa; dr["Sinh"] = Sinh; dr["TD"] = TD; dr["KTCN"] = KTCN;
+            dr["KTNN"] = KTNN; dr["Tin"] = Tin; dr["AmNhac"] = AmNhac; dr["MyThuat"] = MiThuat; dr["CNTT"] = CNTT; 
+            dt.Rows.Add(dr);
 
             para = new List<ReportParameter>();
             return dt;
