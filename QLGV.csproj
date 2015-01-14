@@ -356,6 +356,11 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="DLL\QLGV.db" />
+    <None Include="Excel reports\Báo cáo biên chế  T11_2014.xls" />
+    <None Include="Excel reports\Số lượng.xls" />
+    <None Include="Excel reports\Tổng hợp thống kê trình độ đội ngũ Tháng 3_2014.xls" />
+    <None Include="Excel reports\Tổng hợp thống kê đội ngũ rút gọn gửi Giang.xls" />
+    <None Include="Excel reports\Đặc điểm.xls" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

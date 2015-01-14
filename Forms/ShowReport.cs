@@ -252,7 +252,63 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
         }
         DataTable C1(out List<ReportParameter> para)
         {
-            var dt = new DataSet1().DacDiem;
+            DataTable dt = new DataSet1().C1;
+            int TSL_TS = 0, TSL_LH = 0, TSHS = 0, TongSo = 0, CBQL = 0, HanhChinh = 0, TPTDoi = 0, TongSo1 = 0, AmNhac = 0, MiThuat = 0,
+            NgoaiNgu = 0, TinHoc = 0, TheDuc = 0, VanHoa = 0;
+
+            var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 2);
+            #region Repeat
+            int i = 1;
+            foreach (DataRow item in dttruong.Rows)
+            {
+                var dr1 = dt.NewRow();
+                dr1["STT"] = i + "";
+                dr1["Title"] = item["Title"];
+                dr1["HangTruong"] = GetLaMa(int.Parse("0" + item["HangTruong"]));
+
+                int TongSoLop1 = int.Parse("0" + item["SoLop"]);
+                dr1["TSL_TS"] = TongSoLop1; TSL_TS += TongSoLop1; ;
+
+                int TSL_LH1 = int.Parse("0" + item["SoLop2b"]);
+                dr1["TSL_LH"] = TSL_LH1; TSL_LH += TSL_LH1;
+
+                int TSHS1 = int.Parse("0" + item["CoMatCB"]);
+                dr1["TSHS"] = TSHS1; TSHS += TSHS;
+
+                int CBQL1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL));
+                dr1["CBQL"] = CBQL1; CBQL += CBQL1;
+
+                int HanhChinh1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.HanhChinh));
+                dr1["HanhChinh"] = HanhChinh1; HanhChinh += HanhChinh1;
+
+                int TPTDoi1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.TPTDoi));
+                dr1["TPTDoi"] = TPTDoi1; TPTDoi += TPTDoi1;
+
+                int AmNhac1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.AmNhac));
+                dr1["AmNhac"] = AmNhac1; TPTDoi += AmNhac1;
+                int MiThuat1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.MyThuat));
+                dr1["MiThuat"] = MiThuat1; MiThuat += MiThuat1;
+                int NgoaiNgu1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.NN));
+                dr1["NgoaiNgu"] = NgoaiNgu1; NgoaiNgu += NgoaiNgu1;
+                int TinHoc1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.MyThuat));
+                dr1["TinHoc"] = TinHoc1; TinHoc += TinHoc1;
+                int TheDuc1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chuyenmon=@chuyenmon", "@truongid", item["ID"], "@chuyenmon", ChuyenMon.TD));
+                dr1["TheDuc"] = TheDuc1; TheDuc += TheDuc1;
+
+                int TongSo11 = CBQL1 + HanhChinh1;
+                dr1["TongSo"] = TongSo1; TongSo += TongSo1;
+
+                TongBienChe1 = CBQL1 + HanhChinh1 + GVVH1 + GVK1;
+                dr1["TongBienChe"] = TongBienChe1; TSHS += TongBienChe1;
+                dt.Rows.Add(dr1);
+                i++;
+            }
+            var dr = dt.NewRow();
+            dr["Title"] = "Tổng số";
+            dr["TongSoLop"] = TSL_TS; dr["TSHS"] = TSL_LH; dr["TongBienChe"] = TSHS; dr["CBQL"] = TongSo;
+            dr["HanhChinh"] = CBQL; dr["TongSo"] = TongSo; dr["GVVH"] = TPTDoi; dr["GVK"] = GVK;
+            dt.Rows.Add(dr);
+            #endregion
 
             para = new List<ReportParameter>();
             return dt;
