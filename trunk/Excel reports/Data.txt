@@ -7,4 +7,3 @@ Quản lý nhà nước: Cử nhân, Trung cấp; Chứng chỉ
 
 Ngạch lương (có mã ngạch): CVCC&TĐ; CVC&TĐ; CV&TĐ; CS&TĐ; Còn lại(Cao đẳng)
 Chức vụ: Cán bộ quản lý; Giáo viên (biên chế; hợp đồng (có đóng BHXH; không đóng BHXH)); Hành chính; Công nghệ thông tin; Tổng phụ trách đội
-Nhân viên = Hành chính + CNTT ???
