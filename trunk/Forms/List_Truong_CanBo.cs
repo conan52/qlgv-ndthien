@@ -176,6 +176,8 @@ namespace QLGV.Forms
 
                 if (item["DuocGiaoCB"] != null)
                     nudDuocGiaoCB.Value = decimal.Parse("0" + item["DuocGiaoCB"]);
+                nudDuocGiaoGV.Value = decimal.Parse("0" + item["DuocGiaoGV"]);
+                nudDuocGiaoTPT.Value = decimal.Parse("0" + item["DuocGiaoTPT"]);
                 if (item["DuocGiaoHC"] != null)
                     nudDuocGiaoHC.Value = decimal.Parse("0" + item["DuocGiaoHC"]);
                 if (item["DuocGiaoCNTT"] != null)
