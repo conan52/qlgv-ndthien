@@ -92,6 +92,8 @@
             this.btnEditCB = new System.Windows.Forms.Button();
             this.btnAddCB = new System.Windows.Forms.Button();
             this.viewItemsCB = new QLGV.UserControls.NDThienDataGridView(this.components);
+            this.nudSoLop2b = new System.Windows.Forms.NumericUpDown();
+            this.label25 = new System.Windows.Forms.Label();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -117,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLop)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewItemsCB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSoLop2b)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -263,6 +266,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label25);
+            this.tabPage1.Controls.Add(this.nudSoLop2b);
             this.tabPage1.Controls.Add(this.nudKeHoachGV);
             this.tabPage1.Controls.Add(this.nudCoMatGV);
             this.tabPage1.Controls.Add(this.nudDuocGiaoGV);
@@ -822,6 +827,27 @@
             this.viewItemsCB.TabIndex = 5;
             this.viewItemsCB.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.viewItemsCB_MouseDoubleClick);
             // 
+            // nudSoLop2b
+            // 
+            this.nudSoLop2b.Location = new System.Drawing.Point(608, 74);
+            this.nudSoLop2b.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudSoLop2b.Name = "nudSoLop2b";
+            this.nudSoLop2b.Size = new System.Drawing.Size(74, 20);
+            this.nudSoLop2b.TabIndex = 140;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(516, 79);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(80, 13);
+            this.label25.TabIndex = 141;
+            this.label25.Text = "Số lớp 2b/ngày";
+            // 
             // List_Truong_CanBo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -859,6 +885,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLop)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.viewItemsCB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSoLop2b)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -927,5 +954,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.NumericUpDown nudSoLop2b;
     }
 }

@@ -173,7 +173,7 @@ namespace QLGV.Forms
                     nudSoHS.Value = decimal.Parse("0" + item["SoHocSinh"]);
                 if (item["SoLop"] != null)
                     nudSoLop.Value = decimal.Parse("0" + item["SoLop"]);
-
+                nudSoLop2b.Value = decimal.Parse("0" + item["SoLop2b"]);
                 if (item["DuocGiaoCB"] != null)
                     nudDuocGiaoCB.Value = decimal.Parse("0" + item["DuocGiaoCB"]);
                 nudDuocGiaoGV.Value = decimal.Parse("0" + item["DuocGiaoGV"]);
@@ -222,13 +222,13 @@ namespace QLGV.Forms
             if (id == 0) return;
 
             SQLiteUtils.ExcuteNonQuery(@"update TruongInfo set Title=@title,NhomTruongID=@NhomTruongID,hangtruong=@hangtruong,
-SoLop=@SoLop,SoHocSinh=@SoHocSinh,
+SoLop=@SoLop,SoLop2b=@SoLop2b,SoHocSinh=@SoHocSinh,
 DuocGiaoCB=@DuocGiaoCB,DuocGiaoGV=@DuocGiaoGV,DuocGiaoTPT=@DuocGiaoTPT,DuocGiaoHC=@DuocGiaoHC,DuocGiaoCNTT=@DuocGiaoCNTT,
 CoMatCB=@CoMatCB,CoMatGV=@CoMatGV,CoMatTPT=@CoMatTPT,CoMatHC=@CoMatHC,CoMatCNTT=@CoMatCNTT,
 KeHoachCB=@KeHoachCB,KeHoachGV=@KeHoachGV,KeHoachTPT=@KeHoachTPT,KeHoachHC=@KeHoachHC,KeHoachCNTT=@KeHoachCNTT 
 where id=@id",
                 "@title", txtTenTruong.Text, "@NhomTruongID", cbLoaiTruong.SelectedValue, "@hangtruong", cbHangTruong.SelectedValue,
-                "@SoLop", nudSoLop.Value, "@SoHocSinh", nudSoHS.Value,
+                "@SoLop", nudSoLop.Value, "@SoLop2b", nudSoLop2b.Value, "@SoHocSinh", nudSoHS.Value,
                 "@DuocGiaoCB", nudDuocGiaoCB.Value, "@DuocGiaoGV", nudDuocGiaoGV.Value, "@DuocGiaoTPT", nudDuocGiaoTPT.Value, "@DuocGiaoHC", nudDuocGiaoHC.Value, "@DuocGiaoCNTT", nudDuocGiaoCNTT.Value,
                 "@CoMatCB", nudCoMatCB.Value, "@CoMatGV", nudCoMatGV.Value, "@CoMatTPT", nudCoMatTPT.Value, "@CoMatHC", nudCoMatHC.Value, "@CoMatCNTT", nudCoMatCNTT.Value,
                 "@KeHoachCB", nudKeHoachCB.Value, "@KeHoachGV", nudKeHoachGV.Value, "@KeHoachTPT", nudKeHoachTPT.Value, "@KeHoachHC", nudKeHoachHC.Value, "@KeHoachCNTT", nudKeHoachCNTT.Value
