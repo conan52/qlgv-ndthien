@@ -21,11 +21,41 @@ namespace QLGV.Forms
         {
             InitializeComponent();
         }
-        Form lstChucVu, lstTruongCB, lstDanToc, lstChuyenNghanh, lstTonGiao, lstNgoaiNgu, lstLyLuanChinhTri, lstTinHoc, lstTrinhDoChuyenMon;
+        Form lstChucDanhKH, lstMonDay, lstNgachLuong, lstQLNN, lstChucVu, lstTruongCB, lstDanToc, lstChuyenNghanh, lstTonGiao, lstNgoaiNgu, lstLyLuanChinhTri, lstTinHoc, lstTrinhDoChuyenMon;
         #region Methods
         public void ShowForm(string formName)
         {
             #region List forms
+            if (formName == typeof(List_NgachLuong).Name)
+            {
+                if (lstNgachLuong == null || lstChucVu.IsDisposed)
+                {
+                    lstNgachLuong = new List_NgachLuong();
+                }
+                lstNgachLuong.MdiParent = this;
+                lstNgachLuong.Show();
+                return;
+            }
+            if (formName == typeof(List_MonDay).Name)
+            {
+                if (lstMonDay == null || lstChucVu.IsDisposed)
+                {
+                    lstMonDay = new List_MonDay();
+                }
+                lstMonDay.MdiParent = this;
+                lstMonDay.Show();
+                return;
+            }
+            if (formName == typeof(List_QLNN).Name)
+            {
+                if (lstQLNN == null || lstChucVu.IsDisposed)
+                {
+                    lstQLNN = new List_QLNN();
+                }
+                lstQLNN.MdiParent = this;
+                lstQLNN.Show();
+                return;
+            }
             if (formName == typeof(List_ChucVu).Name)
             {
                 if (lstChucVu == null || lstChucVu.IsDisposed)
@@ -34,6 +64,16 @@ namespace QLGV.Forms
                 }
                 lstChucVu.MdiParent = this;
                 lstChucVu.Show();
+                return;
+            }
+            if (formName == typeof(List_ChucDanhKH).Name)
+            {
+                if (lstChucDanhKH == null || lstChucVu.IsDisposed)
+                {
+                    lstChucDanhKH = new List_ChucDanhKH();
+                }
+                lstChucDanhKH.MdiParent = this;
+                lstChucDanhKH.Show();
                 return;
             }
             if (formName == typeof(List_DanToc).Name)

@@ -35,7 +35,7 @@ namespace QLGV.Forms
             try
             {
                 viewItems.Rows.Clear();
-                DataTable dt = SQLiteUtils.GetTable("select * from TrinhDoChuyenMon");
+                DataTable dt = SQLiteUtils.GetTable("select * from ChuyenMon");
                 int i = 1;
                 foreach (DataRow item in dt.Rows)
                 {
@@ -124,7 +124,7 @@ namespace QLGV.Forms
 
                 if (GUIController.ShowConfirmBox("Bạn có muốn trình độ chuyên môn không?"))
                 {
-                    int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from TrinhDoChuyenMon where id=@id","@id", id);
+                    int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from ChuyenMon where id=@id","@id", id);
 
                     if (isSuccess > 0)
                     {
