@@ -8,14 +8,59 @@ namespace QLGV
     public class ChucVu
     {
         public const string CBQL = "CBQL";
-        public const string GV = "GV";
+        public const string GVBC = "GVBC";
+        public const string GVHDCBH = "GVHDCBH";
+        public const string GVHDKBH = "GVHDKBH";
         public const string HanhChinh = "HanhChinh";
         public const string TPTDoi = "TPTDoi";
         public const string CNTT = "CNTT";
-        public const string HopDong = "HopDong";
     }
-
+    public class ChucDanhKH
+    {
+        public const string GS = "GS";
+        public const string PGS = "PGS";
+    }
     public class ChuyenMon
+    {
+        public const string TS_TSKH = "TS-TSKH";
+        public const string Ths = "Ths";
+        public const string DH = "DH";
+        public const string CD = "CD";
+        public const string TC = "TC";
+        public const string CL = "CL";
+    }
+    public class LLCT
+    {
+        public const string CN = "CN";
+        public const string CC = "CC";
+        public const string TC = "TC";
+        public const string SC = "SC";
+    }
+    public class TinHoc
+    {
+        public const string TCTL = "TCTL";
+        public const string CC = "CC";
+    }
+    public class NgoaiNgu
+    {
+        public const string TCTL = "TCTL";
+        public const string CC = "CC";
+    }
+    public class QLNN
+    {
+        public const string CN = "CN";
+        public const string TC = "TC";
+        public const string CC = "CC";
+    }
+    public class NghachLuong
+    {
+        public const string CVCC_TĐ = "CVCC&TĐ";
+        public const string CVC_TĐ = "CVC&TĐ";
+        public const string CV_TĐ = "CV&TĐ";
+        public const string CS_TĐ = "CS&TĐ";
+        public const string CL = "CL";
+    }
+    public class MonDay
     {
         public const string VanHoa = "VanHoa";
         public const string Van = "Van";

@@ -25,7 +25,8 @@ namespace QLGV.Forms
             viewItems.AddColumns(new NDThienDataGridViewColumn[] 
             {
                 new NDThienDataGridViewColumn("STT", 40, NDThienDataGridViewColumnStyle.ReadOnly, NDThienDataGridViewColumnDataType.String),
-                new NDThienDataGridViewColumn("Tên tôn giáo", 250, NDThienDataGridViewColumnStyle.ReadOnly, NDThienDataGridViewColumnDataType.String),
+                new NDThienDataGridViewColumn("Mã trình độ tin học", 250, NDThienDataGridViewColumnStyle.ReadOnly, NDThienDataGridViewColumnDataType.String),
+                new NDThienDataGridViewColumn("Tên trình độ tin học", 250, NDThienDataGridViewColumnStyle.ReadOnly, NDThienDataGridViewColumnDataType.String),
             });
         }
 
@@ -38,7 +39,7 @@ namespace QLGV.Forms
                 int i = 1;
                 foreach (DataRow item in dt.Rows)
                 {
-                    viewItems.Rows.Add(i, item["Title"]);
+                    viewItems.Rows.Add(i, item["Code"], item["Title"]);
                     viewItems.Rows[i - 1].Tag = item["ID"];
                     i++;
                 }

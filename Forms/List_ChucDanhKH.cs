@@ -11,9 +11,9 @@ using QLGV.UserControls;
 
 namespace QLGV.Forms
 {
-    public partial class List_NgoaiNgu : Form
+    public partial class List_ChucDanhKH : Form
     {
-        public List_NgoaiNgu()
+        public List_ChucDanhKH()
         {
             InitializeComponent();
         }
@@ -25,8 +25,8 @@ namespace QLGV.Forms
             viewItems.AddColumns(new NDThienDataGridViewColumn[] 
             {
                 new NDThienDataGridViewColumn("STT", 40, NDThienDataGridViewColumnStyle.ReadOnly, NDThienDataGridViewColumnDataType.String),
-                new NDThienDataGridViewColumn("Mã trình độ ngoại ngữ", 250, NDThienDataGridViewColumnStyle.ReadOnly, NDThienDataGridViewColumnDataType.String),
-                new NDThienDataGridViewColumn("Tên trình độ ngoại ngữ", 250, NDThienDataGridViewColumnStyle.ReadOnly, NDThienDataGridViewColumnDataType.String),
+                new NDThienDataGridViewColumn("Mã chức danh khoa học", 150, NDThienDataGridViewColumnStyle.ReadOnly, NDThienDataGridViewColumnDataType.String),
+                new NDThienDataGridViewColumn("Tên chức danh khoa học", 250, NDThienDataGridViewColumnStyle.ReadOnly, NDThienDataGridViewColumnDataType.String),
             });
         }
 
@@ -35,7 +35,7 @@ namespace QLGV.Forms
             try
             {
                 viewItems.Rows.Clear();
-                DataTable dt = SQLiteUtils.GetTable("select * from NgoaiNgu");
+                DataTable dt = SQLiteUtils.GetTable("select * from ChucDanhKH");
                 int i = 1;
                 foreach (DataRow item in dt.Rows)
                 {
@@ -56,7 +56,7 @@ namespace QLGV.Forms
 
         #region Private events
 
-        private void List_NgoaiNgu_Load(object sender, EventArgs e)
+        private void List_TrinhDoChuyenMon_Load(object sender, EventArgs e)
         {
             CreateViewItemsColumn();
             PopulateViewItems();
@@ -65,8 +65,8 @@ namespace QLGV.Forms
 
         private void btNew_Click(object sender, EventArgs e)
         {
-            var add = new Add_NgoaiNgu();
-            add.Text = "Thêm ngoại ngữ";
+            var add = new Add_TrinhDoChuyenMon();
+            add.Text = "Thêm chức danh khoa học";
             add.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
             add.ShowDialog();
         }
@@ -82,20 +82,20 @@ namespace QLGV.Forms
             {
                 if (viewItems.SelectedRows.Count == 0)
                 {
-                    GUIController.ShowMessageBox("Bạn phải chọn ngoại ngữ xem/sửa!");
+                    GUIController.ShowMessageBox("Bạn phải chọn chức danh khoa học xem/sửa!");
                     return;
                 }
 
                 int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
                 if (id == 0)
                 {
-                    GUIController.ShowMessageBox("Bạn phải chọn ngoại ngữ cần xem/sửa!");
+                    GUIController.ShowMessageBox("Bạn phải chọn chức danh khoa học cần xem/sửa!");
                     return;
                 }
 
-                var addDM_DonViTienTe = new Add_NgoaiNgu();
+                var addDM_DonViTienTe = new Add_TrinhDoChuyenMon();
                 addDM_DonViTienTe.ID = id;
-                addDM_DonViTienTe.Text = "Sửa ngoại ngữ";
+                addDM_DonViTienTe.Text = "Sửa chức danh khoa học";
                 addDM_DonViTienTe.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
                 addDM_DonViTienTe.ShowDialog();
             }
@@ -111,29 +111,29 @@ namespace QLGV.Forms
             {
                 if (viewItems.SelectedRows.Count == 0)
                 {
-                    GUIController.ShowMessageBox("Bạn phải chọn ngoại ngữ cần xóa!");
+                    GUIController.ShowMessageBox("Bạn phải chọn chức danh khoa học cần xóa!");
                     return;
                 }
 
                 int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
                 if (id == 0)
                 {
-                    GUIController.ShowMessageBox("Bạn phải chọn ngoại ngữ cần xóa!");
+                    GUIController.ShowMessageBox("Bạn phải chọn chức danh khoa học cần xóa!");
                     return;
                 }
 
-                if (GUIController.ShowConfirmBox("Bạn có muốn ngoại ngữ không?"))
+                if (GUIController.ShowConfirmBox("Bạn có muốn chức danh khoa học không?"))
                 {
-                    int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from NgoaiNgu where id=@id","@id", id);
+                    int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from ChucDanhKH where id=@id","@id", id);
 
                     if (isSuccess > 0)
                     {
-                        GUIController.ShowMessageBox(string.Format("Xóa ngoại ngữ thành công!"));
+                        GUIController.ShowMessageBox(string.Format("Xóa chức danh khoa học thành công!"));
                         PopulateViewItems();
                     }
                     else
                     {
-                        GUIController.ShowMessageBox(string.Format("Xóa ngoại ngữ thất bại!"));
+                        GUIController.ShowMessageBox(string.Format("Xóa chức danh khoa học thất bại!"));
                     }
                 }
             }

@@ -80,6 +80,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\List_QLNN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_QLNN.designer.cs">
+      <DependentUpon>List_QLNN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_NgachLuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_NgachLuong.designer.cs">
+      <DependentUpon>List_NgachLuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_MonDay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_MonDay.designer.cs">
+      <DependentUpon>List_MonDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\List_ChucDanhKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List_ChucDanhKH.designer.cs">
+      <DependentUpon>List_ChucDanhKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Common.cs" />
     <Compile Include="Controllers\Class1.cs" />
     <Compile Include="DataSet1.cs">
@@ -279,6 +303,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangeCB.resx">
       <DependentUpon>ChangeCB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_QLNN.resx">
+      <DependentUpon>List_QLNN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_NgachLuong.resx">
+      <DependentUpon>List_NgachLuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_MonDay.resx">
+      <DependentUpon>List_MonDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\List_ChucDanhKH.resx">
+      <DependentUpon>List_ChucDanhKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SysChangePass.resx">
       <DependentUpon>SysChangePass.cs</DependentUpon>

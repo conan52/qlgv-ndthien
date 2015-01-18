@@ -1,9 +1,11 @@
 ﻿Chức danh KH: Giáo sư; Phó Giáo sư
-Chuyên môn: TS vàTSKH; Thạc sĩ; Đại học; Cao đẳng; Trung cấp; Còn lại
-Lý luận chính trị: Cử nhân, cao cấp; Trung cấp; Sơ cấp
+Chuyên môn: TS và TSKH; Thạc sĩ; Đại học; Cao đẳng; Trung cấp; Còn lại
+Lý luận chính trị: Cử nhân, Cao cấp; Trung cấp; Sơ cấp
 Tin học: Trung cấp trở lên; Chứng chỉ
 Ngoại ngữ: Trung cấp trở lên; Chứng chỉ
 Quản lý nhà nước: Cử nhân, Trung cấp; Chứng chỉ
 
 Ngạch lương (có mã ngạch): CVCC&TĐ; CVC&TĐ; CV&TĐ; CS&TĐ; Còn lại(Cao đẳng)
 Chức vụ: Cán bộ quản lý; Giáo viên (biên chế; hợp đồng (có đóng BHXH; không đóng BHXH)); Hành chính; Công nghệ thông tin; Tổng phụ trách đội
+
+Tổng phụ trách đội
