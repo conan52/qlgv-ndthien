@@ -447,6 +447,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\System.Data.SQLite.DLL" />
+    <Content Include="Excel reports\Data.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
