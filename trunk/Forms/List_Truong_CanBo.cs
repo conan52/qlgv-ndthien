@@ -169,44 +169,27 @@ namespace QLGV.Forms
                 cbLoaiTruong.SelectedItem = item["NhomTruongID"];
                 cbHangTruong.SelectedValue = item["HangTruong"];
 
-                if (item["SoHocSinh"] != null)
-                    nudSoHS.Value = decimal.Parse("0" + item["SoHocSinh"]);
-                if (item["SoLop"] != null)
-                    nudSoLop.Value = decimal.Parse("0" + item["SoLop"]);
+                nudSoHS.Value = decimal.Parse("0" + item["SoHocSinh"]);
+                nudSoLop.Value = decimal.Parse("0" + item["SoLop"]);
                 nudSoLop2b.Value = decimal.Parse("0" + item["SoLop2b"]);
-                if (item["DuocGiaoCB"] != null)
-                    nudDuocGiaoCB.Value = decimal.Parse("0" + item["DuocGiaoCB"]);
+                nudDuocGiaoCB.Value = decimal.Parse("0" + item["DuocGiaoCB"]);
                 nudDuocGiaoGV.Value = decimal.Parse("0" + item["DuocGiaoGV"]);
                 nudDuocGiaoTPT.Value = decimal.Parse("0" + item["DuocGiaoTPT"]);
-                if (item["DuocGiaoHC"] != null)
-                    nudDuocGiaoHC.Value = decimal.Parse("0" + item["DuocGiaoHC"]);
-                if (item["DuocGiaoCNTT"] != null)
-                    nudDuocGiaoCNTT.Value = decimal.Parse("0" + item["DuocGiaoCNTT"]);
+                nudDuocGiaoHC.Value = decimal.Parse("0" + item["DuocGiaoHC"]);
+                nudDuocGiaoCNTT.Value = decimal.Parse("0" + item["DuocGiaoCNTT"]);
 
-                if (item["CoMatCB"] != null)
-                {
-                    int canbocount = int.Parse("0" + item["CoMatCB"]);
-                    //Chua tinh bao gio
-                    if (canbocount == 0)
-                    {
-                        var dt1 = SQLiteUtils.GetTable("select count(1) as countCB from canbo where truongid=@truongid", "@truongid", id);
-                        SQLiteUtils.ExcuteNonQuery("update truonginfo set comatcb=@comatcb where id=@id", "@id", id, "@comatcb", dt1.Rows[0]["countCB"]);
-                        nudCoMatCB.Value = decimal.Parse("0" + dt1.Rows[0]["countCB"]);
-                    }
-                    else
-                        nudCoMatCB.Value = (decimal)canbocount;
-                }
-                if (item["CoMatHC"] != null)
-                    nudCoMatHC.Value = decimal.Parse("0" + item["CoMatHC"]);
-                if (item["CoMatCNTT"] != null)
-                    nudCoMatCNTT.Value = decimal.Parse("0" + item["CoMatCNTT"]);
+                nudCoMatCB.Value = decimal.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", id, "@chucvu", ChucVu.CBQL).Rows[0][0]);
+                nudCoMatGV.Value = decimal.Parse("0" + SQLiteUtils.GetTable(
+                    string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", id).Rows[0][0]);
+                nudCoMatTPT.Value = decimal.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", id, "@chucvu", ChucVu.TPTDoi).Rows[0][0]);
+                nudCoMatHC.Value = decimal.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", id, "@chucvu", ChucVu.HanhChinh).Rows[0][0]);
+                nudCoMatCNTT.Value = decimal.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", id, "@chucvu", ChucVu.CNTT).Rows[0][0]);
 
-                if (item["KeHoachCB"] != null)
-                    nudKeHoachCB.Value = decimal.Parse("0" + item["KeHoachCB"]);
-                if (item["KeHoachHC"] != null)
-                    nudKeHoachHC.Value = decimal.Parse("0" + item["KeHoachHC"]);
-                if (item["KeHoachCNTT"] != null)
-                    nudKeHoachCNTT.Value = decimal.Parse("0" + item["KeHoachCNTT"]);
+                nudCoMatHC.Value = decimal.Parse("0" + item["KeHoachHC"]);
+                nudCoMatCNTT.Value = decimal.Parse("0" + item["KeHoachCNTT"]);
+                nudKeHoachCB.Value = decimal.Parse("0" + item["KeHoachCB"]);
+                nudKeHoachHC.Value = decimal.Parse("0" + item["KeHoachHC"]);
+                nudKeHoachCNTT.Value = decimal.Parse("0" + item["KeHoachCNTT"]);
             }
             catch { }
         }
@@ -411,10 +394,10 @@ where id=@id",
                 DataTable dt = SQLiteUtils.GetTable(@"select cb.ID, cb.HoTen, cb.NgaySinh, cb.GioiTinh, 
 ct.Title as ChinhTri, cv.Title as ChucVu, cm.Title as ChuyenMon, nn.Title as NgoaiNgu
 from CanBo cb
-inner join LyLuanChinhTri ct on ct.ID = cb.ChinhTri
-inner join ChucVu cv on cv.ID = cb.ChucVu
-inner join TrinhDoChuyenMon cm on cm.ID = cb.ChuyenNghanh
-inner join NgoaiNgu nn on nn.ID = cb.NgoaiNgu 
+inner join LyLuanChinhTri ct on ct.Code = cb.ChinhTri
+inner join ChucVu cv on cv.Code = cb.ChucVu
+inner join ChuyenMon cm on cm.Code = cb.ChuyenMon
+inner join NgoaiNgu nn on nn.Code = cb.NgoaiNgu 
 where TruongID=@truongid", "@truongid", id);
                 int i = 1;
                 foreach (DataRow item in dt.Rows)

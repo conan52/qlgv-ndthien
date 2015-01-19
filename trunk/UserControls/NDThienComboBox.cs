@@ -71,7 +71,11 @@ namespace QLGV.UserControls
             var list = new List<ListItem>();
             foreach (DataRow row in dt.Rows)
             {
-                ListItem item = new ListItem((string)row["Title"], int.Parse("0" + row["ID"]));
+                ListItem item;
+                if (valueField == "ID")
+                    item = new ListItem((string)row[displayField], int.Parse("0" + row[valueField]));
+                else
+                    item = new ListItem((string)row[displayField], (string)row[valueField]);
                 list.Add(item);
             }
             this.PopulateData(list);
