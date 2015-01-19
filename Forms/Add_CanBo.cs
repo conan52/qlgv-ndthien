@@ -28,19 +28,23 @@ namespace QLGV.Forms
             {
                 cbDanToc.PopulateData(SQLiteUtils.GetTable("select * from DanToc"), null, null);
                 cbTonGiao.PopulateData(SQLiteUtils.GetTable("select * from TonGiao"), null, null);
-                cbChuyenMon.PopulateData(SQLiteUtils.GetTable("select * from TrinhDoChuyenMon"), "Title", "Code");
+                cbChuyenMon.PopulateData(SQLiteUtils.GetTable("select * from ChuyenMon"), "Code", "Title");
                 cbChuyenNghanh.PopulateData(SQLiteUtils.GetTable("select * from ChuyenNghanh"), null, null);
-                cbChinhTri.PopulateData(SQLiteUtils.GetTable("select * from LyLuanChinhTri"), null, null);
-                cbNgoaiNgu.PopulateData(SQLiteUtils.GetTable("select * from NgoaiNgu"), null, null);
-                cbTinHoc.PopulateData(SQLiteUtils.GetTable("select * from TinHoc"), null, null);
-                cbChucVu.PopulateData(SQLiteUtils.GetTable("select * from ChucVu"), "Title", "Code");
+                cbChinhTri.PopulateData(SQLiteUtils.GetTable("select * from LyLuanChinhTri"), "Code", "Title");
+                cbNgoaiNgu.PopulateData(SQLiteUtils.GetTable("select * from NgoaiNgu"), "Code", "Title");
+                cbTinHoc.PopulateData(SQLiteUtils.GetTable("select * from TinHoc"), "Code", "Title");
+                cbChucVu.PopulateData(SQLiteUtils.GetTable("select * from ChucVu"), "Code", "Title");
+                cbNgachLuong.PopulateData(SQLiteUtils.GetTable("select * from NgachLuong"), "Code", "Title");
+                cbCdkh.PopulateData(SQLiteUtils.GetTable("select * from ChucDanhKH"), "Code", "Title");
+                cbQlnn.PopulateData(SQLiteUtils.GetTable("select * from QLNN"), "Code", "Title");
+                cbMonDay.PopulateData(SQLiteUtils.GetTable("select * from MonDay"), "Code", "Title");
+
                 cbGioiTinh.PopulateData(new List<Models.ListItem>() { new Models.ListItem { Value = true, Text = "Nam" }, new Models.ListItem { Value = false, Text = "Nữ" } });
                 if (ID != 0)
                 {
                     var dt = SQLiteUtils.GetTable("select * from CanBo where ID = @id", "@id", ID);
                     var item = dt.Rows[0];
                     txtHoTen.Text = (string)dt.Rows[0]["HoTen"];
-                    txtNgachLuong.Text = (string)dt.Rows[0]["NghachLuong"];
                     txtMaNgach.Text = (string)dt.Rows[0]["MaNgach"];
                     txtBacLuong.Text = (string)dt.Rows[0]["BacLuong"];
                     cbGioiTinh.SelectedValue = item["GioiTinh"];
@@ -61,10 +65,14 @@ namespace QLGV.Forms
                     cbTonGiao.SelectedValue = int.Parse("0" + item["TonGiao"]);
                     cbChuyenMon.SelectedValue = item["ChuyenMon"];
                     cbChuyenNghanh.SelectedValue = int.Parse("0" + item["ChuyenNghanh"]);
-                    cbChinhTri.SelectedValue = int.Parse("0" + item["ChinhTri"]);
-                    cbNgoaiNgu.SelectedValue = int.Parse("0" + item["NgoaiNgu"]);
-                    cbTinHoc.SelectedValue = int.Parse("0" + item["TinHoc"]);
+                    cbChinhTri.SelectedValue = item["ChinhTri"];
+                    cbNgoaiNgu.SelectedValue = item["NgoaiNgu"];
+                    cbTinHoc.SelectedValue = item["TinHoc"];
                     cbChucVu.SelectedValue = item["ChucVu"];
+                    cbNgachLuong.SelectedValue = item["NgachLuong"];
+                    cbCdkh.SelectedValue = item["ChucDanhKH"];
+                    cbMonDay.SelectedValue = item["ChucVu"];
+                    cbQlnn.SelectedValue = item["ChucVu"];
                 }
             }
             catch (Exception ex)
@@ -87,8 +95,9 @@ namespace QLGV.Forms
             {
                 SQLiteUtils.ExcuteNonQuery(@"update CanBo set HoTen=@hoten,ngaysinh=@ngaysinh,gioitinh=@gioiTinh,dantoc=@dantoc,
                 tongiao=@tongiao,doanvien=@doanvien,ngayvaodoan=@ngayvaodoan,ChuyenMon=@chuyenmon,ChuyenNghanh=@chuyennghanh,ChinhTri=@chinhtri,NgoaiNgu=@ngoaingu,TinHoc=@tinhoc,CoTiengDanToc=@cotiengdantoc,
-                NgayVaoNghanh=@ngayvaonghanh,NgayChuyenDen=@ngaychuyenden,NgayBoNhiem=@ngaybonhiem,ChucVu=@chucvu,NghachLuong=@ngachluong,MaNgach=@mangach,BacLuong=@bacluong,
-HuongLuongTuNgay=@huongluongtungay,PhanTramPhuCap=@phantramphucap,HuongPhuCapTuNgay=@huongphucaptungay where id=@id",
+                NgayVaoNghanh=@ngayvaonghanh,NgayChuyenDen=@ngaychuyenden,NgayBoNhiem=@ngaybonhiem,ChucVu=@chucvu,NgachLuong=@ngachluong,MaNgach=@mangach,BacLuong=@bacluong,
+HuongLuongTuNgay=@huongluongtungay,PhanTramPhuCap=@phantramphucap,HuongPhuCapTuNgay=@huongphucaptungay,chucdanhkh=@chucdanhkh,qlnn=@qlnn,
+monday=@monday where id=@id",
                     "@hoten", txtHoTen.Text, "@ngaysinh", Common.GetDateStringForQuery(dtNgaySinh.Value),
                     "@gioiTinh", cbGioiTinh.SelectedValue, "@dantoc", cbDanToc.SelectedValue
                     , "@tongiao", cbTonGiao.SelectedValue, "@doanvien", rdDoanVien.Checked ? 1 : 2, "@ngayvaodoan", Common.GetDateStringForQuery(dtNgayVaoDoan.Value)
@@ -96,9 +105,12 @@ HuongLuongTuNgay=@huongluongtungay,PhanTramPhuCap=@phantramphucap,HuongPhuCapTuN
                     , "@chinhtri", cbChinhTri.SelectedValue, "@ngoaingu", cbNgoaiNgu.SelectedValue
                     , "@tinhoc", cbTinHoc.SelectedValue, "@cotiengdantoc", chkTiengDanToc.Checked ? "1" : "0", "@ngayvaonghanh", Common.GetDateStringForQuery(dtNgayVaoNghanh.Value)
                     , "@ngaychuyenden", Common.GetDateStringForQuery(dtNgayChuyenDen.Value), "@ngaybonhiem", Common.GetDateStringForQuery(dtNgayBoNhiem.Value)
-                    , "@chucvu", cbChucVu.SelectedValue, "@ngachluong", txtNgachLuong.Text, "@mangach", txtMaNgach.Text, "@bacluong", txtBacLuong.Text, "@huongluongtungay", Common.GetDateStringForQuery(dtHuongLuongTuNgay.Value)
+                    , "@chucvu", cbChucVu.SelectedValue, "@ngachluong", cbNgachLuong.SelectedValue, "@mangach", txtMaNgach.Text, "@bacluong", txtBacLuong.Text, "@huongluongtungay", Common.GetDateStringForQuery(dtHuongLuongTuNgay.Value)
                     , "@phantramphucap", nudPhuCap.Value
                     , "@huongphucaptungay", Common.GetDateStringForQuery(dtHuongPhuCapTuNgay.Value)
+                    , "@chucdanhkh", cbCdkh.SelectedValue
+                    , "@qlnn", cbQlnn.SelectedValue
+                    , "@monday", cbMonDay.SelectedValue
                     , "@id", ID);
 
                 GUIController.ShowMessageBox("Sửa chức vụ thành công!");
@@ -107,9 +119,10 @@ HuongLuongTuNgay=@huongluongtungay,PhanTramPhuCap=@phantramphucap,HuongPhuCapTuN
             else
             {
                 SQLiteUtils.ExcuteNonQuery(@"insert into CanBo(hoten,truongid,ngaysinh,gioitinh,dantoc,tongiao,doanvien,ngayvaodoan,chuyenmon,chuyennghanh,chinhtri,ngoaingu,tinhoc,cotiengdantoc,
-ngayvaonghanh,ngaychuyenden,ngaybonhiem,chucvu,nghachluong,mangach,bacluong,huongluongtungay,phantramphucap,huongphucaptungay) values(@hoten,@truongid,@ngaysinh,@gioiTinh,@dantoc,
+ngayvaonghanh,ngaychuyenden,ngaybonhiem,chucvu,ngachluong,mangach,bacluong,huongluongtungay,phantramphucap,huongphucaptungay,chucdanhkh,qlnn,monday) values(@hoten,@truongid,@ngaysinh,@gioiTinh,@dantoc,
                 @tongiao,@doanvien,@ngayvaodoan,@chuyenmon,@chuyennghanh,@chinhtri,@ngoaingu,@tinhoc,@cotiengdantoc,
-                @ngayvaonghanh,@ngaychuyenden,@ngaybonhiem,@chucvu,@ngachluong,@mangach,@bacluong,@huongluongtungay,@phantramphucap,@huongphucaptungay)",
+                @ngayvaonghanh,@ngaychuyenden,@ngaybonhiem,@chucvu,@ngachluong,@mangach,@bacluong,@huongluongtungay,@phantramphucap,@huongphucaptungay,
+                @chucdanhkh,@qlnn,@monday)",
                     "@hoten", txtHoTen.Text, "@truongid", TruongID, "@ngaysinh", Common.GetDateStringForQuery(dtNgaySinh.Value),
                     "@gioiTinh", cbGioiTinh.SelectedValue, "@dantoc", cbDanToc.SelectedValue
                     , "@tongiao", cbTonGiao.SelectedValue, "@doanvien", rdDoanVien.Checked ? 1 : 2, "@ngayvaodoan", Common.GetDateStringForQuery(dtNgayVaoDoan.Value)
@@ -117,8 +130,10 @@ ngayvaonghanh,ngaychuyenden,ngaybonhiem,chucvu,nghachluong,mangach,bacluong,huon
                     , "@chinhtri", cbChinhTri.SelectedValue, "@ngoaingu", cbNgoaiNgu.SelectedValue
                     , "@tinhoc", cbTinHoc.SelectedValue, "@cotiengdantoc", chkTiengDanToc.Checked ? "1" : "0", "@ngayvaonghanh", Common.GetDateStringForQuery(dtNgayVaoNghanh.Value)
                     , "@ngaychuyenden", Common.GetDateStringForQuery(dtNgayChuyenDen.Value), "@ngaybonhiem", Common.GetDateStringForQuery(dtNgayBoNhiem.Value)
-                    , "@chucvu", cbChucVu.SelectedValue, "@ngachluong", txtNgachLuong.Text, "@mangach", txtMaNgach.Text, "@bacluong", txtBacLuong.Text, "@huongluongtungay", Common.GetDateStringForQuery(dtHuongLuongTuNgay.Value)
-                    , "@phantramphucap", nudPhuCap.Value
+                    , "@chucvu", cbChucVu.SelectedValue, "@ngachluong", cbNgachLuong.SelectedValue, "@mangach", txtMaNgach.Text, "@bacluong", txtBacLuong.Text, "@huongluongtungay", Common.GetDateStringForQuery(dtHuongLuongTuNgay.Value)
+                    , "@phantramphucap", nudPhuCap.Value, "@chucdanhkh", cbCdkh.SelectedValue
+                    , "@qlnn", cbQlnn.SelectedValue
+                    , "@monday", cbMonDay.SelectedValue
                     , "@huongphucaptungay", Common.GetDateStringForQuery(dtHuongPhuCapTuNgay.Value));
                 //                SQLiteUtils.ExcuteNonQuery(string.Format(@"insert into CanBo values('{0}',{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17}
                 //,'{18}','{19}','{20}',{21},{22},{23})",
