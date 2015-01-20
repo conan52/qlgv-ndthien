@@ -575,9 +575,9 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 drql[3] = null;
                 drql[4] = null;
                 drql[5] = null;
-                drql[6] = null;
-                drql[7] = null;
-                drql[8] = null;
+                drql[6] = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu and gioitinh=@gioitinh", "@truongid", item["ID"], "@chucvu", ChucVu.GVBC, "@gioitinh", false)); ;
+                drql[7] = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu and doanvien=@doanvien", "@truongid", item["ID"], "@chucvu", ChucVu.GVBC, "@doanvien", 2)); ;
+                drql[8] = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu and dantoc!=@dantoc", "@truongid", item["ID"], "@chucvu", ChucVu.GVBC, "@dantoc", 1)); ;
                 drql[9] = null;
                 drql[10] = null;
                 drql[11] = null;
