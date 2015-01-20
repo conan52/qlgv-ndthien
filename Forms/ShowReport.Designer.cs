@@ -48,6 +48,7 @@
             this.Controls.Add(this.reportViewer1);
             this.Name = "ShowReport";
             this.Text = "ShowReport";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ShowReport_Load);
             this.ResumeLayout(false);
 

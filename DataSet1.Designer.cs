@@ -567,13 +567,13 @@ namespace QLGV {
             
             private global::System.Data.DataColumn columnTongSoDuocGiao;
             
-            private global::System.Data.DataColumn columnDuocGiaoCB;
+            private global::System.Data.DataColumn columnDuocGiaoGV;
             
             private global::System.Data.DataColumn columnDuocGiaoHC;
             
             private global::System.Data.DataColumn columnDuocGiaoCNTT;
             
-            private global::System.Data.DataColumn columnCoMatCB;
+            private global::System.Data.DataColumn columnCoMatGV;
             
             private global::System.Data.DataColumn columnCoMatHC;
             
@@ -583,7 +583,7 @@ namespace QLGV {
             
             private global::System.Data.DataColumn columnTongTT;
             
-            private global::System.Data.DataColumn columnTTCB;
+            private global::System.Data.DataColumn columnTTGV;
             
             private global::System.Data.DataColumn columnTTHC;
             
@@ -672,9 +672,9 @@ namespace QLGV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DuocGiaoCBColumn {
+            public global::System.Data.DataColumn DuocGiaoGVColumn {
                 get {
-                    return this.columnDuocGiaoCB;
+                    return this.columnDuocGiaoGV;
                 }
             }
             
@@ -696,9 +696,9 @@ namespace QLGV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CoMatCBColumn {
+            public global::System.Data.DataColumn CoMatGVColumn {
                 get {
-                    return this.columnCoMatCB;
+                    return this.columnCoMatGV;
                 }
             }
             
@@ -736,9 +736,9 @@ namespace QLGV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TTCBColumn {
+            public global::System.Data.DataColumn TTGVColumn {
                 get {
-                    return this.columnTTCB;
+                    return this.columnTTGV;
                 }
             }
             
@@ -864,15 +864,15 @@ namespace QLGV {
                         string Title, 
                         string HangDonVi, 
                         string TongSoDuocGiao, 
-                        string DuocGiaoCB, 
+                        string DuocGiaoGV, 
                         string DuocGiaoHC, 
                         string DuocGiaoCNTT, 
-                        string CoMatCB, 
+                        string CoMatGV, 
                         string CoMatHC, 
                         string CoMatCNTT, 
                         string TongSoCoMat, 
                         string TongTT, 
-                        string TTCB, 
+                        string TTGV, 
                         string TTHC, 
                         string TTCNTT, 
                         string DuocGiaoCBQL, 
@@ -889,15 +889,15 @@ namespace QLGV {
                         Title,
                         HangDonVi,
                         TongSoDuocGiao,
-                        DuocGiaoCB,
+                        DuocGiaoGV,
                         DuocGiaoHC,
                         DuocGiaoCNTT,
-                        CoMatCB,
+                        CoMatGV,
                         CoMatHC,
                         CoMatCNTT,
                         TongSoCoMat,
                         TongTT,
-                        TTCB,
+                        TTGV,
                         TTHC,
                         TTCNTT,
                         DuocGiaoCBQL,
@@ -934,15 +934,15 @@ namespace QLGV {
                 this.columnTitle = base.Columns["Title"];
                 this.columnHangDonVi = base.Columns["HangDonVi"];
                 this.columnTongSoDuocGiao = base.Columns["TongSoDuocGiao"];
-                this.columnDuocGiaoCB = base.Columns["DuocGiaoCB"];
+                this.columnDuocGiaoGV = base.Columns["DuocGiaoGV"];
                 this.columnDuocGiaoHC = base.Columns["DuocGiaoHC"];
                 this.columnDuocGiaoCNTT = base.Columns["DuocGiaoCNTT"];
-                this.columnCoMatCB = base.Columns["CoMatCB"];
+                this.columnCoMatGV = base.Columns["CoMatGV"];
                 this.columnCoMatHC = base.Columns["CoMatHC"];
                 this.columnCoMatCNTT = base.Columns["CoMatCNTT"];
                 this.columnTongSoCoMat = base.Columns["TongSoCoMat"];
                 this.columnTongTT = base.Columns["TongTT"];
-                this.columnTTCB = base.Columns["TTCB"];
+                this.columnTTGV = base.Columns["TTGV"];
                 this.columnTTHC = base.Columns["TTHC"];
                 this.columnTTCNTT = base.Columns["TTCNTT"];
                 this.columnDuocGiaoCBQL = base.Columns["DuocGiaoCBQL"];
@@ -966,14 +966,14 @@ namespace QLGV {
                 base.Columns.Add(this.columnHangDonVi);
                 this.columnTongSoDuocGiao = new global::System.Data.DataColumn("TongSoDuocGiao", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongSoDuocGiao);
-                this.columnDuocGiaoCB = new global::System.Data.DataColumn("DuocGiaoCB", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDuocGiaoCB);
+                this.columnDuocGiaoGV = new global::System.Data.DataColumn("DuocGiaoGV", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDuocGiaoGV);
                 this.columnDuocGiaoHC = new global::System.Data.DataColumn("DuocGiaoHC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDuocGiaoHC);
                 this.columnDuocGiaoCNTT = new global::System.Data.DataColumn("DuocGiaoCNTT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDuocGiaoCNTT);
-                this.columnCoMatCB = new global::System.Data.DataColumn("CoMatCB", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCoMatCB);
+                this.columnCoMatGV = new global::System.Data.DataColumn("CoMatGV", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCoMatGV);
                 this.columnCoMatHC = new global::System.Data.DataColumn("CoMatHC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCoMatHC);
                 this.columnCoMatCNTT = new global::System.Data.DataColumn("CoMatCNTT", typeof(string), null, global::System.Data.MappingType.Element);
@@ -982,8 +982,8 @@ namespace QLGV {
                 base.Columns.Add(this.columnTongSoCoMat);
                 this.columnTongTT = new global::System.Data.DataColumn("TongTT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongTT);
-                this.columnTTCB = new global::System.Data.DataColumn("TTCB", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTTCB);
+                this.columnTTGV = new global::System.Data.DataColumn("TTGV", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTTGV);
                 this.columnTTHC = new global::System.Data.DataColumn("TTHC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTTHC);
                 this.columnTTCNTT = new global::System.Data.DataColumn("TTCNTT", typeof(string), null, global::System.Data.MappingType.Element);
@@ -5921,17 +5921,17 @@ namespace QLGV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DuocGiaoCB {
+            public string DuocGiaoGV {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTable1.DuocGiaoCBColumn]));
+                        return ((string)(this[this.tableDataTable1.DuocGiaoGVColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DuocGiaoCB\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DuocGiaoGV\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.DuocGiaoCBColumn] = value;
+                    this[this.tableDataTable1.DuocGiaoGVColumn] = value;
                 }
             }
             
@@ -5969,17 +5969,17 @@ namespace QLGV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CoMatCB {
+            public string CoMatGV {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTable1.CoMatCBColumn]));
+                        return ((string)(this[this.tableDataTable1.CoMatGVColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CoMatCB\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CoMatGV\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.CoMatCBColumn] = value;
+                    this[this.tableDataTable1.CoMatGVColumn] = value;
                 }
             }
             
@@ -6049,17 +6049,17 @@ namespace QLGV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TTCB {
+            public string TTGV {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTable1.TTCBColumn]));
+                        return ((string)(this[this.tableDataTable1.TTGVColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TTCB\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TTGV\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.TTCBColumn] = value;
+                    this[this.tableDataTable1.TTGVColumn] = value;
                 }
             }
             
@@ -6273,14 +6273,14 @@ namespace QLGV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDuocGiaoCBNull() {
-                return this.IsNull(this.tableDataTable1.DuocGiaoCBColumn);
+            public bool IsDuocGiaoGVNull() {
+                return this.IsNull(this.tableDataTable1.DuocGiaoGVColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDuocGiaoCBNull() {
-                this[this.tableDataTable1.DuocGiaoCBColumn] = global::System.Convert.DBNull;
+            public void SetDuocGiaoGVNull() {
+                this[this.tableDataTable1.DuocGiaoGVColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6309,14 +6309,14 @@ namespace QLGV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCoMatCBNull() {
-                return this.IsNull(this.tableDataTable1.CoMatCBColumn);
+            public bool IsCoMatGVNull() {
+                return this.IsNull(this.tableDataTable1.CoMatGVColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCoMatCBNull() {
-                this[this.tableDataTable1.CoMatCBColumn] = global::System.Convert.DBNull;
+            public void SetCoMatGVNull() {
+                this[this.tableDataTable1.CoMatGVColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6369,14 +6369,14 @@ namespace QLGV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTTCBNull() {
-                return this.IsNull(this.tableDataTable1.TTCBColumn);
+            public bool IsTTGVNull() {
+                return this.IsNull(this.tableDataTable1.TTGVColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTTCBNull() {
-                this[this.tableDataTable1.TTCBColumn] = global::System.Convert.DBNull;
+            public void SetTTGVNull() {
+                this[this.tableDataTable1.TTGVColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
