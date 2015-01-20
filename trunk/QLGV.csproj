@@ -80,6 +80,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Add_MonDay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_MonDay.designer.cs">
+      <DependentUpon>Add_MonDay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\List_QLNN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangeCB.resx">
       <DependentUpon>ChangeCB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_MonDay.resx">
+      <DependentUpon>Add_MonDay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\List_QLNN.resx">
       <DependentUpon>List_QLNN.cs</DependentUpon>
