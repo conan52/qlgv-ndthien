@@ -373,6 +373,8 @@
     <EmbeddedResource Include="Reports\C2.rdlc" />
     <EmbeddedResource Include="Reports\DacDiem.rdlc" />
     <EmbeddedResource Include="Reports\SoLuong.rdlc" />
+    <EmbeddedResource Include="Reports\TDMamNon.rdlc" />
+    <EmbeddedResource Include="Reports\TDTH.rdlc" />
     <EmbeddedResource Include="Reports\ThongKeSoLuong.rdlc" />
     <EmbeddedResource Include="Reports\ThongKeTrinhDo.rdlc" />
     <EmbeddedResource Include="Reports\ThuaThieu.rdlc" />
