@@ -97,43 +97,52 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                     dr1["Title"] = item["Title"];
                     dr1["HangDonVi"] = GetLaMa(int.Parse("0" + item["HangTruong"]));
 
-                    int tdgiao = int.Parse("0" + item["DuocGiaoCB"]) + int.Parse("0" + item["DuocGiaoHC"]) + int.Parse("0" + item["DuocGiaoCNTT"]);
+                    int tdgiao = int.Parse("0" + item["DuocGiaoCB"]) + int.Parse("0" + item["DuocGiaoHC"]) +
+                        int.Parse("0" + item["DuocGiaoCNTT"]) + int.Parse("0" + item[tf.DuocGiaoGV]) + int.Parse("0" + item[tf.DuocGiaoTPT]);
                     duocgiaotong1 += tdgiao;
                     dr1["TongSoDuocGiao"] = tdgiao;
-                    dr1["DuocGiaoCB"] = item["DuocGiaoCB"];
-                    duocgiaogv1 += int.Parse("0" + item["DuocGiaoCB"]);
+                    dr1["DuocGiaoGV"] = item[tf.DuocGiaoGV];
+                    duocgiaogv1 += int.Parse("0" + item[tf.DuocGiaoGV]);
                     dr1["DuocGiaoHC"] = item["DuocGiaoHC"];
                     duocgiaohc1 += int.Parse("0" + item["DuocGiaoHC"]);
                     dr1["DuocGiaoCNTT"] = item["DuocGiaoCNTT"];
                     duocgiaocntt1 += int.Parse("0" + item["DuocGiaoCNTT"]);
-                    dr1["DuocGiaoCBQL"] = 0;
-                    dr1["DuocGiaoTPT"] = 0;
+                    dr1["DuocGiaoCBQL"] = int.Parse("0" + item[tf.DuocGiaoCB]); ;
+                    duocgiaocbql1 += int.Parse("0" + item[tf.DuocGiaoCB]);
+                    dr1["DuocGiaoTPT"] = int.Parse("0" + item[tf.DuocGiaoTPT]);
+                    duocgiaotpt1 += int.Parse("0" + item[tf.DuocGiaoTPT]);
 
-                    int tcm = int.Parse("0" + item["CoMatCB"]) + int.Parse("0" + item["CoMatHC"]) + int.Parse("0" + item["CoMatCNTT"]);
-                    comattong1 += tcm;
-                    dr1["TongSoCoMat"] = tcm;
-                    dr1["CoMatCB"] = item["CoMatCB"];
-                    comatgv1 += int.Parse("0" + item["CoMatCB"]);
-                    dr1["CoMatHC"] = item["CoMatHC"];
-                    comathc1 += int.Parse("0" + item["CoMatHC"]);
-                    dr1["CoMatCNTT"] = item["CoMatCNTT"];
-                    comatcntt1 += int.Parse("0" + item["CoMatCNTT"]);
-                    dr1["CoMatCBQL"] = 0;
-                    dr1["CoMatTPT"] = 0;
+                    int comatcbql1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.CBQL).Rows[0][0]);
+                    int comatgv1_1 = int.Parse("0" + SQLiteUtils.GetTable(
+                    string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]).Rows[0][0]);
+                    int comattpt1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.TPTDoi).Rows[0][0]);
+                    int comathc1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.HanhChinh).Rows[0][0]);
+                    int comatcntt1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.CNTT).Rows[0][0]);
+                    int tcm = comatcbql1_1 + comatgv1_1 + comattpt1_1 + comathc1_1 + comatcntt1_1;
+
+                    dr1["TongSoCoMat"] = tcm; comattong1 += tcm;
+                    dr1["CoMatGV"] = comatgv1_1; comatgv1 += comatgv1_1;
+                    dr1["CoMatHC"] = comathc1_1; comathc1 += comathc1_1;
+                    dr1["CoMatCNTT"] = comatcntt1_1; comatcntt1 += comatcntt1_1;
+                    dr1["CoMatCBQL"] = comatcbql1_1; comatcbql1 += comatcbql1_1;
+                    dr1["CoMatTPT"] = comattpt1_1; comattpt1 += comattpt1_1;
 
                     dr1["TongTT"] = tcm - tdgiao;
                     tttong1 += (tcm - tdgiao);
-                    dr1["TTCB"] = int.Parse("0" + item["CoMatCB"]) - int.Parse("0" + item["DuocGiaoCB"]);
-                    ttgv1 += int.Parse("0" + item["CoMatCB"]) - int.Parse("0" + item["DuocGiaoCB"]);
-                    dr1["TTHC"] = int.Parse("0" + item["CoMatHC"]) - int.Parse("0" + item["DuocGiaoHC"]);
-                    tthc1 += int.Parse("0" + item["CoMatHC"]) - int.Parse("0" + item["DuocGiaoHC"]);
-                    dr1["TTCNTT"] = int.Parse("0" + item["CoMatCNTT"]) - int.Parse("0" + item["DuocGiaoCNTT"]);
-                    ttcntt1 += int.Parse("0" + item["CoMatCNTT"]) - int.Parse("0" + item["DuocGiaoCNTT"]);
-                    dr1["TTCBQL"] = 0;
+                    dr1["TTCBQL"] = comatcbql1_1 - int.Parse("0" + item[tf.DuocGiaoCB]);
+                    ttcbql1 += comatcbql1_1 - int.Parse("0" + item[tf.DuocGiaoCB]);
+                    dr1["TTGV"] = comatgv1_1 - int.Parse("0" + item[tf.DuocGiaoGV]);
+                    ttgv1 += comatgv1_1 - int.Parse("0" + item[tf.DuocGiaoGV]);
 
-                    dr1["TS"] = item["CoMatCB"];
-                    dr1["TS1"] = int.Parse("0" + item["CoMatCB"]);
-                    dr1["TS2"] = int.Parse("0" + item["CoMatCNTT"]) + int.Parse("0" + item["CoMatHC"]);
+                    dr1["TTHC"] = comathc1_1 - int.Parse("0" + item[tf.DuocGiaoHC]);
+                    tthc1 += comathc1_1 - int.Parse("0" + item[tf.DuocGiaoHC]);
+
+                    dr1["TTCNTT"] = comatcntt1_1 - int.Parse("0" + item[tf.DuocGiaoCNTT]);
+                    ttcntt1 += comatcntt1_1 - int.Parse("0" + item[tf.DuocGiaoCNTT]);
+
+                    dr1["TS"] = "Xét";// item["CoMatCB"];
+                    dr1["TS1"] = "Xét";//int.Parse("0" + item["CoMatCB"]);
+                    dr1["TS2"] = "Xét";//int.Parse("0" + item["CoMatCNTT"]) + int.Parse("0" + item["CoMatHC"]);
                     dt.Rows.Add(dr1);
                     i++;
                 }
@@ -142,10 +151,10 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 dr["STT"] = GetLaMa(k);
                 dr["Title"] = "     " + row["Title"];
                 dr["TongSoDuocGiao"] = duocgiaotong1;
-                dr["DuocGiaoCB"] = duocgiaogv1;
+                dr["DuocGiaoGV"] = duocgiaogv1;
                 dr["DuocGiaoHC"] = duocgiaohc1; dr["DuocGiaoCNTT"] = duocgiaocntt1; dr["DuocGiaoCBQL"] = duocgiaocbql1; dr["DuocGiaoTPT"] = duocgiaotpt1;
-                dr["TongSoCoMat"] = comattong1; dr["CoMatCB"] = comatgv1; dr["CoMatCNTT"] = comatcntt1; dr["CoMatCBQL"] = comatcbql1; dr["CoMatTPT"] = comattpt1; dr["CoMatHC"] = comathc1;
-                dr["TongTT"] = tttong1; dr["TTCB"] = ttgv1; dr["TTHC"] = tthc1; dr["TTCNTT"] = ttcntt1; dr["TTCBQL"] = ttcbql1;
+                dr["TongSoCoMat"] = comattong1; dr["CoMatGV"] = comatgv1; dr["CoMatCNTT"] = comatcntt1; dr["CoMatCBQL"] = comatcbql1; dr["CoMatTPT"] = comattpt1; dr["CoMatHC"] = comathc1;
+                dr["TongTT"] = tttong1; dr["TTGV"] = ttgv1; dr["TTHC"] = tthc1; dr["TTCNTT"] = ttcntt1; dr["TTCBQL"] = ttcbql1;
                 dr["TS"] = tsx; dr["TS1"] = ts11; dr["TS2"] = ts21;
                 k++;
                 duocgiaotong += duocgiaotong1;
@@ -382,7 +391,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             dr["TSL"] = TSL; dr["TongSo"] = TongSo; dr["TSGV"] = TSGV; dr["CBQL"] = CBQL; dr["HanhChinh"] = HanhChinh; dr["TPTDoi"] = TPTDoi; dr["TSGV"] = TSGV;
             dr["Van"] = Van; dr["Su"] = Su; dr["Dia"] = Dia; dr["GDCD"] = GDCD; dr["TD"] = TD; dr["NN"] = NgoaiNgu;
             dr["Toan"] = Toan; dr["Ly"] = Ly; dr["Hoa"] = Hoa; dr["Sinh"] = Sinh; dr["TD"] = TD; dr["KTCN"] = KTCN;
-            dr["KTNN"] = KTNN; dr["Tin"] = Tin; dr["AmNhac"] = AmNhac; dr["MyThuat"] = MiThuat; dr["CNTT"] = CNTT; 
+            dr["KTNN"] = KTNN; dr["Tin"] = Tin; dr["AmNhac"] = AmNhac; dr["MyThuat"] = MiThuat; dr["CNTT"] = CNTT;
             dt.Rows.Add(dr);
 
             para = new List<ReportParameter>();
