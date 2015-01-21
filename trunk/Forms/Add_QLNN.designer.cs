@@ -1,6 +1,6 @@
 ﻿namespace QLGV.Forms
 {
-    partial class Add_MonDay
+    partial class Add_QLNN
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_MonDay));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_QLNN));
             this.label2 = new System.Windows.Forms.Label();
             this.btClose = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -45,9 +45,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(15, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.Size = new System.Drawing.Size(77, 16);
             this.label2.TabIndex = 65;
-            this.label2.Text = "Tên môn*";
+            this.label2.Text = "Tên QLNN*";
             // 
             // btClose
             // 
@@ -107,9 +107,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(15, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 16);
+            this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 67;
-            this.label1.Text = "Mã môn*";
+            this.label1.Text = "Mã QLNN*";
             // 
             // txtCode
             // 
@@ -121,7 +121,7 @@
             this.txtCode.Size = new System.Drawing.Size(245, 20);
             this.txtCode.TabIndex = 66;
             // 
-            // Add_MonDay
+            // Add_QLNN
             // 
             this.AcceptButton = this.btSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,9 +136,9 @@
             this.Controls.Add(this.txtTitle);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Add_MonDay";
+            this.Name = "Add_QLNN";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Môn dạy";
+            this.Text = "Trình độ quản lý nhà nước";
             this.Load += new System.EventHandler(this.Add_HT_CanBo_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

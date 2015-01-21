@@ -86,6 +86,30 @@
     <Compile Include="Forms\Add_MonDay.designer.cs">
       <DependentUpon>Add_MonDay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Add_ChuyenMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_ChuyenMon.designer.cs">
+      <DependentUpon>Add_ChuyenMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_ChucDanhKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_ChucDanhKH.designer.cs">
+      <DependentUpon>Add_ChucDanhKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_NgachLuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_NgachLuong.designer.cs">
+      <DependentUpon>Add_NgachLuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_QLNN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_QLNN.designer.cs">
+      <DependentUpon>Add_QLNN.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\List_QLNN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,12 +193,6 @@
     </Compile>
     <Compile Include="Forms\Add_TonGiao.designer.cs">
       <DependentUpon>Add_TonGiao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Add_TrinhDoChuyenMon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Add_TrinhDoChuyenMon.designer.cs">
-      <DependentUpon>Add_TrinhDoChuyenMon.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Add_Truong.cs">
       <SubType>Form</SubType>
@@ -302,9 +320,6 @@
     <EmbeddedResource Include="Forms\Add_TonGiao.resx">
       <DependentUpon>Add_TonGiao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Add_TrinhDoChuyenMon.resx">
-      <DependentUpon>Add_TrinhDoChuyenMon.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Add_Truong.resx">
       <DependentUpon>Add_Truong.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +328,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Add_MonDay.resx">
       <DependentUpon>Add_MonDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_ChuyenMon.resx">
+      <DependentUpon>Add_ChuyenMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_ChucDanhKH.resx">
+      <DependentUpon>Add_ChucDanhKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_NgachLuong.resx">
+      <DependentUpon>Add_NgachLuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_QLNN.resx">
+      <DependentUpon>Add_QLNN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\List_QLNN.resx">
       <DependentUpon>List_QLNN.cs</DependentUpon>

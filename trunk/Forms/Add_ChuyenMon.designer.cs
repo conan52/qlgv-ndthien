@@ -1,6 +1,6 @@
 ﻿namespace QLGV.Forms
 {
-    partial class Add_MonDay
+    partial class Add_ChuyenMon
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_MonDay));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_ChucVu));
             this.label2 = new System.Windows.Forms.Label();
             this.btClose = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -45,9 +45,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(15, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.Size = new System.Drawing.Size(112, 16);
             this.label2.TabIndex = 65;
-            this.label2.Text = "Tên môn*";
+            this.label2.Text = "Tên chuyên môn*";
             // 
             // btClose
             // 
@@ -96,9 +96,9 @@
             this.txtTitle.BackColor = System.Drawing.Color.White;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.ForeColor = System.Drawing.Color.Black;
-            this.txtTitle.Location = new System.Drawing.Point(112, 44);
+            this.txtTitle.Location = new System.Drawing.Point(128, 44);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(245, 20);
+            this.txtTitle.Size = new System.Drawing.Size(229, 20);
             this.txtTitle.TabIndex = 0;
             // 
             // label1
@@ -107,21 +107,21 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(15, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 16);
+            this.label1.Size = new System.Drawing.Size(107, 16);
             this.label1.TabIndex = 67;
-            this.label1.Text = "Mã môn*";
+            this.label1.Text = "Mã chuyên môn*";
             // 
             // txtCode
             // 
             this.txtCode.BackColor = System.Drawing.Color.White;
             this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.ForeColor = System.Drawing.Color.Black;
-            this.txtCode.Location = new System.Drawing.Point(112, 18);
+            this.txtCode.Location = new System.Drawing.Point(128, 18);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(245, 20);
+            this.txtCode.Size = new System.Drawing.Size(229, 20);
             this.txtCode.TabIndex = 66;
             // 
-            // Add_MonDay
+            // Add_ChucVu
             // 
             this.AcceptButton = this.btSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,9 +136,9 @@
             this.Controls.Add(this.txtTitle);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Add_MonDay";
+            this.Name = "Add_ChucVu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Môn dạy";
+            this.Text = "Chuyên môn";
             this.Load += new System.EventHandler(this.Add_HT_CanBo_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

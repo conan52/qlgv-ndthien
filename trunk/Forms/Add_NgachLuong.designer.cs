@@ -1,6 +1,6 @@
 ﻿namespace QLGV.Forms
 {
-    partial class Add_TrinhDoChuyenMon
+    partial class Add_NgachLuong
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_TrinhDoChuyenMon));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_ChucVu));
             this.label2 = new System.Windows.Forms.Label();
             this.btClose = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -45,9 +45,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(15, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 16);
+            this.label2.Size = new System.Drawing.Size(85, 16);
             this.label2.TabIndex = 65;
-            this.label2.Text = "Tên trình độ chuyên môn*";
+            this.label2.Text = "Tên chức vụ*";
             // 
             // btClose
             // 
@@ -56,7 +56,7 @@
             this.btClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btClose.ImageKey = "close.jpg";
             this.btClose.ImageList = this.imageList1;
-            this.btClose.Location = new System.Drawing.Point(334, 70);
+            this.btClose.Location = new System.Drawing.Point(272, 70);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(85, 26);
             this.btClose.TabIndex = 4;
@@ -83,7 +83,7 @@
             this.btSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btSave.ImageKey = "apply_f2.png";
             this.btSave.ImageList = this.imageList1;
-            this.btSave.Location = new System.Drawing.Point(243, 70);
+            this.btSave.Location = new System.Drawing.Point(181, 70);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(85, 26);
             this.btSave.TabIndex = 3;
@@ -96,7 +96,7 @@
             this.txtTitle.BackColor = System.Drawing.Color.White;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.ForeColor = System.Drawing.Color.Black;
-            this.txtTitle.Location = new System.Drawing.Point(174, 44);
+            this.txtTitle.Location = new System.Drawing.Point(112, 44);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(245, 20);
             this.txtTitle.TabIndex = 0;
@@ -105,29 +105,29 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 12);
+            this.label1.Location = new System.Drawing.Point(15, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 16);
+            this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 67;
-            this.label1.Text = "Mã chuyên môn*";
+            this.label1.Text = "Mã chức vụ*";
             // 
             // txtCode
             // 
             this.txtCode.BackColor = System.Drawing.Color.White;
             this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.ForeColor = System.Drawing.Color.Black;
-            this.txtCode.Location = new System.Drawing.Point(174, 12);
+            this.txtCode.Location = new System.Drawing.Point(112, 18);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(245, 20);
             this.txtCode.TabIndex = 66;
             // 
-            // Add_TrinhDoChuyenMon
+            // Add_ChucVu
             // 
             this.AcceptButton = this.btSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btClose;
-            this.ClientSize = new System.Drawing.Size(446, 108);
+            this.ClientSize = new System.Drawing.Size(369, 108);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.btClose);
@@ -136,10 +136,10 @@
             this.Controls.Add(this.txtTitle);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Add_TrinhDoChuyenMon";
+            this.Name = "Add_ChucVu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Trình độ chuyên môn";
-            this.Load += new System.EventHandler(this.Add_HT_TrinhDoChuyenMon_Form_Load);
+            this.Text = "Chức vụ";
+            this.Load += new System.EventHandler(this.Add_HT_CanBo_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
