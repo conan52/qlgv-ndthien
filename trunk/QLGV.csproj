@@ -152,6 +152,7 @@
     <Compile Include="Forms\List_ChucDanhKH.designer.cs">
       <DependentUpon>List_ChucDanhKH.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CountThuaThieu.cs" />
     <Compile Include="Models\TrinhDo.cs" />
     <Compile Include="Utilities\Common.cs" />
     <Compile Include="Controllers\Class1.cs" />
