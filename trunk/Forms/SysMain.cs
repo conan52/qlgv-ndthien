@@ -260,7 +260,7 @@ namespace QLGV.Forms
 
         private void MamNonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new ShowReport("TDMamNon").Show();
         }
 
         private void TieuHocToolStripMenuItem_Click(object sender, EventArgs e)
@@ -270,12 +270,12 @@ namespace QLGV.Forms
 
         private void THCSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new ShowReport("TDTHCS").Show();
         }
 
         private void TongHoppToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            new ShowReport("TDTH").Show();
         }
 
         

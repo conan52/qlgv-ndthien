@@ -105,6 +105,37 @@ namespace QLGV
         public const string KeHoachGV = "KeHoachGV";
         public const string KeHoachTPT = "KeHoachTPT";
     }
+    public class cbf
+    {
+        public const string ID = "ID";
+        public const string HoTen = "HoTen";
+        public const string TruongID = "TruongID";
+        public const string NgaySinh = "NgaySinh";
+        public const string GioiTinh = "GioiTinh";
+        public const string DanToc = "DanToc";
+        public const string TonGiao = "TonGiao";
+        public const string DoanVien = "DoanVien";
+        public const string NgayVaoDoan = "NgayVaoDoan";
+        public const string ChuyenMon = "ChuyenMon";
+        public const string ChuyenNghanh = "ChuyenNghanh";
+        public const string ChinhTri = "ChinhTri";
+        public const string NgoaiNgu = "NgoaiNgu";
+        public const string TinHoc = "TinHoc";
+        public const string CoTiengDanToc = "CoTiengDanToc";
+        public const string NgayVaoNghanh = "NgayVaoNghanh";
+        public const string NgayChuyenDen = "NgayChuyenDen";
+        public const string NgayBoNhiem = "NgayBoNhiem";
+        public const string ChucVu = "ChucVu";
+        public const string NgachLuong = "NgachLuong";
+        public const string MaNgach = "MaNgach";
+        public const string BacLuong = "BacLuong";
+        public const string HuongLuongTuNgay = "HuongLuongTuNgay";
+        public const string PhanTramPhuCap = "PhanTramPhuCap";
+        public const string HuongPhuCapTuNgay = "HuongPhuCapTuNgay";
+        public const string QLNN = "QLNN";
+        public const string MonDay = "MonDay";
+        public const string ChucDanhKH = "ChucDanhKH";
+    }
 }
 
 
