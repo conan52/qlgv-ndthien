@@ -60,13 +60,9 @@ namespace QLGV.Forms
                     dt = TDTHCS(out para);
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.TDMamNon.rdlc";
                     break;
-                case "DacDiem":
-                    dt = DacDiem(out para);
-                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.DacDiem.rdlc";
-                    break;
-                case "SoLuong":
-                    dt = ThongKeSoLuong(out para);
-                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.SoLuong.rdlc";
+                case "TDTH":
+                    dt = TDTHCS(out para);
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "QLGV.Reports.TDTH.rdlc";
                     break;
                 default:
                     throw new Exception("No report");
@@ -416,150 +412,133 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             para = new List<ReportParameter>();
             return dt;
         }
-        DataTable DacDiem(out List<ReportParameter> para)
-        {
-            var dt = new DataSet1().DacDiem;
-
-            para = new List<ReportParameter>();
-            return dt;
-        }
 
         DataTable TDMamNon(out List<ReportParameter> para)
         {
-            int duocgiaotong = 0, duocgiaocbql = 0, duocgiaogv = 0, duocgiaotpt = 0, duocgiaohc = 0, duocgiaocntt = 0,
-                comattong = 0, comatcbql = 0, comatgv = 0, comathc = 0, comattpt = 0, comatcntt = 0,
-                tttong = 0, ttcbql = 0, ttgv = 0, tthc = 0, ttcntt = 0, ts = 0, ts1 = 0, ts2 = 0;
-            var dtloai = SQLiteUtils.GetTable("select * from nhomtruong");
-            var dt = new DataSet1().DataTable1;
-            int k = 1;
-
-            #region Repeat
-            foreach (DataRow row in dtloai.Rows)
+            DataTable dt = new DataSet1().TDMamNon;
+            var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 1);
+            int i = 1;
+            foreach (DataRow item in dttruong.Rows)
             {
-                int duocgiaotong1 = 0, duocgiaocbql1 = 0, duocgiaogv1 = 0, duocgiaotpt1 = 0, duocgiaohc1 = 0, duocgiaocntt1 = 0,
-                    comattong1 = 0, comatcbql1 = 0, comatgv1 = 0, comathc1 = 0, comattpt1 = 0, comatcntt1 = 0,
-tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, ts21 = 0;
-                var dr = dt.NewRow();
-                dr["STT"] = GetLaMa(k);
-                dr["Title"] = "     " + row["Title"];
-                dt.Rows.Add(dr);
-                var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", row["ID"]);
-                int i = 1;
-                foreach (DataRow item in dttruong.Rows)
-                {
-                    var dr1 = dt.NewRow();
-                    dr1["STT"] = i + "";
-                    dr1["Title"] = item["Title"];
-                    dr1["HangDonVi"] = GetLaMa(int.Parse("0" + item["HangTruong"]));
-
-                    int tdgiao = int.Parse("0" + item["DuocGiaoCB"]) + int.Parse("0" + item["DuocGiaoHC"]) +
-                        int.Parse("0" + item["DuocGiaoCNTT"]) + int.Parse("0" + item[tf.DuocGiaoGV]) + int.Parse("0" + item[tf.DuocGiaoTPT]);
-                    duocgiaotong1 += tdgiao;
-                    dr1["TongSoDuocGiao"] = tdgiao;
-                    dr1["DuocGiaoGV"] = item[tf.DuocGiaoGV];
-                    duocgiaogv1 += int.Parse("0" + item[tf.DuocGiaoGV]);
-                    dr1["DuocGiaoHC"] = item["DuocGiaoHC"];
-                    duocgiaohc1 += int.Parse("0" + item["DuocGiaoHC"]);
-                    dr1["DuocGiaoCNTT"] = item["DuocGiaoCNTT"];
-                    duocgiaocntt1 += int.Parse("0" + item["DuocGiaoCNTT"]);
-                    dr1["DuocGiaoCBQL"] = int.Parse("0" + item[tf.DuocGiaoCB]); ;
-                    duocgiaocbql1 += int.Parse("0" + item[tf.DuocGiaoCB]);
-                    dr1["DuocGiaoTPT"] = int.Parse("0" + item[tf.DuocGiaoTPT]);
-                    duocgiaotpt1 += int.Parse("0" + item[tf.DuocGiaoTPT]);
-
-                    int comatcbql1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.CBQL).Rows[0][0]);
-                    int comatgv1_1 = int.Parse("0" + SQLiteUtils.GetTable(
-                    string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]).Rows[0][0]);
-                    int comattpt1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.TPTDoi).Rows[0][0]);
-                    int comathc1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.HanhChinh).Rows[0][0]);
-                    int comatcntt1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.CNTT).Rows[0][0]);
-                    int tcm = comatcbql1_1 + comatgv1_1 + comattpt1_1 + comathc1_1 + comatcntt1_1;
-
-                    dr1["TongSoCoMat"] = tcm; comattong1 += tcm;
-                    dr1["CoMatGV"] = comatgv1_1; comatgv1 += comatgv1_1;
-                    dr1["CoMatHC"] = comathc1_1; comathc1 += comathc1_1;
-                    dr1["CoMatCNTT"] = comatcntt1_1; comatcntt1 += comatcntt1_1;
-                    dr1["CoMatCBQL"] = comatcbql1_1; comatcbql1 += comatcbql1_1;
-                    dr1["CoMatTPT"] = comattpt1_1; comattpt1 += comattpt1_1;
-
-                    dr1["TongTT"] = tcm - tdgiao;
-                    tttong1 += (tcm - tdgiao);
-                    dr1["TTCBQL"] = comatcbql1_1 - int.Parse("0" + item[tf.DuocGiaoCB]);
-                    ttcbql1 += comatcbql1_1 - int.Parse("0" + item[tf.DuocGiaoCB]);
-                    dr1["TTGV"] = comatgv1_1 - int.Parse("0" + item[tf.DuocGiaoGV]);
-                    ttgv1 += comatgv1_1 - int.Parse("0" + item[tf.DuocGiaoGV]);
-
-                    dr1["TTHC"] = comathc1_1 - int.Parse("0" + item[tf.DuocGiaoHC]);
-                    tthc1 += comathc1_1 - int.Parse("0" + item[tf.DuocGiaoHC]);
-
-                    dr1["TTCNTT"] = comatcntt1_1 - int.Parse("0" + item[tf.DuocGiaoCNTT]);
-                    ttcntt1 += comatcntt1_1 - int.Parse("0" + item[tf.DuocGiaoCNTT]);
-
-                    dr1["TS"] = "Xét";// item["CoMatCB"];
-                    dr1["TS1"] = "Xét";//int.Parse("0" + item["CoMatCB"]);
-                    dr1["TS2"] = "Xét";//int.Parse("0" + item["CoMatCNTT"]) + int.Parse("0" + item["CoMatHC"]);
-                    dt.Rows.Add(dr1);
-                    i++;
-                }
-                #region Sum
-                tsx = comattpt1; ts11 = comatcbql1 + comatgv1 + comattpt1; ts21 = comathc1 + comatcntt1;
-                dr["STT"] = GetLaMa(k);
-                dr["Title"] = "     " + row["Title"];
-                dr["TongSoDuocGiao"] = duocgiaotong1;
-                dr["DuocGiaoGV"] = duocgiaogv1;
-                dr["DuocGiaoHC"] = duocgiaohc1; dr["DuocGiaoCNTT"] = duocgiaocntt1; dr["DuocGiaoCBQL"] = duocgiaocbql1; dr["DuocGiaoTPT"] = duocgiaotpt1;
-                dr["TongSoCoMat"] = comattong1; dr["CoMatGV"] = comatgv1; dr["CoMatCNTT"] = comatcntt1; dr["CoMatCBQL"] = comatcbql1; dr["CoMatTPT"] = comattpt1; dr["CoMatHC"] = comathc1;
-                dr["TongTT"] = tttong1; dr["TTGV"] = ttgv1; dr["TTHC"] = tthc1; dr["TTCNTT"] = ttcntt1; dr["TTCBQL"] = ttcbql1;
-                dr["TS"] = tsx; dr["TS1"] = ts11; dr["TS2"] = ts21;
-                k++;
-                duocgiaotong += duocgiaotong1;
-                duocgiaocbql += duocgiaocbql1;
-                duocgiaogv += duocgiaogv1;
-                duocgiaotpt += duocgiaotpt1;
-                duocgiaohc += duocgiaohc1;
-                duocgiaohc += duocgiaohc1;
-                duocgiaohc += duocgiaohc1;
-                duocgiaocntt += duocgiaocntt1;
-                comattong += comattong1;
-                comatcbql += comatcbql1;
-                comatgv += comatgv1;
-                comathc += comathc1;
-                comattpt += comattpt1;
-                comatcntt += comatcntt1;
-                tttong += tttong1;
-                ttcbql += ttcbql1;
-                ttgv += ttgv1;
-                tthc += tthc1;
-                ttcntt += ttcntt1;
+                var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
+                #region CBQL
+                var td = new TrinhDo();
+                Count(SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
+                drql["Title"] = "CBQL";
+                drql["TS"] = td.TS;
+                drql["CBQL"] = td.CBQL;
+                drql["GV"] = td.GV;
+                drql["NhanVienHC"] = td.NhanVienHC;
+                drql["Nu"] = td.Nu;
+                drql["DangVien"] = td.DangVien;
+                drql["DanTocThieuSo"] = td.DanTocThieuSo;
+                drql["Duoi30"] = td.Duoi30;
+                drql["Tu30Den50"] = td.Tu30Den50;
+                drql["TongSo"] = td.TongSo;
+                drql["Nu54Nam59"] = td.Nu54Nam59;
+                drql["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drql["CV_TD"] = td.CV_TD;
+                drql["CS_TD"] = td.CS_TD;
+                drql["ConLai_TN"] = td.ConLai_TN;
+                drql["ThacSi"] = td.ThacSi;
+                drql["DaiHoc"] = td.DaiHoc;
+                drql["CaoDang"] = td.CaoDang;
+                drql["TrungCap"] = td.TrungCap;
+                drql["ConLai_CM"] = td.ConLai_CM;
+                drql["LLCuNhanCC"] = td.LLCuNhanCC;
+                drql["LLTrungCap"] = td.LLTrungCap;
+                drql["LLSoCap"] = td.LLSoCap;
+                drql["THTrungCap"] = td.THTrungCap;
+                drql["THChungChi"] = td.THChungChi;
+                drql["NNTrungCap"] = td.NNTrungCap;
+                drql["NNChungChi"] = td.NNChungChi;
+                drql["ChungChiDT"] = td.ChungChiDT;
                 #endregion
+                #region Giao Vien
+                td = new TrinhDo();
+                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
+                drgv["Title"] = "Giáo viên";
+                drgv["TS"] = td.TS;
+                drgv["CBQL"] = td.CBQL;
+                drgv["GV"] = td.GV;
+                drgv["NhanVienHC"] = td.NhanVienHC;
+                drgv["Nu"] = td.Nu;
+                drgv["DangVien"] = td.DangVien;
+                drgv["DanTocThieuSo"] = td.DanTocThieuSo;
+                drgv["Duoi30"] = td.Duoi30;
+                drgv["Tu30Den50"] = td.Tu30Den50;
+                drgv["TongSo"] = td.TongSo;
+                drgv["Nu54Nam59"] = td.Nu54Nam59;
+                drgv["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drgv["CV_TD"] = td.CV_TD;
+                drgv["CS_TD"] = td.CS_TD;
+                drgv["ConLai_TN"] = td.ConLai_TN;
+                drgv["ThacSi"] = td.ThacSi;
+                drgv["DaiHoc"] = td.DaiHoc;
+                drgv["CaoDang"] = td.CaoDang;
+                drgv["TrungCap"] = td.TrungCap;
+                drgv["ConLai_CM"] = td.ConLai_CM;
+                drgv["LLCuNhanCC"] = td.LLCuNhanCC;
+                drgv["LLTrungCap"] = td.LLTrungCap;
+                drgv["LLSoCap"] = td.LLSoCap;
+                drgv["THTrungCap"] = td.THTrungCap;
+                drgv["THChungChi"] = td.THChungChi;
+                drgv["NNTrungCap"] = td.NNTrungCap;
+                drgv["NNChungChi"] = td.NNChungChi;
+                drgv["ChungChiDT"] = td.ChungChiDT;
+                #endregion
+                #region Hanh Chinh
+                td = new TrinhDo();
+                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
+                drhc["Title"] = "Giáo viên";
+                drhc["TS"] = td.TS;
+                drhc["CBQL"] = td.CBQL;
+                drhc["GV"] = td.GV;
+                drhc["NhanVienHC"] = td.NhanVienHC;
+                drhc["Nu"] = td.Nu;
+                drhc["DangVien"] = td.DangVien;
+                drhc["DanTocThieuSo"] = td.DanTocThieuSo;
+                drhc["Duoi30"] = td.Duoi30;
+                drhc["Tu30Den50"] = td.Tu30Den50;
+                drhc["TongSo"] = td.TongSo;
+                drhc["Nu54Nam59"] = td.Nu54Nam59;
+                drhc["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drhc["CV_TD"] = td.CV_TD;
+                drhc["CS_TD"] = td.CS_TD;
+                drhc["ConLai_TN"] = td.ConLai_TN;
+                drhc["ThacSi"] = td.ThacSi;
+                drhc["DaiHoc"] = td.DaiHoc;
+                drhc["CaoDang"] = td.CaoDang;
+                drhc["TrungCap"] = td.TrungCap;
+                drhc["ConLai_CM"] = td.ConLai_CM;
+                drhc["LLCuNhanCC"] = td.LLCuNhanCC;
+                drhc["LLTrungCap"] = td.LLTrungCap;
+                drhc["LLSoCap"] = td.LLSoCap;
+                drhc["THTrungCap"] = td.THTrungCap;
+                drhc["THChungChi"] = td.THChungChi;
+                drhc["NNTrungCap"] = td.NNTrungCap;
+                drhc["NNChungChi"] = td.NNChungChi;
+                drhc["ChungChiDT"] = td.ChungChiDT;
+                #endregion
+                drts[0] = i + "";
+                drts[1] = item["Title"];
+                drts["CBQL"] = int.Parse(drql["TS"].ToString());
+                drts["GV"] = int.Parse(drgv["TS"].ToString());
+                drts["NhanVienHC"] = int.Parse(drhc["TS"].ToString()); //4
+                for (int k = 5; k < dt.Columns.Count; k++)
+                {
+                    drts[k] = int.Parse(drql[k].ToString()) + int.Parse(drgv[k].ToString()) + int.Parse(drhc[k].ToString());
+                }
+                for (int k = 2; k < dt.Columns.Count; k++)
+                {
+                    if (int.Parse(drql[k].ToString()) == 0) drql[k] = null;
+                    if (int.Parse(drgv[k].ToString()) == 0) drgv[k] = null;
+                    if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
+                    if (int.Parse(drts[k].ToString()) == 0) drts[k] = null;
+                }
+                dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc); dt.Rows.Add(drts);
             }
-            #endregion
-            #region para
-            ts = comattong; ts1 = comatcbql + comatgv + comattpt; ts2 = comathc + comatcntt;
-            var rparam = new List<ReportParameter>();
-            rparam.Add(new ReportParameter("duocgiaotong", duocgiaotong + ""));
-            rparam.Add(new ReportParameter("duocgiaocbql", duocgiaocbql + ""));
-            rparam.Add(new ReportParameter("duocgiaogv", duocgiaogv + ""));
-            rparam.Add(new ReportParameter("duocgiaotpt", duocgiaotpt + ""));
-            rparam.Add(new ReportParameter("duocgiaohc", duocgiaohc + ""));
-            rparam.Add(new ReportParameter("duocgiaocntt", duocgiaocntt + ""));
-            rparam.Add(new ReportParameter("comattong", comattong + ""));
-            rparam.Add(new ReportParameter("comatcbql", comatcbql + ""));
-            rparam.Add(new ReportParameter("comatgv", comatgv + ""));
-            rparam.Add(new ReportParameter("comathc", comathc + ""));
-            rparam.Add(new ReportParameter("comattpt", comattpt + ""));
-            rparam.Add(new ReportParameter("comatcntt", comatcntt + ""));
-            rparam.Add(new ReportParameter("tttong", tttong + ""));
-            rparam.Add(new ReportParameter("ttcbql", ttcbql + ""));
-            rparam.Add(new ReportParameter("ttgv", ttgv + ""));
-            rparam.Add(new ReportParameter("tthc", tthc + ""));
-            rparam.Add(new ReportParameter("ttcntt", ttcntt + ""));
-            rparam.Add(new ReportParameter("ts", ts + ""));
-            rparam.Add(new ReportParameter("ts1", ts1 + ""));
-            rparam.Add(new ReportParameter("ts2", ts2 + ""));
-            rparam.Add(new ReportParameter("ngay", DateTime.Now.ToString("dd/MM/yyyy") + ""));
-            #endregion
-            para = rparam;
+            para = new List<ReportParameter>();
             return dt;
         }
         DataTable TDTieuHoc(out List<ReportParameter> para)
@@ -571,244 +550,435 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             {
                 var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
                 #region CBQL
-                drql[2] = null;
-                drql[3] = null;
-                drql[4] = null;
-                drql[5] = null;
-                drql[6] = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu and gioitinh=@gioitinh", "@truongid", item["ID"], "@chucvu", ChucVu.GVBC, "@gioitinh", false)); ;
-                drql[7] = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu and doanvien=@doanvien", "@truongid", item["ID"], "@chucvu", ChucVu.GVBC, "@doanvien", 2)); ;
-                drql[8] = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu and dantoc!=@dantoc", "@truongid", item["ID"], "@chucvu", ChucVu.GVBC, "@dantoc", 1)); ;
-                drql[9] = null;
-                drql[10] = null;
-                drql[11] = null;
-                drql[12] = null;
-                drql[13] = null;
-                drql[14] = null;
-                drql[15] = null;
-                drql[16] = null;
-                drql[17] = null;
-                drql[18] = null;
-                drql[19] = null;
-                drql[20] = null;
-                drql[21] = null;
-                drql[22] = null;
-                drql[23] = null;
-                drql[24] = null;
-                drql[25] = null;
-                drql[26] = null;
-                drql[27] = null;
-                drql[28] = null;
+                var td = new TrinhDo();
+                Count(SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
+                drql["Title"] = "CBQL";
+                drql["TS"] = td.TS;
+                drql["CBQL"] = td.CBQL;
+                drql["GV"] = td.GV;
+                drql["NhanVienHC"] = td.NhanVienHC;
+                drql["Nu"] = td.Nu;
+                drql["DangVien"] = td.DangVien;
+                drql["DanTocThieuSo"] = td.DanTocThieuSo;
+                drql["Duoi30"] = td.Duoi30;
+                drql["Tu30Den50"] = td.Tu30Den50;
+                drql["TongSo"] = td.TongSo;
+                drql["Nu54Nam59"] = td.Nu54Nam59;
+                drql["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drql["CV_TD"] = td.CV_TD;
+                drql["CS_TD"] = td.CS_TD;
+                drql["ConLai_TN"] = td.ConLai_TN;
+                drql["ThacSi"] = td.ThacSi;
+                drql["DaiHoc"] = td.DaiHoc;
+                drql["CaoDang"] = td.CaoDang;
+                drql["TrungCap"] = td.TrungCap;
+                drql["ConLai_CM"] = td.ConLai_CM;
+                drql["LLCuNhanCC"] = td.LLCuNhanCC;
+                drql["LLTrungCap"] = td.LLTrungCap;
+                drql["LLSoCap"] = td.LLSoCap;
+                drql["THTrungCap"] = td.THTrungCap;
+                drql["THChungChi"] = td.THChungChi;
+                drql["NNTrungCap"] = td.NNTrungCap;
+                drql["NNChungChi"] = td.NNChungChi;
+                drql["ChungChiDT"] = td.ChungChiDT;
                 #endregion
                 #region Giao Vien
-                drgv[2] = null;
-                drgv[3] = null;
-                drgv[4] = null;
-                drgv[5] = null;
-                drgv[6] = null;
-                drgv[7] = null;
-                drgv[8] = null;
-                drgv[9] = null;
-                drgv[10] = null;
-                drgv[11] = null;
-                drgv[12] = null;
-                drgv[13] = null;
-                drgv[14] = null;
-                drgv[15] = null;
-                drgv[16] = null;
-                drgv[17] = null;
-                drgv[18] = null;
-                drgv[19] = null;
-                drgv[20] = null;
-                drgv[21] = null;
-                drgv[22] = null;
-                drgv[23] = null;
-                drgv[24] = null;
-                drgv[25] = null;
-                drgv[26] = null;
-                drgv[27] = null;
-                drgv[28] = null;
+                td = new TrinhDo();
+                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
+                drgv["Title"] = "Giáo viên";
+                drgv["TS"] = td.TS;
+                drgv["CBQL"] = td.CBQL;
+                drgv["GV"] = td.GV;
+                drgv["NhanVienHC"] = td.NhanVienHC;
+                drgv["Nu"] = td.Nu;
+                drgv["DangVien"] = td.DangVien;
+                drgv["DanTocThieuSo"] = td.DanTocThieuSo;
+                drgv["Duoi30"] = td.Duoi30;
+                drgv["Tu30Den50"] = td.Tu30Den50;
+                drgv["TongSo"] = td.TongSo;
+                drgv["Nu54Nam59"] = td.Nu54Nam59;
+                drgv["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drgv["CV_TD"] = td.CV_TD;
+                drgv["CS_TD"] = td.CS_TD;
+                drgv["ConLai_TN"] = td.ConLai_TN;
+                drgv["ThacSi"] = td.ThacSi;
+                drgv["DaiHoc"] = td.DaiHoc;
+                drgv["CaoDang"] = td.CaoDang;
+                drgv["TrungCap"] = td.TrungCap;
+                drgv["ConLai_CM"] = td.ConLai_CM;
+                drgv["LLCuNhanCC"] = td.LLCuNhanCC;
+                drgv["LLTrungCap"] = td.LLTrungCap;
+                drgv["LLSoCap"] = td.LLSoCap;
+                drgv["THTrungCap"] = td.THTrungCap;
+                drgv["THChungChi"] = td.THChungChi;
+                drgv["NNTrungCap"] = td.NNTrungCap;
+                drgv["NNChungChi"] = td.NNChungChi;
+                drgv["ChungChiDT"] = td.ChungChiDT;
                 #endregion
                 #region Hanh Chinh
-                drhc[2] = null;
-                drhc[3] = null;
-                drhc[4] = null;
-                drhc[5] = null;
-                drhc[6] = null;
-                drhc[7] = null;
-                drhc[8] = null;
-                drhc[9] = null;
-                drhc[10] = null;
-                drhc[11] = null;
-                drhc[12] = null;
-                drhc[13] = null;
-                drhc[14] = null;
-                drhc[15] = null;
-                drhc[16] = null;
-                drhc[17] = null;
-                drhc[18] = null;
-                drhc[19] = null;
-                drhc[20] = null;
-                drhc[21] = null;
-                drhc[22] = null;
-                drhc[23] = null;
-                drhc[24] = null;
-                drhc[25] = null;
-                drhc[26] = null;
-                drhc[27] = null;
-                drhc[28] = null;
+                td = new TrinhDo();
+                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
+                drhc["Title"] = "Giáo viên";
+                drhc["TS"] = td.TS;
+                drhc["CBQL"] = td.CBQL;
+                drhc["GV"] = td.GV;
+                drhc["NhanVienHC"] = td.NhanVienHC;
+                drhc["Nu"] = td.Nu;
+                drhc["DangVien"] = td.DangVien;
+                drhc["DanTocThieuSo"] = td.DanTocThieuSo;
+                drhc["Duoi30"] = td.Duoi30;
+                drhc["Tu30Den50"] = td.Tu30Den50;
+                drhc["TongSo"] = td.TongSo;
+                drhc["Nu54Nam59"] = td.Nu54Nam59;
+                drhc["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drhc["CV_TD"] = td.CV_TD;
+                drhc["CS_TD"] = td.CS_TD;
+                drhc["ConLai_TN"] = td.ConLai_TN;
+                drhc["ThacSi"] = td.ThacSi;
+                drhc["DaiHoc"] = td.DaiHoc;
+                drhc["CaoDang"] = td.CaoDang;
+                drhc["TrungCap"] = td.TrungCap;
+                drhc["ConLai_CM"] = td.ConLai_CM;
+                drhc["LLCuNhanCC"] = td.LLCuNhanCC;
+                drhc["LLTrungCap"] = td.LLTrungCap;
+                drhc["LLSoCap"] = td.LLSoCap;
+                drhc["THTrungCap"] = td.THTrungCap;
+                drhc["THChungChi"] = td.THChungChi;
+                drhc["NNTrungCap"] = td.NNTrungCap;
+                drhc["NNChungChi"] = td.NNChungChi;
+                drhc["ChungChiDT"] = td.ChungChiDT;
                 #endregion
                 drts[0] = i + "";
                 drts[1] = item["Title"];
-
-
-                dt.Rows.Add(drts);
+                drts["CBQL"] = int.Parse(drql["TS"].ToString());
+                drts["GV"] = int.Parse(drgv["TS"].ToString());
+                drts["NhanVienHC"] = int.Parse(drhc["TS"].ToString()); //4
+                for (int k = 5; k < dt.Columns.Count; k++)
+                {
+                    drts[k] = int.Parse(drql[k].ToString()) + int.Parse(drgv[k].ToString()) + int.Parse(drhc[k].ToString());
+                }
+                for (int k = 2; k < dt.Columns.Count; k++)
+                {
+                    if (int.Parse(drql[k].ToString()) == 0) drql[k] = null;
+                    if (int.Parse(drgv[k].ToString()) == 0) drgv[k] = null;
+                    if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
+                    if (int.Parse(drts[k].ToString()) == 0) drts[k] = null;
+                }
+                dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc); dt.Rows.Add(drts);
             }
             para = new List<ReportParameter>();
             return dt;
         }
         DataTable TDTHCS(out List<ReportParameter> para)
         {
-            int duocgiaotong = 0, duocgiaocbql = 0, duocgiaogv = 0, duocgiaotpt = 0, duocgiaohc = 0, duocgiaocntt = 0,
-                comattong = 0, comatcbql = 0, comatgv = 0, comathc = 0, comattpt = 0, comatcntt = 0,
-                tttong = 0, ttcbql = 0, ttgv = 0, tthc = 0, ttcntt = 0, ts = 0, ts1 = 0, ts2 = 0;
-            var dtloai = SQLiteUtils.GetTable("select * from nhomtruong");
-            var dt = new DataSet1().DataTable1;
-            int k = 1;
-
-            #region Repeat
-            foreach (DataRow row in dtloai.Rows)
+            DataTable dt = new DataSet1().TDMamNon;
+            var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 3);
+            int i = 1;
+            foreach (DataRow item in dttruong.Rows)
             {
-                int duocgiaotong1 = 0, duocgiaocbql1 = 0, duocgiaogv1 = 0, duocgiaotpt1 = 0, duocgiaohc1 = 0, duocgiaocntt1 = 0,
-                    comattong1 = 0, comatcbql1 = 0, comatgv1 = 0, comathc1 = 0, comattpt1 = 0, comatcntt1 = 0,
-tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, ts21 = 0;
-                var dr = dt.NewRow();
-                dr["STT"] = GetLaMa(k);
-                dr["Title"] = "     " + row["Title"];
-                dt.Rows.Add(dr);
-                var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", row["ID"]);
-                int i = 1;
-                foreach (DataRow item in dttruong.Rows)
-                {
-                    var dr1 = dt.NewRow();
-                    dr1["STT"] = i + "";
-                    dr1["Title"] = item["Title"];
-                    dr1["HangDonVi"] = GetLaMa(int.Parse("0" + item["HangTruong"]));
-
-                    int tdgiao = int.Parse("0" + item["DuocGiaoCB"]) + int.Parse("0" + item["DuocGiaoHC"]) +
-                        int.Parse("0" + item["DuocGiaoCNTT"]) + int.Parse("0" + item[tf.DuocGiaoGV]) + int.Parse("0" + item[tf.DuocGiaoTPT]);
-                    duocgiaotong1 += tdgiao;
-                    dr1["TongSoDuocGiao"] = tdgiao;
-                    dr1["DuocGiaoGV"] = item[tf.DuocGiaoGV];
-                    duocgiaogv1 += int.Parse("0" + item[tf.DuocGiaoGV]);
-                    dr1["DuocGiaoHC"] = item["DuocGiaoHC"];
-                    duocgiaohc1 += int.Parse("0" + item["DuocGiaoHC"]);
-                    dr1["DuocGiaoCNTT"] = item["DuocGiaoCNTT"];
-                    duocgiaocntt1 += int.Parse("0" + item["DuocGiaoCNTT"]);
-                    dr1["DuocGiaoCBQL"] = int.Parse("0" + item[tf.DuocGiaoCB]); ;
-                    duocgiaocbql1 += int.Parse("0" + item[tf.DuocGiaoCB]);
-                    dr1["DuocGiaoTPT"] = int.Parse("0" + item[tf.DuocGiaoTPT]);
-                    duocgiaotpt1 += int.Parse("0" + item[tf.DuocGiaoTPT]);
-
-                    int comatcbql1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.CBQL).Rows[0][0]);
-                    int comatgv1_1 = int.Parse("0" + SQLiteUtils.GetTable(
-                    string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]).Rows[0][0]);
-                    int comattpt1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.TPTDoi).Rows[0][0]);
-                    int comathc1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.HanhChinh).Rows[0][0]);
-                    int comatcntt1_1 = int.Parse("0" + SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item[tf.ID], "@chucvu", ChucVu.CNTT).Rows[0][0]);
-                    int tcm = comatcbql1_1 + comatgv1_1 + comattpt1_1 + comathc1_1 + comatcntt1_1;
-
-                    dr1["TongSoCoMat"] = tcm; comattong1 += tcm;
-                    dr1["CoMatGV"] = comatgv1_1; comatgv1 += comatgv1_1;
-                    dr1["CoMatHC"] = comathc1_1; comathc1 += comathc1_1;
-                    dr1["CoMatCNTT"] = comatcntt1_1; comatcntt1 += comatcntt1_1;
-                    dr1["CoMatCBQL"] = comatcbql1_1; comatcbql1 += comatcbql1_1;
-                    dr1["CoMatTPT"] = comattpt1_1; comattpt1 += comattpt1_1;
-
-                    dr1["TongTT"] = tcm - tdgiao;
-                    tttong1 += (tcm - tdgiao);
-                    dr1["TTCBQL"] = comatcbql1_1 - int.Parse("0" + item[tf.DuocGiaoCB]);
-                    ttcbql1 += comatcbql1_1 - int.Parse("0" + item[tf.DuocGiaoCB]);
-                    dr1["TTGV"] = comatgv1_1 - int.Parse("0" + item[tf.DuocGiaoGV]);
-                    ttgv1 += comatgv1_1 - int.Parse("0" + item[tf.DuocGiaoGV]);
-
-                    dr1["TTHC"] = comathc1_1 - int.Parse("0" + item[tf.DuocGiaoHC]);
-                    tthc1 += comathc1_1 - int.Parse("0" + item[tf.DuocGiaoHC]);
-
-                    dr1["TTCNTT"] = comatcntt1_1 - int.Parse("0" + item[tf.DuocGiaoCNTT]);
-                    ttcntt1 += comatcntt1_1 - int.Parse("0" + item[tf.DuocGiaoCNTT]);
-
-                    dr1["TS"] = "Xét";// item["CoMatCB"];
-                    dr1["TS1"] = "Xét";//int.Parse("0" + item["CoMatCB"]);
-                    dr1["TS2"] = "Xét";//int.Parse("0" + item["CoMatCNTT"]) + int.Parse("0" + item["CoMatHC"]);
-                    dt.Rows.Add(dr1);
-                    i++;
-                }
-                #region Sum
-                tsx = comattpt1; ts11 = comatcbql1 + comatgv1 + comattpt1; ts21 = comathc1 + comatcntt1;
-                dr["STT"] = GetLaMa(k);
-                dr["Title"] = "     " + row["Title"];
-                dr["TongSoDuocGiao"] = duocgiaotong1;
-                dr["DuocGiaoGV"] = duocgiaogv1;
-                dr["DuocGiaoHC"] = duocgiaohc1; dr["DuocGiaoCNTT"] = duocgiaocntt1; dr["DuocGiaoCBQL"] = duocgiaocbql1; dr["DuocGiaoTPT"] = duocgiaotpt1;
-                dr["TongSoCoMat"] = comattong1; dr["CoMatGV"] = comatgv1; dr["CoMatCNTT"] = comatcntt1; dr["CoMatCBQL"] = comatcbql1; dr["CoMatTPT"] = comattpt1; dr["CoMatHC"] = comathc1;
-                dr["TongTT"] = tttong1; dr["TTGV"] = ttgv1; dr["TTHC"] = tthc1; dr["TTCNTT"] = ttcntt1; dr["TTCBQL"] = ttcbql1;
-                dr["TS"] = tsx; dr["TS1"] = ts11; dr["TS2"] = ts21;
-                k++;
-                duocgiaotong += duocgiaotong1;
-                duocgiaocbql += duocgiaocbql1;
-                duocgiaogv += duocgiaogv1;
-                duocgiaotpt += duocgiaotpt1;
-                duocgiaohc += duocgiaohc1;
-                duocgiaohc += duocgiaohc1;
-                duocgiaohc += duocgiaohc1;
-                duocgiaocntt += duocgiaocntt1;
-                comattong += comattong1;
-                comatcbql += comatcbql1;
-                comatgv += comatgv1;
-                comathc += comathc1;
-                comattpt += comattpt1;
-                comatcntt += comatcntt1;
-                tttong += tttong1;
-                ttcbql += ttcbql1;
-                ttgv += ttgv1;
-                tthc += tthc1;
-                ttcntt += ttcntt1;
+                var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
+                #region CBQL
+                var td = new TrinhDo();
+                Count(SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
+                drql["Title"] = "CBQL";
+                drql["TS"] = td.TS;
+                drql["CBQL"] = td.CBQL;
+                drql["GV"] = td.GV;
+                drql["NhanVienHC"] = td.NhanVienHC;
+                drql["Nu"] = td.Nu;
+                drql["DangVien"] = td.DangVien;
+                drql["DanTocThieuSo"] = td.DanTocThieuSo;
+                drql["Duoi30"] = td.Duoi30;
+                drql["Tu30Den50"] = td.Tu30Den50;
+                drql["TongSo"] = td.TongSo;
+                drql["Nu54Nam59"] = td.Nu54Nam59;
+                drql["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drql["CV_TD"] = td.CV_TD;
+                drql["CS_TD"] = td.CS_TD;
+                drql["ConLai_TN"] = td.ConLai_TN;
+                drql["ThacSi"] = td.ThacSi;
+                drql["DaiHoc"] = td.DaiHoc;
+                drql["CaoDang"] = td.CaoDang;
+                drql["TrungCap"] = td.TrungCap;
+                drql["ConLai_CM"] = td.ConLai_CM;
+                drql["LLCuNhanCC"] = td.LLCuNhanCC;
+                drql["LLTrungCap"] = td.LLTrungCap;
+                drql["LLSoCap"] = td.LLSoCap;
+                drql["THTrungCap"] = td.THTrungCap;
+                drql["THChungChi"] = td.THChungChi;
+                drql["NNTrungCap"] = td.NNTrungCap;
+                drql["NNChungChi"] = td.NNChungChi;
+                drql["ChungChiDT"] = td.ChungChiDT;
                 #endregion
+                #region Giao Vien
+                td = new TrinhDo();
+                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
+                drgv["Title"] = "Giáo viên";
+                drgv["TS"] = td.TS;
+                drgv["CBQL"] = td.CBQL;
+                drgv["GV"] = td.GV;
+                drgv["NhanVienHC"] = td.NhanVienHC;
+                drgv["Nu"] = td.Nu;
+                drgv["DangVien"] = td.DangVien;
+                drgv["DanTocThieuSo"] = td.DanTocThieuSo;
+                drgv["Duoi30"] = td.Duoi30;
+                drgv["Tu30Den50"] = td.Tu30Den50;
+                drgv["TongSo"] = td.TongSo;
+                drgv["Nu54Nam59"] = td.Nu54Nam59;
+                drgv["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drgv["CV_TD"] = td.CV_TD;
+                drgv["CS_TD"] = td.CS_TD;
+                drgv["ConLai_TN"] = td.ConLai_TN;
+                drgv["ThacSi"] = td.ThacSi;
+                drgv["DaiHoc"] = td.DaiHoc;
+                drgv["CaoDang"] = td.CaoDang;
+                drgv["TrungCap"] = td.TrungCap;
+                drgv["ConLai_CM"] = td.ConLai_CM;
+                drgv["LLCuNhanCC"] = td.LLCuNhanCC;
+                drgv["LLTrungCap"] = td.LLTrungCap;
+                drgv["LLSoCap"] = td.LLSoCap;
+                drgv["THTrungCap"] = td.THTrungCap;
+                drgv["THChungChi"] = td.THChungChi;
+                drgv["NNTrungCap"] = td.NNTrungCap;
+                drgv["NNChungChi"] = td.NNChungChi;
+                drgv["ChungChiDT"] = td.ChungChiDT;
+                #endregion
+                #region Hanh Chinh
+                td = new TrinhDo();
+                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
+                drhc["Title"] = "Giáo viên";
+                drhc["TS"] = td.TS;
+                drhc["CBQL"] = td.CBQL;
+                drhc["GV"] = td.GV;
+                drhc["NhanVienHC"] = td.NhanVienHC;
+                drhc["Nu"] = td.Nu;
+                drhc["DangVien"] = td.DangVien;
+                drhc["DanTocThieuSo"] = td.DanTocThieuSo;
+                drhc["Duoi30"] = td.Duoi30;
+                drhc["Tu30Den50"] = td.Tu30Den50;
+                drhc["TongSo"] = td.TongSo;
+                drhc["Nu54Nam59"] = td.Nu54Nam59;
+                drhc["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drhc["CV_TD"] = td.CV_TD;
+                drhc["CS_TD"] = td.CS_TD;
+                drhc["ConLai_TN"] = td.ConLai_TN;
+                drhc["ThacSi"] = td.ThacSi;
+                drhc["DaiHoc"] = td.DaiHoc;
+                drhc["CaoDang"] = td.CaoDang;
+                drhc["TrungCap"] = td.TrungCap;
+                drhc["ConLai_CM"] = td.ConLai_CM;
+                drhc["LLCuNhanCC"] = td.LLCuNhanCC;
+                drhc["LLTrungCap"] = td.LLTrungCap;
+                drhc["LLSoCap"] = td.LLSoCap;
+                drhc["THTrungCap"] = td.THTrungCap;
+                drhc["THChungChi"] = td.THChungChi;
+                drhc["NNTrungCap"] = td.NNTrungCap;
+                drhc["NNChungChi"] = td.NNChungChi;
+                drhc["ChungChiDT"] = td.ChungChiDT;
+                #endregion
+                drts[0] = i + "";
+                drts[1] = item["Title"];
+                drts["CBQL"] = int.Parse(drql["TS"].ToString());
+                drts["GV"] = int.Parse(drgv["TS"].ToString());
+                drts["NhanVienHC"] = int.Parse(drhc["TS"].ToString()); //4
+                for (int k = 5; k < dt.Columns.Count; k++)
+                {
+                    drts[k] = int.Parse(drql[k].ToString()) + int.Parse(drgv[k].ToString()) + int.Parse(drhc[k].ToString());
+                }
+                for (int k = 2; k < dt.Columns.Count; k++)
+                {
+                    if (int.Parse(drql[k].ToString()) == 0) drql[k] = null;
+                    if (int.Parse(drgv[k].ToString()) == 0) drgv[k] = null;
+                    if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
+                    if (int.Parse(drts[k].ToString()) == 0) drts[k] = null;
+                }
+                dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc); dt.Rows.Add(drts);
             }
-            #endregion
-            #region para
-            ts = comattong; ts1 = comatcbql + comatgv + comattpt; ts2 = comathc + comatcntt;
-            var rparam = new List<ReportParameter>();
-            rparam.Add(new ReportParameter("duocgiaotong", duocgiaotong + ""));
-            rparam.Add(new ReportParameter("duocgiaocbql", duocgiaocbql + ""));
-            rparam.Add(new ReportParameter("duocgiaogv", duocgiaogv + ""));
-            rparam.Add(new ReportParameter("duocgiaotpt", duocgiaotpt + ""));
-            rparam.Add(new ReportParameter("duocgiaohc", duocgiaohc + ""));
-            rparam.Add(new ReportParameter("duocgiaocntt", duocgiaocntt + ""));
-            rparam.Add(new ReportParameter("comattong", comattong + ""));
-            rparam.Add(new ReportParameter("comatcbql", comatcbql + ""));
-            rparam.Add(new ReportParameter("comatgv", comatgv + ""));
-            rparam.Add(new ReportParameter("comathc", comathc + ""));
-            rparam.Add(new ReportParameter("comattpt", comattpt + ""));
-            rparam.Add(new ReportParameter("comatcntt", comatcntt + ""));
-            rparam.Add(new ReportParameter("tttong", tttong + ""));
-            rparam.Add(new ReportParameter("ttcbql", ttcbql + ""));
-            rparam.Add(new ReportParameter("ttgv", ttgv + ""));
-            rparam.Add(new ReportParameter("tthc", tthc + ""));
-            rparam.Add(new ReportParameter("ttcntt", ttcntt + ""));
-            rparam.Add(new ReportParameter("ts", ts + ""));
-            rparam.Add(new ReportParameter("ts1", ts1 + ""));
-            rparam.Add(new ReportParameter("ts2", ts2 + ""));
-            rparam.Add(new ReportParameter("ngay", DateTime.Now.ToString("dd/MM/yyyy") + ""));
-            #endregion
-            para = rparam;
+            para = new List<ReportParameter>();
             return dt;
         }
-
+        DataTable TDTH(out List<ReportParameter> para)
+        {
+            DataTable dt = new DataSet1().TDMamNon;
+            var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 3);
+            int i = 1;
+            foreach (DataRow item in dttruong.Rows)
+            {
+                var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
+                #region CBQL
+                var td = new TrinhDo();
+                Count(SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
+                drql["Title"] = "CBQL";
+                drql["TS"] = td.TS;
+                drql["CBQL"] = td.CBQL;
+                drql["GV"] = td.GV;
+                drql["NhanVienHC"] = td.NhanVienHC;
+                drql["Nu"] = td.Nu;
+                drql["DangVien"] = td.DangVien;
+                drql["DanTocThieuSo"] = td.DanTocThieuSo;
+                drql["Duoi30"] = td.Duoi30;
+                drql["Tu30Den50"] = td.Tu30Den50;
+                drql["TongSo"] = td.TongSo;
+                drql["Nu54Nam59"] = td.Nu54Nam59;
+                drql["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drql["CV_TD"] = td.CV_TD;
+                drql["CS_TD"] = td.CS_TD;
+                drql["ConLai_TN"] = td.ConLai_TN;
+                drql["ThacSi"] = td.ThacSi;
+                drql["DaiHoc"] = td.DaiHoc;
+                drql["CaoDang"] = td.CaoDang;
+                drql["TrungCap"] = td.TrungCap;
+                drql["ConLai_CM"] = td.ConLai_CM;
+                drql["LLCuNhanCC"] = td.LLCuNhanCC;
+                drql["LLTrungCap"] = td.LLTrungCap;
+                drql["LLSoCap"] = td.LLSoCap;
+                drql["THTrungCap"] = td.THTrungCap;
+                drql["THChungChi"] = td.THChungChi;
+                drql["NNTrungCap"] = td.NNTrungCap;
+                drql["NNChungChi"] = td.NNChungChi;
+                drql["ChungChiDT"] = td.ChungChiDT;
+                #endregion
+                #region Giao Vien
+                td = new TrinhDo();
+                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
+                drgv["Title"] = "Giáo viên";
+                drgv["TS"] = td.TS;
+                drgv["CBQL"] = td.CBQL;
+                drgv["GV"] = td.GV;
+                drgv["NhanVienHC"] = td.NhanVienHC;
+                drgv["Nu"] = td.Nu;
+                drgv["DangVien"] = td.DangVien;
+                drgv["DanTocThieuSo"] = td.DanTocThieuSo;
+                drgv["Duoi30"] = td.Duoi30;
+                drgv["Tu30Den50"] = td.Tu30Den50;
+                drgv["TongSo"] = td.TongSo;
+                drgv["Nu54Nam59"] = td.Nu54Nam59;
+                drgv["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drgv["CV_TD"] = td.CV_TD;
+                drgv["CS_TD"] = td.CS_TD;
+                drgv["ConLai_TN"] = td.ConLai_TN;
+                drgv["ThacSi"] = td.ThacSi;
+                drgv["DaiHoc"] = td.DaiHoc;
+                drgv["CaoDang"] = td.CaoDang;
+                drgv["TrungCap"] = td.TrungCap;
+                drgv["ConLai_CM"] = td.ConLai_CM;
+                drgv["LLCuNhanCC"] = td.LLCuNhanCC;
+                drgv["LLTrungCap"] = td.LLTrungCap;
+                drgv["LLSoCap"] = td.LLSoCap;
+                drgv["THTrungCap"] = td.THTrungCap;
+                drgv["THChungChi"] = td.THChungChi;
+                drgv["NNTrungCap"] = td.NNTrungCap;
+                drgv["NNChungChi"] = td.NNChungChi;
+                drgv["ChungChiDT"] = td.ChungChiDT;
+                #endregion
+                #region Hanh Chinh
+                td = new TrinhDo();
+                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
+                drhc["Title"] = "Giáo viên";
+                drhc["TS"] = td.TS;
+                drhc["CBQL"] = td.CBQL;
+                drhc["GV"] = td.GV;
+                drhc["NhanVienHC"] = td.NhanVienHC;
+                drhc["Nu"] = td.Nu;
+                drhc["DangVien"] = td.DangVien;
+                drhc["DanTocThieuSo"] = td.DanTocThieuSo;
+                drhc["Duoi30"] = td.Duoi30;
+                drhc["Tu30Den50"] = td.Tu30Den50;
+                drhc["TongSo"] = td.TongSo;
+                drhc["Nu54Nam59"] = td.Nu54Nam59;
+                drhc["TuoiHuuNu55Nam60"] = td.TuoiHuuNu55Nam60;
+                drhc["CV_TD"] = td.CV_TD;
+                drhc["CS_TD"] = td.CS_TD;
+                drhc["ConLai_TN"] = td.ConLai_TN;
+                drhc["ThacSi"] = td.ThacSi;
+                drhc["DaiHoc"] = td.DaiHoc;
+                drhc["CaoDang"] = td.CaoDang;
+                drhc["TrungCap"] = td.TrungCap;
+                drhc["ConLai_CM"] = td.ConLai_CM;
+                drhc["LLCuNhanCC"] = td.LLCuNhanCC;
+                drhc["LLTrungCap"] = td.LLTrungCap;
+                drhc["LLSoCap"] = td.LLSoCap;
+                drhc["THTrungCap"] = td.THTrungCap;
+                drhc["THChungChi"] = td.THChungChi;
+                drhc["NNTrungCap"] = td.NNTrungCap;
+                drhc["NNChungChi"] = td.NNChungChi;
+                drhc["ChungChiDT"] = td.ChungChiDT;
+                #endregion
+                drts[0] = i + "";
+                drts[1] = item["Title"];
+                drts["CBQL"] = int.Parse(drql["TS"].ToString());
+                drts["GV"] = int.Parse(drgv["TS"].ToString());
+                drts["NhanVienHC"] = int.Parse(drhc["TS"].ToString()); //4
+                for (int k = 5; k < dt.Columns.Count; k++)
+                {
+                    drts[k] = int.Parse(drql[k].ToString()) + int.Parse(drgv[k].ToString()) + int.Parse(drhc[k].ToString());
+                }
+                for (int k = 2; k < dt.Columns.Count; k++)
+                {
+                    if (int.Parse(drql[k].ToString()) == 0) drql[k] = null;
+                    if (int.Parse(drgv[k].ToString()) == 0) drgv[k] = null;
+                    if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
+                    if (int.Parse(drts[k].ToString()) == 0) drts[k] = null;
+                }
+                dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc); dt.Rows.Add(drts);
+            }
+            para = new List<ReportParameter>();
+            return dt;
+        }
 
         string GetLaMa(int k)
         {
             return k == 1 ? "I" : k == 2 ? "II" : "III";
         }
+
+        public void Count(DataTable dt, TrinhDo td)
+        {
+            int now = 2013;
+            td.TS = dt.Rows.Count;
+            foreach (DataRow item in dt.Rows)
+            {
+                td.Nu += item[cbf.GioiTinh] == null ? 0 : (bool)item[cbf.GioiTinh] == false ? 1 : 0;
+                td.DangVien += item[cbf.DoanVien] == null ? 0 : (int)item[cbf.DoanVien] == 2 ? 1 : 0;
+                td.DanTocThieuSo += item[cbf.DanToc] == null ? 0 : (int)item[cbf.DanToc] > 1 ? 1 : 0;
+
+                int tuoi = now - ((DateTime)item[cbf.NgaySinh]).Year;
+                td.Duoi30 += tuoi < 30 ? 1 : 0;
+                td.Tu30Den50 += (now - tuoi >= 30) && (now - tuoi <= 50) ? 1 : 0;
+                if ((bool)item[cbf.GioiTinh] && tuoi > 50)
+                {
+                    td.Nu54Nam59 += tuoi < 60 ? 1 : 0;
+                    td.TuoiHuuNu55Nam60 += tuoi >= 60 ? 1 : 0;
+                }
+                if (!(bool)item[cbf.GioiTinh] && tuoi > 50)
+                {
+                    td.Nu54Nam59 += tuoi < 54 ? 1 : 0;
+                    td.TuoiHuuNu55Nam60 += tuoi >= 55 ? 1 : 0;
+                }
+                td.CV_TD += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CV_TĐ ? 1 : 0;
+                td.CS_TD += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CS_TĐ ? 1 : 0;
+                td.ConLai_TN += item[cbf.NgachLuong] == null ? 0 : ((string)item[cbf.NgachLuong] != NghachLuong.CS_TĐ) && ((string)item[cbf.NgachLuong] != NghachLuong.CV_TĐ) ? 1 : 0;
+
+                td.ThacSi += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.Ths ? 1 : 0;
+                td.DaiHoc += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.DH ? 1 : 0;
+                td.CaoDang += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.CD ? 1 : 0;
+                td.TrungCap += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.TC ? 1 : 0;
+
+                td.LLCuNhanCC += item[cbf.ChinhTri] == null ? 0 : ((string)item[cbf.ChinhTri] != LLCT.CC) || ((string)item[cbf.ChinhTri] != LLCT.CN) ? 1 : 0;
+                td.LLTrungCap += item[cbf.ChinhTri] == null ? 0 : (string)item[cbf.ChinhTri] != LLCT.TC ? 1 : 0;
+                td.LLSoCap += item[cbf.ChinhTri] == null ? 0 : (string)item[cbf.ChinhTri] != LLCT.SC ? 1 : 0;
+
+                td.THTrungCap += item[cbf.TinHoc] == null ? 0 : (string)item[cbf.TinHoc] != TinHoc.TCTL ? 1 : 0;
+                td.THChungChi += item[cbf.TinHoc] == null ? 0 : (string)item[cbf.TinHoc] != TinHoc.CC ? 1 : 0;
+
+                td.NNTrungCap += item[cbf.NgoaiNgu] == null ? 0 : (string)item[cbf.NgoaiNgu] != NgoaiNgu.TCTL ? 1 : 0;
+                td.NNChungChi += item[cbf.NgoaiNgu] == null ? 0 : (string)item[cbf.NgoaiNgu] != NgoaiNgu.CC ? 1 : 0;
+
+                td.ChungChiDT += item[cbf.CoTiengDanToc] == null ? 0 : (bool)item[cbf.CoTiengDanToc] == true ? 1 : 0;
+            }
+            td.TongSo = td.Nu54Nam59 + td.TuoiHuuNu55Nam60;
+            td.ConLai_CM = td.TS - td.ThacSi - td.DaiHoc - td.CaoDang - td.TrungCap;
+            td.ConLai_TN = td.TS - td.CV_TD - td.CS_TD;
+        }
+
     }
 }
