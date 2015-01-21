@@ -423,7 +423,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
                 #region CBQL
                 var td = new TrinhDo();
-                Count(SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
+                Count(SQLiteUtils.GetTable("select * from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
                 drql["Title"] = "CBQL";
                 drql["TS"] = td.TS;
                 drql["CBQL"] = td.CBQL;
@@ -456,7 +456,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 #endregion
                 #region Giao Vien
                 td = new TrinhDo();
-                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
+                Count(SQLiteUtils.GetTable(string.Format("select * from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
                 drgv["Title"] = "Giáo viên";
                 drgv["TS"] = td.TS;
                 drgv["CBQL"] = td.CBQL;
@@ -489,8 +489,8 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 #endregion
                 #region Hanh Chinh
                 td = new TrinhDo();
-                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
-                drhc["Title"] = "Giáo viên";
+                Count(SQLiteUtils.GetTable(string.Format("select * from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
+                drhc["Title"] = "Nhân viên";
                 drhc["TS"] = td.TS;
                 drhc["CBQL"] = td.CBQL;
                 drhc["GV"] = td.GV;
@@ -531,12 +531,12 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 }
                 for (int k = 2; k < dt.Columns.Count; k++)
                 {
+                    if (int.Parse("0" + drts[k]) == 0) drts[k] = null;
                     if (int.Parse(drql[k].ToString()) == 0) drql[k] = null;
                     if (int.Parse(drgv[k].ToString()) == 0) drgv[k] = null;
                     if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
-                    if (int.Parse(drts[k].ToString()) == 0) drts[k] = null;
                 }
-                dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc); dt.Rows.Add(drts);
+                dt.Rows.Add(drts); dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc);
             }
             para = new List<ReportParameter>();
             return dt;
@@ -545,13 +545,13 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
         {
             DataTable dt = new DataSet1().TDMamNon;
             var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 2);
-            int i = 1;
+            int i = 0;
             foreach (DataRow item in dttruong.Rows)
             {
                 var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
                 #region CBQL
                 var td = new TrinhDo();
-                Count(SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
+                Count(SQLiteUtils.GetTable("select * from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
                 drql["Title"] = "CBQL";
                 drql["TS"] = td.TS;
                 drql["CBQL"] = td.CBQL;
@@ -584,7 +584,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 #endregion
                 #region Giao Vien
                 td = new TrinhDo();
-                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
+                Count(SQLiteUtils.GetTable(string.Format("select * from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
                 drgv["Title"] = "Giáo viên";
                 drgv["TS"] = td.TS;
                 drgv["CBQL"] = td.CBQL;
@@ -617,8 +617,8 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 #endregion
                 #region Hanh Chinh
                 td = new TrinhDo();
-                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
-                drhc["Title"] = "Giáo viên";
+                Count(SQLiteUtils.GetTable(string.Format("select * from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
+                drhc["Title"] = "Nhân viên";
                 drhc["TS"] = td.TS;
                 drhc["CBQL"] = td.CBQL;
                 drhc["GV"] = td.GV;
@@ -648,7 +648,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 drhc["NNChungChi"] = td.NNChungChi;
                 drhc["ChungChiDT"] = td.ChungChiDT;
                 #endregion
-                drts[0] = i + "";
+                drts[0] = ++i + "";
                 drts[1] = item["Title"];
                 drts["CBQL"] = int.Parse(drql["TS"].ToString());
                 drts["GV"] = int.Parse(drgv["TS"].ToString());
@@ -659,12 +659,12 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 }
                 for (int k = 2; k < dt.Columns.Count; k++)
                 {
+                    if (int.Parse("0" + drts[k]) == 0) drts[k] = null;
                     if (int.Parse(drql[k].ToString()) == 0) drql[k] = null;
                     if (int.Parse(drgv[k].ToString()) == 0) drgv[k] = null;
                     if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
-                    if (int.Parse(drts[k].ToString()) == 0) drts[k] = null;
                 }
-                dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc); dt.Rows.Add(drts);
+                dt.Rows.Add(drts); dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc);
             }
             para = new List<ReportParameter>();
             return dt;
@@ -673,13 +673,13 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
         {
             DataTable dt = new DataSet1().TDMamNon;
             var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 3);
-            int i = 1;
+            int i = 0;
             foreach (DataRow item in dttruong.Rows)
             {
                 var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
                 #region CBQL
                 var td = new TrinhDo();
-                Count(SQLiteUtils.GetTable("select count(1) from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
+                Count(SQLiteUtils.GetTable("select * from canbo where truongid=@truongid and chucvu=@chucvu", "@truongid", item["ID"], "@chucvu", ChucVu.CBQL), td);
                 drql["Title"] = "CBQL";
                 drql["TS"] = td.TS;
                 drql["CBQL"] = td.CBQL;
@@ -712,7 +712,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 #endregion
                 #region Giao Vien
                 td = new TrinhDo();
-                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
+                Count(SQLiteUtils.GetTable(string.Format("select * from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH), "@truongid", item[tf.ID]), td);
                 drgv["Title"] = "Giáo viên";
                 drgv["TS"] = td.TS;
                 drgv["CBQL"] = td.CBQL;
@@ -745,8 +745,8 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 #endregion
                 #region Hanh Chinh
                 td = new TrinhDo();
-                Count(SQLiteUtils.GetTable(string.Format("select count(1) from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
-                drhc["Title"] = "Giáo viên";
+                Count(SQLiteUtils.GetTable(string.Format("select * from canbo where truongid=@truongid and (chucvu='{0}' or chucvu='{1}' or chucvu='{2}')", ChucVu.CNTT, ChucVu.HanhChinh, ChucVu.TPTDoi), "@truongid", item[tf.ID]), td);
+                drhc["Title"] = "Nhân viên";
                 drhc["TS"] = td.TS;
                 drhc["CBQL"] = td.CBQL;
                 drhc["GV"] = td.GV;
@@ -776,7 +776,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 drhc["NNChungChi"] = td.NNChungChi;
                 drhc["ChungChiDT"] = td.ChungChiDT;
                 #endregion
-                drts[0] = i + "";
+                drts[0] = ++i + "";
                 drts[1] = item["Title"];
                 drts["CBQL"] = int.Parse(drql["TS"].ToString());
                 drts["GV"] = int.Parse(drgv["TS"].ToString());
@@ -787,12 +787,12 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 }
                 for (int k = 2; k < dt.Columns.Count; k++)
                 {
+                    if (int.Parse("0" + drts[k]) == 0) drts[k] = null;
                     if (int.Parse(drql[k].ToString()) == 0) drql[k] = null;
                     if (int.Parse(drgv[k].ToString()) == 0) drgv[k] = null;
                     if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
-                    if (int.Parse(drts[k].ToString()) == 0) drts[k] = null;
                 }
-                dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc); dt.Rows.Add(drts);
+                dt.Rows.Add(drts); dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc);
             }
             para = new List<ReportParameter>();
             return dt;
@@ -801,7 +801,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
         {
             DataTable dt = new DataSet1().TDMamNon;
             var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 3);
-            int i = 1;
+            int i = 0;
             foreach (DataRow item in dttruong.Rows)
             {
                 var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
@@ -904,7 +904,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 drhc["NNChungChi"] = td.NNChungChi;
                 drhc["ChungChiDT"] = td.ChungChiDT;
                 #endregion
-                drts[0] = i + "";
+                drts[0] = ++i + "";
                 drts[1] = item["Title"];
                 drts["CBQL"] = int.Parse(drql["TS"].ToString());
                 drts["GV"] = int.Parse(drgv["TS"].ToString());
@@ -938,7 +938,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             foreach (DataRow item in dt.Rows)
             {
                 td.Nu += item[cbf.GioiTinh] == null ? 0 : (bool)item[cbf.GioiTinh] == false ? 1 : 0;
-                td.DangVien += item[cbf.DoanVien] == null ? 0 : (int)item[cbf.DoanVien] == 2 ? 1 : 0;
+                td.DangVien += item[cbf.DoanVien] == null ? 0 : int.Parse(item[cbf.DoanVien].ToString()) == 2 ? 1 : 0;
                 td.DanTocThieuSo += item[cbf.DanToc] == null ? 0 : (int)item[cbf.DanToc] > 1 ? 1 : 0;
 
                 int tuoi = now - ((DateTime)item[cbf.NgaySinh]).Year;
