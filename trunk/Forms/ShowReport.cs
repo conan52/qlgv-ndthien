@@ -417,7 +417,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
         {
             DataTable dt = new DataSet1().TDMamNon;
             var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 1);
-            int i = 1;
+            int i = 0;
             foreach (DataRow item in dttruong.Rows)
             {
                 var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
@@ -520,7 +520,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 drhc["NNChungChi"] = td.NNChungChi;
                 drhc["ChungChiDT"] = td.ChungChiDT;
                 #endregion
-                drts[0] = i + "";
+                drts[0] = ++i + "";
                 drts[1] = item["Title"];
                 drts["CBQL"] = int.Parse(drql["TS"].ToString());
                 drts["GV"] = int.Parse(drgv["TS"].ToString());
@@ -939,7 +939,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             {
                 td.Nu += item[cbf.GioiTinh] == null ? 0 : (bool)item[cbf.GioiTinh] == false ? 1 : 0;
                 td.DangVien += item[cbf.DoanVien] == null ? 0 : int.Parse(item[cbf.DoanVien].ToString()) == 2 ? 1 : 0;
-                td.DanTocThieuSo += item[cbf.DanToc] == null ? 0 : (int)item[cbf.DanToc] > 1 ? 1 : 0;
+                td.DanTocThieuSo += item[cbf.DanToc] == null ? 0 : int.Parse(item[cbf.DanToc].ToString()) > 1 ? 1 : 0;
 
                 int tuoi = now - ((DateTime)item[cbf.NgaySinh]).Year;
                 td.Duoi30 += tuoi < 30 ? 1 : 0;
