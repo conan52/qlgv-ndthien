@@ -802,9 +802,9 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             int i = 0;
             DataTable dt = new DataSet1().TDTH;
             var mn_ql = dt.NewRow(); var mn_gv = dt.NewRow(); var mn_hc = dt.NewRow(); var mn_tong = dt.NewRow();//Mầm non
-            CreateRow(mn_ql, 1, null, "Quản lý", ChucVu.CBQL);
-            CreateRow(mn_gv, 1, null, "Giáo viên", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH);
-            CreateRow(mn_hc, 1, null, "Hành chính", ChucVu.HanhChinh);
+            CreateRow(mn_ql, 1, "Quản lý", ChucVu.CBQL);
+            CreateRow(mn_gv, 1, "Giáo viên", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH);
+            CreateRow(mn_hc, 1, "Hành chính", ChucVu.HanhChinh);
 
             mn_tong[0] = ++i + "";
             mn_tong[1] = "Khối mầm non";
@@ -812,14 +812,14 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             {
                 mn_tong[k] = int.Parse(mn_ql[k].ToString()) + int.Parse(mn_gv[k].ToString()) + int.Parse(mn_hc[k].ToString());
             }
-            dt.Rows.Add(mn_tong, mn_ql, mn_gv, mn_hc);
+            dt.Rows.Add(mn_tong); dt.Rows.Add(mn_ql); dt.Rows.Add(mn_gv); dt.Rows.Add(mn_hc);
 
             //////////////////////////////////////////////////////////////////
             var th_ql = dt.NewRow(); var th_tpt = dt.NewRow(); var th_gv = dt.NewRow(); var th_hc = dt.NewRow(); var th_tong = dt.NewRow();//Tiểu học
-            CreateRow(th_ql, 2, null, "Quản lý", ChucVu.CBQL);
-            CreateRow(th_tpt, 2, null, "Quản lý", ChucVu.TPTDoi);
-            CreateRow(th_gv, 2, null, "Giáo viên", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH);
-            CreateRow(th_hc, 2, null, "Hành chính", ChucVu.HanhChinh);
+            CreateRow(th_ql, 2, "Quản lý", ChucVu.CBQL);
+            CreateRow(th_tpt, 2, "Tổng phụ trách", ChucVu.TPTDoi);
+            CreateRow(th_gv, 2, "Giáo viên", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH);
+            CreateRow(th_hc, 2, "Hành chính", ChucVu.HanhChinh);
 
             th_tong[0] = ++i + "";
             th_tong[1] = "Khối tiểu học";
@@ -827,14 +827,14 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             {
                 th_tong[k] = int.Parse(th_ql[k].ToString()) + int.Parse(th_tpt[k].ToString()) + int.Parse(th_gv[k].ToString()) + int.Parse(th_hc[k].ToString());
             }
-            dt.Rows.Add(th_tong, th_ql, th_tpt, th_gv, th_hc);
+            dt.Rows.Add(th_tong); dt.Rows.Add(th_ql); dt.Rows.Add(th_tpt); dt.Rows.Add(th_gv); dt.Rows.Add(th_hc);
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             var trh_ql = dt.NewRow(); var trh_tpt = dt.NewRow(); var trh_gv = dt.NewRow(); var trh_hc = dt.NewRow(); var trh_tong = dt.NewRow();//Trung học
-            CreateRow(trh_ql, 3, null, "Quản lý", ChucVu.CBQL);
-            CreateRow(trh_tpt, 3, null, "Quản lý", ChucVu.TPTDoi);
-            CreateRow(trh_gv, 3, null, "Giáo viên", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH);
-            CreateRow(trh_hc, 3, null, "Hành chính", ChucVu.HanhChinh);
+            CreateRow(trh_ql, 3, "Quản lý", ChucVu.CBQL);
+            CreateRow(trh_tpt, 3, "Tổng phụ trách", ChucVu.TPTDoi);
+            CreateRow(trh_gv, 3, "Giáo viên", ChucVu.GVBC, ChucVu.GVHDCBH, ChucVu.GVHDKBH);
+            CreateRow(trh_hc, 3, "Hành chính", ChucVu.HanhChinh);
 
             trh_tong[0] = ++i + "";
             trh_tong[1] = "Khối THCS";
@@ -842,7 +842,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             {
                 trh_tong[k] = int.Parse(trh_ql[k].ToString()) + int.Parse(trh_tpt[k].ToString()) + int.Parse(trh_gv[k].ToString()) + int.Parse(trh_hc[k].ToString());
             }
-            dt.Rows.Add(trh_tong, trh_ql, trh_tpt, trh_gv, trh_hc);
+            dt.Rows.Add(trh_tong); dt.Rows.Add(trh_ql); dt.Rows.Add(trh_tpt); dt.Rows.Add(trh_gv); dt.Rows.Add(trh_hc);
 
             //////////////////////
             foreach (DataRow item in dt.Rows)
@@ -956,7 +956,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             td.c6 = td.TS - td.c5 - td.c4 - td.c3 - td.c2;//còn lại nghạch công chức
             td.c13 = td.TS - td.c12 - td.c11 - td.c10 - td.c9 - td.c8 - td.c7;//Còn lại chuyên môn
         }
-        public void CreateRow(DataRow dr, object nhomtruongid, params string[] chucVuCode)
+        public void CreateRow(DataRow dr, object nhomtruongid, string title, params string[] chucVuCode)
         {
             string chucvu = " ";
             for (int i = 0; i < chucVuCode.Length; i++)
@@ -969,17 +969,20 @@ inner join truonginfo tinfo on cb.truongid=tinfo.id where ({0}) and tinfo.nhomtr
             DataTable dt = SQLiteUtils.GetTable(query);
             var td = new TrinhDoTH();
             CountTH(dt, td);
+            dr["Title"] = title;
             dr["TS"] = td.TS;
             dr["c2"] = td.c2;
             dr["c3"] = td.c3;
             dr["c4"] = td.c4;
             dr["c5"] = td.c5;
+            dr["c6"] = td.c6;
             dr["c7"] = td.c7;
             dr["c8"] = td.c8;
             dr["c9"] = td.c9;
             dr["c10"] = td.c10;
             dr["c11"] = td.c11;
             dr["c12"] = td.c12;
+            dr["c13"] = td.c13;
             dr["c14"] = td.c14;
             dr["c15"] = td.c15;
             dr["c16"] = td.c16;
@@ -992,6 +995,7 @@ inner join truonginfo tinfo on cb.truongid=tinfo.id where ({0}) and tinfo.nhomtr
             dr["c23"] = td.c23;
             dr["c24"] = td.c24;
             dr["c25"] = td.c25;
+            dr["c26"] = td.c26;
             dr["c27"] = td.c27;
             dr["c28"] = td.c28;
             dr["c29"] = td.c29;
