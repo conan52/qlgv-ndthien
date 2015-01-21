@@ -418,6 +418,10 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             DataTable dt = new DataSet1().TDMamNon;
             var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 1);
             int i = 0;
+            var drt1 = dt.NewRow(); drt1["Title"] = "Tổng";
+            var drt2 = dt.NewRow(); drt2["Title"] = "CBQL";
+            var drt3 = dt.NewRow(); drt3["Title"] = "Giáo viên";
+            var drt4 = dt.NewRow(); drt4["Title"] = "Hành chính";
             foreach (DataRow item in dttruong.Rows)
             {
                 var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
@@ -537,7 +541,16 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                     if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
                 }
                 dt.Rows.Add(drts); dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc);
+
+                for (int k = 2; k < dt.Columns.Count; k++)
+                {
+                    drt1[k] = int.Parse("0" + drt1[k].ToString()) + int.Parse("0" + drts[k].ToString());
+                    drt2[k] = int.Parse("0" + drt2[k].ToString()) + int.Parse("0" + drql[k].ToString());
+                    drt3[k] = int.Parse("0" + drt3[k].ToString()) + int.Parse("0" + drgv[k].ToString());
+                    drt4[k] = int.Parse("0" + drt4[k].ToString()) + int.Parse("0" + drhc[k].ToString());
+                }
             }
+            dt.Rows.Add(drt1); dt.Rows.Add(drt2); dt.Rows.Add(drt3); dt.Rows.Add(drt4);
             para = new List<ReportParameter>();
             return dt;
         }
@@ -546,6 +559,10 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             DataTable dt = new DataSet1().TDMamNon;
             var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 2);
             int i = 0;
+            var drt1 = dt.NewRow(); drt1["Title"] = "Tổng";
+            var drt2 = dt.NewRow(); drt2["Title"] = "CBQL";
+            var drt3 = dt.NewRow(); drt3["Title"] = "Giáo viên";
+            var drt4 = dt.NewRow(); drt4["Title"] = "Hành chính";
             foreach (DataRow item in dttruong.Rows)
             {
                 var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
@@ -665,7 +682,16 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                     if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
                 }
                 dt.Rows.Add(drts); dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc);
+
+                for (int k = 2; k < dt.Columns.Count; k++)
+                {
+                    drt1[k] = int.Parse("0" + drt1[k].ToString()) + int.Parse("0" + drts[k].ToString());
+                    drt2[k] = int.Parse("0" + drt2[k].ToString()) + int.Parse("0" + drql[k].ToString());
+                    drt3[k] = int.Parse("0" + drt3[k].ToString()) + int.Parse("0" + drgv[k].ToString());
+                    drt4[k] = int.Parse("0" + drt4[k].ToString()) + int.Parse("0" + drhc[k].ToString());
+                }
             }
+            dt.Rows.Add(drt1); dt.Rows.Add(drt2); dt.Rows.Add(drt3); dt.Rows.Add(drt4);
             para = new List<ReportParameter>();
             return dt;
         }
@@ -674,6 +700,10 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             DataTable dt = new DataSet1().TDMamNon;
             var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 3);
             int i = 0;
+            var drt1 = dt.NewRow(); drt1["Title"] = "Tổng";
+            var drt2 = dt.NewRow(); drt2["Title"] = "CBQL";
+            var drt3 = dt.NewRow(); drt3["Title"] = "Giáo viên";
+            var drt4 = dt.NewRow(); drt4["Title"] = "Hành chính";
             foreach (DataRow item in dttruong.Rows)
             {
                 var drql = dt.NewRow(); var drgv = dt.NewRow(); var drhc = dt.NewRow(); var drts = dt.NewRow();
@@ -793,7 +823,16 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                     if (int.Parse(drhc[k].ToString()) == 0) drhc[k] = null;
                 }
                 dt.Rows.Add(drts); dt.Rows.Add(drql); dt.Rows.Add(drgv); dt.Rows.Add(drhc);
+
+                for (int k = 2; k < dt.Columns.Count; k++)
+                {
+                    drt1[k] = int.Parse("0" + drt1[k].ToString()) + int.Parse("0" + drts[k].ToString());
+                    drt2[k] = int.Parse("0" + drt2[k].ToString()) + int.Parse("0" + drql[k].ToString());
+                    drt3[k] = int.Parse("0" + drt3[k].ToString()) + int.Parse("0" + drgv[k].ToString());
+                    drt4[k] = int.Parse("0" + drt4[k].ToString()) + int.Parse("0" + drhc[k].ToString());
+                }
             }
+            dt.Rows.Add(drt1); dt.Rows.Add(drt2); dt.Rows.Add(drt3); dt.Rows.Add(drt4);
             para = new List<ReportParameter>();
             return dt;
         }
