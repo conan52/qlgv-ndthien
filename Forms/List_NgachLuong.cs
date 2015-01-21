@@ -65,7 +65,7 @@ namespace QLGV.Forms
 
         private void btNew_Click(object sender, EventArgs e)
         {
-            var add = new Add_TrinhDoChuyenMon();
+            var add = new Add_NgachLuong();
             add.Text = "Thêm nghạch lương";
             add.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
             add.ShowDialog();
@@ -93,7 +93,7 @@ namespace QLGV.Forms
                     return;
                 }
 
-                var addDM_DonViTienTe = new Add_TrinhDoChuyenMon();
+                var addDM_DonViTienTe = new Add_NgachLuong();
                 addDM_DonViTienTe.ID = id;
                 addDM_DonViTienTe.Text = "Sửa nghạch lương";
                 addDM_DonViTienTe.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
