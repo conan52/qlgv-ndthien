@@ -19,7 +19,7 @@ namespace QLGV.Forms
             InitializeComponent();
         }
 
-        private void Add_HT_NgoaiNgu_Form_Load(object sender, EventArgs e)
+        private void Add_HT_CanBo_Form_Load(object sender, EventArgs e)
         {
             try
             {
@@ -27,6 +27,7 @@ namespace QLGV.Forms
                 {
                     var dt = SQLiteUtils.GetTable("select * from NgoaiNgu where ID = @id", "@id", ID);
                     txtTitle.Text = (string)dt.Rows[0]["Title"];
+                    txtCode.Text = (string)dt.Rows[0]["Code"];
                 }
             }
             catch (Exception ex)
@@ -39,7 +40,7 @@ namespace QLGV.Forms
         {
             if (string.IsNullOrEmpty(txtTitle.Text.Trim()))
             {
-                GUIController.ShowMessageBox("Bạn phải nhập tên ngoại ngữ");
+                GUIController.ShowMessageBox("Bạn phải nhập tên trình độ ngoại ngữ");
                 txtTitle.Focus();
                 return;
             }
@@ -47,16 +48,16 @@ namespace QLGV.Forms
             //Trường hợp sửa cán bộ
             if (ID != 0)
             {
-                SQLiteUtils.ExcuteNonQuery("update NgoaiNgu set Title = @title where ID=@id", "@title", txtTitle.Text, "@id", ID);
+                SQLiteUtils.ExcuteNonQuery("update NgoaiNgu set Title = @title, Code=@code where ID=@id", "@title", txtTitle.Text, "@id", ID, "@code", txtCode.Text);
 
-                GUIController.ShowMessageBox("Sửa ngoại ngữ thành công!");
+                GUIController.ShowMessageBox("Sửa trình độ ngoại ngữ thành công!");
             }
             //Trường hợp thêm cán bộ
             else
             {
-                SQLiteUtils.ExcuteNonQuery("insert into NgoaiNgu(title) values(@title)", "@title", txtTitle.Text);
+                SQLiteUtils.ExcuteNonQuery("insert into NgoaiNgu (title, Code) values(@title, @code)", "@title", txtTitle.Text, "@code", txtCode.Text);
 
-                GUIController.ShowMessageBox("Thêm ngoại ngữ thành công!");
+                GUIController.ShowMessageBox("Thêm trình độ ngoại ngữ thành công!");
             }
 
             if (UpdateChanged != null)

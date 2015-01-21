@@ -29,23 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_NgoaiNgu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_ChucVu));
             this.label2 = new System.Windows.Forms.Label();
             this.btClose = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btSave = new System.Windows.Forms.Button();
             this.txtTitle = new QLGV.UserControls.NDThienTextBox(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCode = new QLGV.UserControls.NDThienTextBox(this.components);
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 12);
+            this.label2.Location = new System.Drawing.Point(15, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 16);
+            this.label2.Size = new System.Drawing.Size(85, 16);
             this.label2.TabIndex = 65;
-            this.label2.Text = "Tên ngoại ngữ";
+            this.label2.Text = "Tên chức vụ*";
             // 
             // btClose
             // 
@@ -94,28 +96,50 @@
             this.txtTitle.BackColor = System.Drawing.Color.White;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.ForeColor = System.Drawing.Color.Black;
-            this.txtTitle.Location = new System.Drawing.Point(112, 12);
+            this.txtTitle.Location = new System.Drawing.Point(112, 44);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(245, 20);
             this.txtTitle.TabIndex = 0;
             // 
-            // Add_NgoaiNgu
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 16);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "Mã chức vụ*";
+            // 
+            // txtCode
+            // 
+            this.txtCode.BackColor = System.Drawing.Color.White;
+            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCode.ForeColor = System.Drawing.Color.Black;
+            this.txtCode.Location = new System.Drawing.Point(112, 18);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(245, 20);
+            this.txtCode.TabIndex = 66;
+            // 
+            // Add_ChucVu
             // 
             this.AcceptButton = this.btSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btClose;
             this.ClientSize = new System.Drawing.Size(369, 108);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtCode);
             this.Controls.Add(this.btClose);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTitle);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Add_NgoaiNgu";
+            this.Name = "Add_ChucVu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Ngoại ngữ";
-            this.Load += new System.EventHandler(this.Add_HT_NgoaiNgu_Form_Load);
+            this.Text = "Chức vụ";
+            this.Load += new System.EventHandler(this.Add_HT_CanBo_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +152,7 @@
         private System.Windows.Forms.Button btClose;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label label1;
+        private UserControls.NDThienTextBox txtCode;
     }
 }

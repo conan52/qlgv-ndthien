@@ -62,7 +62,6 @@ namespace QLGV.Forms
             PopulateViewItems();
         }
 
-
         private void btNew_Click(object sender, EventArgs e)
         {
             var add = new Add_ChucDanhKH();

@@ -35,17 +35,19 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btSave = new System.Windows.Forms.Button();
             this.txtTitle = new QLGV.UserControls.NDThienTextBox(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCode = new QLGV.UserControls.NDThienTextBox(this.components);
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 12);
+            this.label2.Location = new System.Drawing.Point(15, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 16);
+            this.label2.Size = new System.Drawing.Size(124, 16);
             this.label2.TabIndex = 65;
-            this.label2.Text = "Tên tin học";
+            this.label2.Text = "Tên trình độ tin học*";
             // 
             // btClose
             // 
@@ -94,10 +96,30 @@
             this.txtTitle.BackColor = System.Drawing.Color.White;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.ForeColor = System.Drawing.Color.Black;
-            this.txtTitle.Location = new System.Drawing.Point(112, 12);
+            this.txtTitle.Location = new System.Drawing.Point(140, 44);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(245, 20);
+            this.txtTitle.Size = new System.Drawing.Size(217, 20);
             this.txtTitle.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 16);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "Mã trình độ tin học*";
+            // 
+            // txtCode
+            // 
+            this.txtCode.BackColor = System.Drawing.Color.White;
+            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCode.ForeColor = System.Drawing.Color.Black;
+            this.txtCode.Location = new System.Drawing.Point(140, 18);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(217, 20);
+            this.txtCode.TabIndex = 66;
             // 
             // Add_TinHoc
             // 
@@ -106,6 +128,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btClose;
             this.ClientSize = new System.Drawing.Size(369, 108);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtCode);
             this.Controls.Add(this.btClose);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.label2);
@@ -114,8 +138,8 @@
             this.MinimizeBox = false;
             this.Name = "Add_TinHoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Tin học";
-            this.Load += new System.EventHandler(this.Add_HT_TinHoc_Form_Load);
+            this.Text = "Trình độ tin học";
+            this.Load += new System.EventHandler(this.Add_HT_CanBo_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +152,7 @@
         private System.Windows.Forms.Button btClose;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label label1;
+        private UserControls.NDThienTextBox txtCode;
     }
 }
