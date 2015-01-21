@@ -27,6 +27,7 @@ namespace QLGV
         public const string DH = "DH";
         public const string CD = "CD";
         public const string TC = "TC";
+        public const string SC = "SC";
         public const string CL = "CL";
     }
     public class LLCT
