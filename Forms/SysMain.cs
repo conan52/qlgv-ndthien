@@ -219,67 +219,67 @@ namespace QLGV.Forms
         //Tong hop
         private void tổngHợpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ShowReport("ThongKeSoLuong").Show();
+            var frm = new ShowReport("ThongKeSoLuong");
+
+            frm.Show();
         }
 
         private void c0ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ShowReport("C0").Show();
+            var frm = new ShowReport("C0");
+
+            frm.Show();
         }
 
         private void c1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ShowReport("C1").Show();
+            var frm = new ShowReport("C1");
+
+            frm.Show();
         }
 
         private void c2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ShowReport("C2").Show();
+            var frm = new ShowReport("C2");
+
+            frm.Show();
         }
 
-        private void thừaThiếuToolStripMenuItem_Click(object sender, EventArgs e)
+        private void thuaThieuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ShowReport("ThuaThieu").Show();
+            var frm = new ShowReport("ThuaThieu");
+
+            frm.Show();
         }
         #endregion
-        private void bcDacDiem_Click(object sender, EventArgs e)
-        {
-            new ShowReport("DacDiem").Show();
-        }
-
-        //Số lượng sheet M1
-        private void thốngKêSốLượngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new ShowReport().Show();
-        }
-        //Số lượng sheet M2
-        private void bcSLM2_Click(object sender, EventArgs e)
-        {
-            new ShowReport().Show();
-        }
 
         private void MamNonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ShowReport("TDMamNon").Show();
+            var frm = new ShowReport("TDMamNon");
+
+            frm.Show();
         }
 
         private void TieuHocToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ShowReport("TDTieuHoc").Show();
+            var frm = new ShowReport("TDTieuHoc");
+
+            frm.Show();
         }
 
         private void THCSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ShowReport("TDTHCS").Show();
+            var frm = new ShowReport("TDTHCS");
+
+            frm.Show();
         }
 
         private void TongHoppToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new ShowReport("TDTH").Show();
-        }
+            var frm = new ShowReport("TDTH");
 
-        
-        
+            frm.Show();
+        }
     }
 }
 

@@ -407,8 +407,26 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
         }
         DataTable ThuaThieu(out List<ReportParameter> para)
         {
-            var dt = new DataSet1().DacDiem;
-
+            var dttruong = SQLiteUtils.GetTable("select * from truonginfo where nhomtruongid=@nhom", "@nhom", 3);
+            var dt = new DataSet1().ThuaThieu;
+            int i = 0;
+            foreach (DataRow item in dttruong.Rows)
+            {
+                var dr = dt.NewRow();
+                CreateRowThuaThieu(dr, item[tf.ID], ++i, item[tf.Title].ToString(), GetLaMa(int.Parse("0" + item[tf.HangTruong])));
+                dt.Rows.Add(dr);
+            }
+            var drt = dt.NewRow();
+            foreach (DataRow item in dt.Rows)
+            {
+                for (int k = 3; k < dt.Columns.Count; k++)
+                {
+                    drt[k] = int.Parse("0" + drt[k]) + int.Parse("0" + item[k]);
+                    if (int.Parse("0" + item[k]) == 0) item[k] = null;
+                }
+            }
+            drt["Title"] = "Tổng số";
+            dt.Rows.Add(drt);
             para = new List<ReportParameter>();
             return dt;
         }
@@ -1038,6 +1056,66 @@ inner join truonginfo tinfo on cb.truongid=tinfo.id where ({0}) and tinfo.nhomtr
             dr["c27"] = td.c27;
             dr["c28"] = td.c28;
             dr["c29"] = td.c29;
+        }
+        public DataRow CreateRowThuaThieu(DataRow dr, object truongid, int stt, string title, string hangtruong)
+        {
+            string query = string.Format(@"select * from canbo where truongid={0}", truongid);
+            DataTable dt = SQLiteUtils.GetTable(query);
+            var td = new CountThuaThieu();
+            foreach (DataRow item in dt.Rows)
+            {
+                td.CBQL += item[cbf.ChucVu] == null ? 0 : (string)item[cbf.ChucVu] == ChucVu.CBQL ? 1 : 0;
+                td.HanhChinh += item[cbf.ChucVu] == null ? 0 : (string)item[cbf.ChucVu] == ChucVu.HanhChinh ? 1 : 0;
+                td.TPTDoi += item[cbf.ChucVu] == null ? 0 : (string)item[cbf.ChucVu] == ChucVu.TPTDoi ? 1 : 0;
+
+                td.Van += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.Van ? 1 : 0;
+                td.Su += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.Su ? 1 : 0;
+                td.Dia += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.Dia ? 1 : 0;
+                td.GDCD += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.GDCD ? 1 : 0;
+                td.TD += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.TD ? 1 : 0;
+                td.NN += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.NN ? 1 : 0;
+                td.Toan += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.Toan ? 1 : 0;
+                td.Ly += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.Ly ? 1 : 0;
+                td.Hoa += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.Hoa ? 1 : 0;
+                td.Sinh += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.Sinh ? 1 : 0;
+                td.KTCN += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.KTCN ? 1 : 0;
+                td.KTNN += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.KTNN ? 1 : 0;
+                td.Tin += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.Tin ? 1 : 0;
+                td.AmNhac += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.AmNhac ? 1 : 0;
+                td.MyThuat += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.MyThuat ? 1 : 0;
+                td.CNTT += item[cbf.MonDay] == null ? 0 : (string)item[cbf.MonDay] == MonDay.CNTT ? 1 : 0;
+            }
+            td.TongSo = td.CBQL + td.HanhChinh + td.TPTDoi;
+            td.TSGV = td.Van + td.Su + td.Dia + td.GDCD + td.TD + td.NN + td.Toan + td.Ly + td.Hoa + td.Sinh + td.KTCN + td.KTNN + td.AmNhac + td.MyThuat + td.CNTT;
+            #region Set datarow
+            dr["STT"] = stt;
+            dr["Title"] = title;
+            dr["HangTruong"] = hangtruong;
+            dr["TSL"] = td.TSL;
+            dr["TongSo"] = td.TongSo;
+            dr["CBQL"] = td.CBQL;
+            dr["HanhChinh"] = td.HanhChinh;
+            dr["TPTDoi"] = td.TPTDoi;
+            dr["TSGV"] = td.TSGV;
+            dr["Van"] = td.Van;
+            dr["Su"] = td.Su;
+            dr["Dia"] = td.Dia;
+            dr["GDCD"] = td.GDCD;
+            dr["TD"] = td.TD;
+            dr["NN"] = td.NN;
+            dr["Toan"] = td.Toan;
+            dr["Ly"] = td.Ly;
+            dr["Hoa"] = td.Hoa;
+            dr["Sinh"] = td.Sinh;
+            dr["KTCN"] = td.KTCN;
+            dr["KTNN"] = td.KTNN;
+            dr["Tin"] = td.Tin;
+            dr["AmNhac"] = td.AmNhac;
+            dr["MyThuat"] = td.MyThuat;
+            dr["CNTT"] = td.CNTT;
+
+            return dr;
+            #endregion
         }
     }
 }
