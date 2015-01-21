@@ -110,6 +110,24 @@
     <Compile Include="Forms\Add_QLNN.designer.cs">
       <DependentUpon>Add_QLNN.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Add_NgoaiNgu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_NgoaiNgu.designer.cs">
+      <DependentUpon>Add_NgoaiNgu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_TinHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_TinHoc.designer.cs">
+      <DependentUpon>Add_TinHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_LyLuanChinhTri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_LyLuanChinhTri.designer.cs">
+      <DependentUpon>Add_LyLuanChinhTri.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\List_QLNN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,24 +187,6 @@
     </Compile>
     <Compile Include="Forms\Add_CanBo.designer.cs">
       <DependentUpon>Add_CanBo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Add_LyLuanChinhTri.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Add_LyLuanChinhTri.designer.cs">
-      <DependentUpon>Add_LyLuanChinhTri.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Add_NgoaiNgu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Add_NgoaiNgu.designer.cs">
-      <DependentUpon>Add_NgoaiNgu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Add_TinHoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Add_TinHoc.designer.cs">
-      <DependentUpon>Add_TinHoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Add_TonGiao.cs">
       <SubType>Form</SubType>
@@ -308,15 +308,6 @@
     <EmbeddedResource Include="Forms\Add_CanBo.resx">
       <DependentUpon>Add_CanBo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Add_LyLuanChinhTri.resx">
-      <DependentUpon>Add_LyLuanChinhTri.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Add_NgoaiNgu.resx">
-      <DependentUpon>Add_NgoaiNgu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Add_TinHoc.resx">
-      <DependentUpon>Add_TinHoc.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Add_TonGiao.resx">
       <DependentUpon>Add_TonGiao.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,6 +331,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Add_QLNN.resx">
       <DependentUpon>Add_QLNN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_NgoaiNgu.resx">
+      <DependentUpon>Add_NgoaiNgu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_TinHoc.resx">
+      <DependentUpon>Add_TinHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_LyLuanChinhTri.resx">
+      <DependentUpon>Add_LyLuanChinhTri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\List_QLNN.resx">
       <DependentUpon>List_QLNN.cs</DependentUpon>
