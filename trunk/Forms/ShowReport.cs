@@ -956,7 +956,6 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 }
                 td.CV_TD += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CV_TĐ ? 1 : 0;
                 td.CS_TD += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CS_TĐ ? 1 : 0;
-                td.ConLai_TN += item[cbf.NgachLuong] == null ? 0 : ((string)item[cbf.NgachLuong] != NghachLuong.CS_TĐ) && ((string)item[cbf.NgachLuong] != NghachLuong.CV_TĐ) ? 1 : 0;
 
                 td.ThacSi += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.Ths ? 1 : 0;
                 td.DaiHoc += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.DH ? 1 : 0;
@@ -978,6 +977,71 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             td.TongSo = td.Nu54Nam59 + td.TuoiHuuNu55Nam60;
             td.ConLai_CM = td.TS - td.ThacSi - td.DaiHoc - td.CaoDang - td.TrungCap;
             td.ConLai_TN = td.TS - td.CV_TD - td.CS_TD;
+        }
+        public void CountTH(DataTable dt, TrinhDoTH td)
+        {
+            int now = 2013;
+            td.TS = dt.Rows.Count;
+            foreach (DataRow item in dt.Rows)
+            {
+                td.c2 += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CVCC_TĐ ? 1 : 0;
+                td.c3 += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CVC_TĐ ? 1 : 0;
+                td.c4 += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CV_TĐ ? 1 : 0;
+                td.c5 += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CS_TĐ ? 1 : 0;
+
+                td.c7 += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.TS_TSKH ? 1 : 0;
+                td.c8 += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.Ths ? 1 : 0;
+                td.c9 += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.DH ? 1 : 0;
+                td.c10 += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.CD ? 1 : 0;
+                td.c11 += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.TC ? 1 : 0;
+                td.c12 += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.SC ? 1 : 0;
+
+                td.c14 += item[cbf.ChinhTri] == null ? 0 : (string)item[cbf.ChinhTri] != LLCT.CC ? 1 : 0;
+                td.c15 += item[cbf.ChinhTri] == null ? 0 : (string)item[cbf.ChinhTri] != LLCT.TC ? 1 : 0;
+
+                td.c16 += item[cbf.TinHoc] == null ? 0 : (string)item[cbf.TinHoc] != TinHoc.TCTL ? 1 : 0;
+                td.c17 += item[cbf.TinHoc] == null ? 0 : (string)item[cbf.TinHoc] != TinHoc.CC ? 1 : 0;
+
+                //td.12 += item[cbf.GioiTinh] == null ? 0 : (bool)item[cbf.GioiTinh] == false ? 1 : 0;
+                //td.DangVien += item[cbf.DoanVien] == null ? 0 : int.Parse(item[cbf.DoanVien].ToString()) == 2 ? 1 : 0;
+                //td.DanTocThieuSo += item[cbf.DanToc] == null ? 0 : int.Parse(item[cbf.DanToc].ToString()) > 1 ? 1 : 0;
+
+                //int tuoi = now - ((DateTime)item[cbf.NgaySinh]).Year;
+                //td.Duoi30 += tuoi < 30 ? 1 : 0;
+                //td.Tu30Den50 += (now - tuoi >= 30) && (now - tuoi <= 50) ? 1 : 0;
+                //if ((bool)item[cbf.GioiTinh] && tuoi > 50)
+                //{
+                //    td.Nu54Nam59 += tuoi < 60 ? 1 : 0;
+                //    td.TuoiHuuNu55Nam60 += tuoi >= 60 ? 1 : 0;
+                //}
+                //if (!(bool)item[cbf.GioiTinh] && tuoi > 50)
+                //{
+                //    td.Nu54Nam59 += tuoi < 54 ? 1 : 0;
+                //    td.TuoiHuuNu55Nam60 += tuoi >= 55 ? 1 : 0;
+                //}
+                //td.CV_TD += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CV_TĐ ? 1 : 0;
+                //td.CS_TD += item[cbf.NgachLuong] == null ? 0 : (string)item[cbf.NgachLuong] == NghachLuong.CS_TĐ ? 1 : 0;
+
+                //td.ThacSi += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.Ths ? 1 : 0;
+                //td.DaiHoc += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.DH ? 1 : 0;
+                //td.CaoDang += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.CD ? 1 : 0;
+                //td.TrungCap += item[cbf.ChuyenMon] == null ? 0 : (string)item[cbf.ChuyenMon] == ChuyenMon.TC ? 1 : 0;
+
+                //td.LLCuNhanCC += item[cbf.ChinhTri] == null ? 0 : ((string)item[cbf.ChinhTri] != LLCT.CC) || ((string)item[cbf.ChinhTri] != LLCT.CN) ? 1 : 0;
+                //td.LLTrungCap += item[cbf.ChinhTri] == null ? 0 : (string)item[cbf.ChinhTri] != LLCT.TC ? 1 : 0;
+                //td.LLSoCap += item[cbf.ChinhTri] == null ? 0 : (string)item[cbf.ChinhTri] != LLCT.SC ? 1 : 0;
+
+                //td.THTrungCap += item[cbf.TinHoc] == null ? 0 : (string)item[cbf.TinHoc] != TinHoc.TCTL ? 1 : 0;
+                //td.THChungChi += item[cbf.TinHoc] == null ? 0 : (string)item[cbf.TinHoc] != TinHoc.CC ? 1 : 0;
+
+                //td.NNTrungCap += item[cbf.NgoaiNgu] == null ? 0 : (string)item[cbf.NgoaiNgu] != NgoaiNgu.TCTL ? 1 : 0;
+                //td.NNChungChi += item[cbf.NgoaiNgu] == null ? 0 : (string)item[cbf.NgoaiNgu] != NgoaiNgu.CC ? 1 : 0;
+
+                //td.ChungChiDT += item[cbf.CoTiengDanToc] == null ? 0 : (bool)item[cbf.CoTiengDanToc] == true ? 1 : 0;
+            }
+            //td.TongSo = td.Nu54Nam59 + td.TuoiHuuNu55Nam60;
+            //td.ConLai_CM = td.TS - td.ThacSi - td.DaiHoc - td.CaoDang - td.TrungCap;
+            //td.ConLai_TN = td.TS - td.CV_TD - td.CS_TD;
         }
 
     }

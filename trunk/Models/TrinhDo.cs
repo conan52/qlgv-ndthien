@@ -36,4 +36,36 @@ namespace QLGV
         public int NNChungChi;
         public int ChungChiDT;
     }
+    public class TrinhDoTH
+    {
+        public int TS;
+        public int c2;
+        public int c3;
+        public int c4;
+        public int c5;
+        public int c6;
+        public int c7;
+        public int c8;
+        public int c9;
+        public int c10;
+        public int c11;
+        public int c12;
+        public int c13;
+        public int c14;
+        public int c15;
+        public int c16;
+        public int c17;
+        public int c18;
+        public int c19;
+        public int c20;
+        public int c21;
+        public int c22;
+        public int c23;
+        public int c24;
+        public int c25;
+        public int c26;
+        public int c27;
+        public int c28;
+        public int c29;
+    }
 }
