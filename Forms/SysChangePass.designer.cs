@@ -156,7 +156,7 @@
             this.MinimizeBox = false;
             this.Name = "SysChangePass";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Tin học";
+            this.Text = "Đổi mật khẩu";
             this.Load += new System.EventHandler(this.Add_HT_TinHoc_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -921,7 +921,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
 
         public void Count(DataTable dt, TrinhDo td)
         {
-            int now = 2013;
+            int now = SysConfig.CurrentYear;
             td.TS = dt.Rows.Count;
             foreach (DataRow item in dt.Rows)
             {
@@ -968,7 +968,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
         }
         public void CountTH(DataTable dt, TrinhDoTH td)
         {
-            int now = 2013;
+            int now = SysConfig.CurrentYear;
             td.TS = dt.Rows.Count;
             foreach (DataRow item in dt.Rows)
             {

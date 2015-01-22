@@ -49,6 +49,7 @@
             this.c0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.c1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.c2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thuaThieuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêTrìnhĐộToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MamNonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TieuHocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,6 @@
             this.cấuHìnhHệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.thuaThieuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -251,6 +251,13 @@
             this.c2ToolStripMenuItem.Text = "C2";
             this.c2ToolStripMenuItem.Click += new System.EventHandler(this.c2ToolStripMenuItem_Click);
             // 
+            // thuaThieuToolStripMenuItem
+            // 
+            this.thuaThieuToolStripMenuItem.Name = "thuaThieuToolStripMenuItem";
+            this.thuaThieuToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.thuaThieuToolStripMenuItem.Text = "Cơ cấu thừa - thiếu";
+            this.thuaThieuToolStripMenuItem.Click += new System.EventHandler(this.thuaThieuToolStripMenuItem_Click);
+            // 
             // thốngKêTrìnhĐộToolStripMenuItem1
             // 
             this.thốngKêTrìnhĐộToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -311,14 +318,17 @@
             // 
             this.đổiMậtKhẩuToolStripMenuItem.Name = "đổiMậtKhẩuToolStripMenuItem";
             this.đổiMậtKhẩuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đổiMậtKhẩuToolStripMenuItem.Tag = "SysChangePass";
             this.đổiMậtKhẩuToolStripMenuItem.Text = "Đổi mật khẩu";
+            this.đổiMậtKhẩuToolStripMenuItem.Click += new System.EventHandler(this.menuFunction_Click);
             // 
             // cấuHìnhHệThốngToolStripMenuItem
             // 
             this.cấuHìnhHệThốngToolStripMenuItem.Name = "cấuHìnhHệThốngToolStripMenuItem";
             this.cấuHìnhHệThốngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cấuHìnhHệThốngToolStripMenuItem.Tag = "SysConfig";
             this.cấuHìnhHệThốngToolStripMenuItem.Text = "Cấu hình hệ thống";
-            this.cấuHìnhHệThốngToolStripMenuItem.Click += new System.EventHandler(this.cấuHìnhHệThốngToolStripMenuItem_Click);
+            this.cấuHìnhHệThốngToolStripMenuItem.Click += new System.EventHandler(this.menuFunction_Click);
             // 
             // statusStrip
             // 
@@ -333,15 +343,8 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(38, 17);
             this.toolStripStatusLabel.Text = "Status";
-            // 
-            // thuaThieuToolStripMenuItem
-            // 
-            this.thuaThieuToolStripMenuItem.Name = "thuaThieuToolStripMenuItem";
-            this.thuaThieuToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.thuaThieuToolStripMenuItem.Text = "Cơ cấu thừa - thiếu";
-            this.thuaThieuToolStripMenuItem.Click += new System.EventHandler(this.thuaThieuToolStripMenuItem_Click);
             // 
             // SysMain
             // 
