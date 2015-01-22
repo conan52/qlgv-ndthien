@@ -427,6 +427,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="bin\Debug\QLGV.db" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
@@ -529,6 +530,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\System.Data.SQLite.DLL" />
     <Content Include="DLL\System.Data.SQLite.DLL" />
     <Content Include="Excel reports\Data.txt" />
   </ItemGroup>
