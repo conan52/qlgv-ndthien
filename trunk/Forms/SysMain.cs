@@ -22,10 +22,31 @@ namespace QLGV.Forms
             InitializeComponent();
         }
         Form lstChucDanhKH, lstMonDay, lstNgachLuong, lstQLNN, lstChucVu, lstTruongCB, lstDanToc, lstChuyenNghanh, lstTonGiao, lstNgoaiNgu, lstLyLuanChinhTri, lstTinHoc, lstTrinhDoChuyenMon;
+        Form config, chagepass;
         #region Methods
         public void ShowForm(string formName)
         {
             #region List forms
+            if (formName == typeof(SysChangePass).Name)
+            {
+                if (chagepass == null || chagepass.IsDisposed)
+                {
+                    chagepass = new SysChangePass();
+                }
+                chagepass.MdiParent = this;
+                chagepass.Show();
+                return;
+            }
+            if (formName == typeof(SysConfig).Name)
+            {
+                if (config == null || config.IsDisposed)
+                {
+                    config = new SysConfig();
+                }
+                config.MdiParent = this;
+                config.Show();
+                return;
+            }
             if (formName == typeof(List_NgachLuong).Name)
             {
                 if (lstNgachLuong == null || lstChucVu.IsDisposed)
@@ -180,7 +201,7 @@ namespace QLGV.Forms
         #region Form Events
         private void MainForm_Load(object sender, EventArgs e)
         {
-            new SysLogin().ShowDialog();
+            //new SysLogin().ShowDialog();
         }
 
         #endregion
@@ -188,19 +209,19 @@ namespace QLGV.Forms
         #region Menu click event
         private void menuFunction_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 ToolStripItem item = (ToolStripItem)sender;
                 if (item.Tag != null)
                 {
                     string formName = (string)item.Tag;
                     ShowForm(formName);
                 }
-            }
-            catch (Exception ex)
-            {
-                GUIController.ShowErrorBox(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    GUIController.ShowErrorBox(ex);
+            //}
         }
         private void menuLogin_Click(object sender, EventArgs e)
         {
@@ -208,12 +229,6 @@ namespace QLGV.Forms
         }
 
         #endregion
-
-        private void cấuHìnhHệThốngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new ShowReport().Show();
-        }
-
         //--------------------------------------- BÁO CÁO ---------------------------------------------
         #region báo cáo biên chế
         //Tong hop

@@ -12,7 +12,6 @@ namespace QLGV.Forms
 {
     public partial class SysChangePass : Form
     {
-        internal event EventHandler UpdateChanged;
         internal int ID = 0;
         public SysChangePass()
         {
@@ -32,13 +31,20 @@ namespace QLGV.Forms
                 txtpass.Focus();
                 return;
             }
-            //if (txtpass.Text!=SysLogin.CurrentUser.Pass)
-            //{
-            //    GUIController.ShowMessageBox("Bạn phải nhập đúng mật khẩu hiện tại");
-            //    txtpass.Focus();
-            //    return;
-            //}
-
+            if (txtpass.Text != SysLogin.CurrentUser.Pass)
+            {
+                GUIController.ShowMessageBox("Bạn phải nhập đúng mật khẩu hiện tại");
+                txtpass.Focus();
+                return;
+            }
+            if (txtnewpass.Text != txtnewpasscomfirm.Text)
+            {
+                GUIController.ShowMessageBox("Xác nhận mật khẩu mới khống chính xác");
+                txtpass.Focus();
+                return;
+            }
+            SQLiteUtils.ExcuteNonQuery("update user set password=@password where username = @username COLLATE NOCASE", "@password", txtnewpass.Text, "@username", SysLogin.CurrentUser.Username);
+            SysLogin.CurrentUser.Pass = txtnewpass.Text;
             GUIController.ShowMessageBox("Đổi mật khẩu thành công!");
             this.Close();
         }
