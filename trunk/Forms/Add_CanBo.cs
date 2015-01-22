@@ -73,8 +73,8 @@ namespace QLGV.Forms
                     cbChucVu.SelectedValue = item["ChucVu"];
                     cbNgachLuong.SelectedValue = item["NgachLuong"];
                     cbCdkh.SelectedValue = item["ChucDanhKH"];
-                    cbMonDay.SelectedValue = item["ChucVu"];
-                    cbQlnn.SelectedValue = item["ChucVu"];
+                    cbMonDay.SelectedValue = item["MonDay"];
+                    cbQlnn.SelectedValue = item["QLNN"];
                 }
             }
             catch (Exception ex)
