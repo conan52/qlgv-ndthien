@@ -21,6 +21,12 @@ namespace QLGV.Forms
         {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            new SysLogin().ShowDialog();
+        }
+
         Form lstChucDanhKH, lstMonDay, lstNgachLuong, lstQLNN, lstChucVu, lstTruongCB, lstDanToc, lstChuyenNghanh, lstTonGiao, lstNgoaiNgu, lstLyLuanChinhTri, lstTinHoc, lstTrinhDoChuyenMon;
         Form config, chagepass;
         #region Methods
@@ -198,14 +204,6 @@ namespace QLGV.Forms
         }
         #endregion
 
-        #region Form Events
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            //new SysLogin().ShowDialog();
-        }
-
-        #endregion
-
         #region Menu click event
         private void menuFunction_Click(object sender, EventArgs e)
         {
@@ -229,6 +227,9 @@ namespace QLGV.Forms
         }
 
         #endregion
+
+
+
         //--------------------------------------- BÁO CÁO ---------------------------------------------
         #region báo cáo biên chế
         //Tong hop

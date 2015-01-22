@@ -308,7 +308,7 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 dr1["MiThuat"] = MiThuat1; MiThuat += MiThuat1;
                 int NgoaiNgu1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and monday=@monday", "@truongid", item["ID"], "@monday", MonDay.NN));
                 dr1["NgoaiNgu"] = NgoaiNgu1; NgoaiNgu += NgoaiNgu1;
-                int TinHoc1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and monday=@monday", "@truongid", item["ID"], "@monday", MonDay.MyThuat));
+                int TinHoc1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and monday=@monday", "@truongid", item["ID"], "@monday", MonDay.Tin));
                 dr1["TinHoc"] = TinHoc1; TinHoc += TinHoc1;
                 int TheDuc1 = int.Parse("0" + SQLiteUtils.ExcuteScalar("select count(1) from canbo where truongid=@truongid and monday=@monday", "@truongid", item["ID"], "@monday", MonDay.TD));
                 dr1["TheDuc"] = TheDuc1; TheDuc += TheDuc1;
