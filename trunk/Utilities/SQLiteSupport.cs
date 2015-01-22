@@ -15,7 +15,8 @@ namespace QLGV
         {
             get
             {
-                string datasource = Application.StartupPath.Replace("bin\\Debug", "DLL\\QLGV.db");
+                //string datasource = Application.StartupPath.Replace("bin\\Debug", "DLL\\QLGV.db");
+                string datasource = Application.StartupPath + "\\QLGV.db";
                 return @"Data Source=" + datasource + ";Version=3;UseUTF8Encoding=True";
             }
         }
