@@ -409,12 +409,10 @@
     <EmbeddedResource Include="Reports\C0.rdlc" />
     <EmbeddedResource Include="Reports\C1.rdlc" />
     <EmbeddedResource Include="Reports\C2.rdlc" />
-    <EmbeddedResource Include="Reports\DacDiem.rdlc" />
     <EmbeddedResource Include="Reports\SoLuong.rdlc" />
     <EmbeddedResource Include="Reports\TDMamNon.rdlc" />
     <EmbeddedResource Include="Reports\TDTH.rdlc" />
     <EmbeddedResource Include="Reports\ThongKeSoLuong.rdlc" />
-    <EmbeddedResource Include="Reports\ThongKeTrinhDo.rdlc" />
     <EmbeddedResource Include="Reports\ThuaThieu.rdlc" />
     <None Include="app.config">
       <SubType>Designer</SubType>
