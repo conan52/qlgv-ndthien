@@ -48,8 +48,10 @@ namespace QLGV.Forms
                     txtMaNgach.Text = (string)dt.Rows[0]["MaNgach"];
                     txtBacLuong.Text = (string)dt.Rows[0]["BacLuong"];
                     cbGioiTinh.SelectedValue = item["GioiTinh"];
-                    rdDoanVien.Checked = int.Parse("0" + item["DoanVien"]) == 1;
-                    rdDangVien.Checked = !rdDoanVien.Checked;
+                    rdDoanVien.Checked = int.Parse("0" + item["DoanVien"]) == 2;//dang vien =2, orther = 1
+                    dtNgayVaoDoan.Visible = rdDoanVien.Checked;
+                    laNgayvaodang.Visible = rdDoanVien.Checked;
+
                     chkTiengDanToc.Checked = (bool)item["CoTiengDanToc"];
                     nudPhuCap.Value = decimal.Parse("0" + item["PhanTramPhuCap"]);
 
@@ -85,7 +87,7 @@ namespace QLGV.Forms
         {
             if (string.IsNullOrEmpty(txtHoTen.Text.Trim()))
             {
-                GUIController.ShowMessageBox("Bạn phải nhập tên chức vụ");
+                GUIController.ShowMessageBox("Bạn phải nhập tên cán bộ");
                 txtHoTen.Focus();
                 return;
             }
@@ -100,7 +102,7 @@ HuongLuongTuNgay=@huongluongtungay,PhanTramPhuCap=@phantramphucap,HuongPhuCapTuN
 monday=@monday where id=@id",
                     "@hoten", txtHoTen.Text, "@ngaysinh", Common.GetDateStringForQuery(dtNgaySinh.Value),
                     "@gioiTinh", cbGioiTinh.SelectedValue, "@dantoc", cbDanToc.SelectedValue
-                    , "@tongiao", cbTonGiao.SelectedValue, "@doanvien", rdDoanVien.Checked ? 1 : 2, "@ngayvaodoan", Common.GetDateStringForQuery(dtNgayVaoDoan.Value)
+                    , "@tongiao", cbTonGiao.SelectedValue, "@doanvien", rdDoanVien.Checked ? 2 : 1, "@ngayvaodoan", Common.GetDateStringForQuery(dtNgayVaoDoan.Value)
                     , "@chuyenmon", cbChuyenMon.SelectedValue, "@chuyennghanh", cbChuyenNghanh.SelectedValue
                     , "@chinhtri", cbChinhTri.SelectedValue, "@ngoaingu", cbNgoaiNgu.SelectedValue
                     , "@tinhoc", cbTinHoc.SelectedValue, "@cotiengdantoc", chkTiengDanToc.Checked ? "1" : "0", "@ngayvaonghanh", Common.GetDateStringForQuery(dtNgayVaoNghanh.Value)
@@ -113,7 +115,7 @@ monday=@monday where id=@id",
                     , "@monday", cbMonDay.SelectedValue
                     , "@id", ID);
 
-                GUIController.ShowMessageBox("Sửa chức vụ thành công!");
+                GUIController.ShowMessageBox("Sửa cán bộ thành công!");
             }
             //Trường hợp thêm cán bộ
             else
@@ -125,7 +127,7 @@ ngayvaonghanh,ngaychuyenden,ngaybonhiem,chucvu,ngachluong,mangach,bacluong,huong
                 @chucdanhkh,@qlnn,@monday)",
                     "@hoten", txtHoTen.Text, "@truongid", TruongID, "@ngaysinh", Common.GetDateStringForQuery(dtNgaySinh.Value),
                     "@gioiTinh", cbGioiTinh.SelectedValue, "@dantoc", cbDanToc.SelectedValue
-                    , "@tongiao", cbTonGiao.SelectedValue, "@doanvien", rdDoanVien.Checked ? 1 : 2, "@ngayvaodoan", Common.GetDateStringForQuery(dtNgayVaoDoan.Value)
+                    , "@tongiao", cbTonGiao.SelectedValue, "@doanvien", rdDoanVien.Checked ? 2 : 1, "@ngayvaodoan", Common.GetDateStringForQuery(dtNgayVaoDoan.Value)
                     , "@chuyenmon", cbChuyenMon.SelectedValue, "@chuyennghanh", cbChuyenNghanh.SelectedValue
                     , "@chinhtri", cbChinhTri.SelectedValue, "@ngoaingu", cbNgoaiNgu.SelectedValue
                     , "@tinhoc", cbTinHoc.SelectedValue, "@cotiengdantoc", chkTiengDanToc.Checked ? "1" : "0", "@ngayvaonghanh", Common.GetDateStringForQuery(dtNgayVaoNghanh.Value)
@@ -173,6 +175,17 @@ ngayvaonghanh,ngaychuyenden,ngaybonhiem,chucvu,ngachluong,mangach,bacluong,huong
         private void btClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rdDoanVien_CheckedChanged(object sender, EventArgs e)
+        {
+            dtNgayVaoDoan.Visible = rdDoanVien.Checked;
+            laNgayvaodang.Visible = rdDoanVien.Checked;
+        }
+
+        private void cbNgachLuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtMaNgach.Text = (string)cbNgachLuong.SelectedValue;
         }
 
     }
