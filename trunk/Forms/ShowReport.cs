@@ -187,6 +187,15 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
                 #endregion
             }
             #endregion
+            foreach (DataRow item in dt.Rows)
+            {
+                for (int j = 3; j < dt.Columns.Count; j++)
+                {
+                    int x;
+                    int.TryParse("0" + item[j], out x);
+                    if(x==0) item[j] = null;
+                }
+            }
             #region para
             ts = comattong; ts1 = comatcbql + comatgv + comattpt; ts2 = comathc + comatcntt;
             var rparam = new List<ReportParameter>();
@@ -263,7 +272,13 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             dr["HanhChinh"] = HanhChinh; dr["TongSo"] = TongSo; dr["GVVH"] = GVVH; dr["GVK"] = GVK;
             dt.Rows.Add(dr);
             #endregion
-
+            foreach (DataRow item in dt.Rows)
+            {
+                for (int k = 3; k < dt.Columns.Count; k++)
+                {
+                    if (int.Parse("0" + item[k]) == 0) item[k] = null;
+                }
+            }
             para = new List<ReportParameter>();
             return dt;
         }
@@ -327,7 +342,13 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             dr["CBQL"] = CBQL; dr["HanhChinh"] = HanhChinh; dr["TPTDoi"] = TPTDoi; dr["TongSo1"] = TongSo1;
             dr["VanHoa"] = VanHoa; dr["AmNhac"] = AmNhac; dr["MiThuat"] = MiThuat; dr["NgoaiNgu"] = NgoaiNgu; dr["TinHoc"] = TinHoc; dr["TheDuc"] = TheDuc;
             dt.Rows.Add(dr);
-
+            foreach (DataRow item in dt.Rows)
+            {
+                for (int k = 3; k < dt.Columns.Count; k++)
+                {
+                    if (int.Parse("0" + item[k]) == 0) item[k] = null;
+                }
+            }
             para = new List<ReportParameter>();
             return dt;
         }
@@ -401,7 +422,13 @@ tttong1 = 0, ttcbql1 = 0, ttgv1 = 0, tthc1 = 0, ttcntt1 = 0, tsx = 0, ts11 = 0, 
             dr["Toan"] = Toan; dr["Ly"] = Ly; dr["Hoa"] = Hoa; dr["Sinh"] = Sinh; dr["TD"] = TD; dr["KTCN"] = KTCN;
             dr["KTNN"] = KTNN; dr["Tin"] = Tin; dr["AmNhac"] = AmNhac; dr["MyThuat"] = MiThuat; dr["CNTT"] = CNTT;
             dt.Rows.Add(dr);
-
+            foreach (DataRow item in dt.Rows)
+            {
+                for (int k = 3; k < dt.Columns.Count; k++)
+                {
+                    if (int.Parse("0" + item[k]) == 0) item[k] = null;
+                }
+            }
             para = new List<ReportParameter>();
             return dt;
         }
