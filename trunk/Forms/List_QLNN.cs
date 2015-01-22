@@ -107,40 +107,41 @@ namespace QLGV.Forms
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (viewItems.SelectedRows.Count == 0)
-                {
-                    GUIController.ShowMessageBox("Bạn phải chọn trình độ quản lý nhà nước cần xóa!");
-                    return;
-                }
+            this.Close();
+            //try
+            //{
+            //    if (viewItems.SelectedRows.Count == 0)
+            //    {
+            //        GUIController.ShowMessageBox("Bạn phải chọn trình độ quản lý nhà nước cần xóa!");
+            //        return;
+            //    }
 
-                int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
-                if (id == 0)
-                {
-                    GUIController.ShowMessageBox("Bạn phải chọn trình độ quản lý nhà nước cần xóa!");
-                    return;
-                }
+            //    int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
+            //    if (id == 0)
+            //    {
+            //        GUIController.ShowMessageBox("Bạn phải chọn trình độ quản lý nhà nước cần xóa!");
+            //        return;
+            //    }
 
-                if (GUIController.ShowConfirmBox("Bạn có muốn trình độ quản lý nhà nước không?"))
-                {
-                    int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from QLNN where id=@id","@id", id);
+            //    if (GUIController.ShowConfirmBox("Bạn có muốn trình độ quản lý nhà nước không?"))
+            //    {
+            //        int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from QLNN where id=@id","@id", id);
 
-                    if (isSuccess > 0)
-                    {
-                        GUIController.ShowMessageBox(string.Format("Xóa trình độ quản lý nhà nước thành công!"));
-                        PopulateViewItems();
-                    }
-                    else
-                    {
-                        GUIController.ShowMessageBox(string.Format("Xóa trình độ quản lý nhà nước thất bại!"));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                GUIController.ShowErrorBox(ex);
-            }
+            //        if (isSuccess > 0)
+            //        {
+            //            GUIController.ShowMessageBox(string.Format("Xóa trình độ quản lý nhà nước thành công!"));
+            //            PopulateViewItems();
+            //        }
+            //        else
+            //        {
+            //            GUIController.ShowMessageBox(string.Format("Xóa trình độ quản lý nhà nước thất bại!"));
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    GUIController.ShowErrorBox(ex);
+            //}
         }
 
         private void viewItems_MouseDoubleClick(object sender, MouseEventArgs e)

@@ -107,6 +107,7 @@ namespace QLGV.Forms
 
         private void btDelete_Click(object sender, EventArgs e)
         {
+            this.Close();
             try
             {
                 if (viewItems.SelectedRows.Count == 0)

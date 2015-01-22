@@ -107,40 +107,41 @@ namespace QLGV.Forms
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (viewItems.SelectedRows.Count == 0)
-                {
-                    GUIController.ShowMessageBox("Bạn phải chọn nghạch lương cần xóa!");
-                    return;
-                }
+            this.Close();
+            //try
+            //{
+            //    if (viewItems.SelectedRows.Count == 0)
+            //    {
+            //        GUIController.ShowMessageBox("Bạn phải chọn nghạch lương cần xóa!");
+            //        return;
+            //    }
 
-                int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
-                if (id == 0)
-                {
-                    GUIController.ShowMessageBox("Bạn phải chọn nghạch lương cần xóa!");
-                    return;
-                }
+            //    int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
+            //    if (id == 0)
+            //    {
+            //        GUIController.ShowMessageBox("Bạn phải chọn nghạch lương cần xóa!");
+            //        return;
+            //    }
 
-                if (GUIController.ShowConfirmBox("Bạn có muốn nghạch lương không?"))
-                {
-                    int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from NgachLuong where id=@id","@id", id);
+            //    if (GUIController.ShowConfirmBox("Bạn có muốn nghạch lương không?"))
+            //    {
+            //        int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from NgachLuong where id=@id","@id", id);
 
-                    if (isSuccess > 0)
-                    {
-                        GUIController.ShowMessageBox(string.Format("Xóa nghạch lương thành công!"));
-                        PopulateViewItems();
-                    }
-                    else
-                    {
-                        GUIController.ShowMessageBox(string.Format("Xóa nghạch lương thất bại!"));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                GUIController.ShowErrorBox(ex);
-            }
+            //        if (isSuccess > 0)
+            //        {
+            //            GUIController.ShowMessageBox(string.Format("Xóa nghạch lương thành công!"));
+            //            PopulateViewItems();
+            //        }
+            //        else
+            //        {
+            //            GUIController.ShowMessageBox(string.Format("Xóa nghạch lương thất bại!"));
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    GUIController.ShowErrorBox(ex);
+            //}
         }
 
         private void viewItems_MouseDoubleClick(object sender, MouseEventArgs e)
