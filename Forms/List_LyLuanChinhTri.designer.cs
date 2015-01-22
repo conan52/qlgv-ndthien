@@ -96,7 +96,7 @@
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(120, 26);
             this.btDelete.TabIndex = 5;
-            this.btDelete.Text = "Xóa";
+            this.btDelete.Text = "Đóng";
             this.btDelete.UseVisualStyleBackColor = true;
             this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
