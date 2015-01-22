@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_ChucVu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_NgoaiNgu));
             this.label2 = new System.Windows.Forms.Label();
             this.btClose = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -45,9 +45,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(15, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.Size = new System.Drawing.Size(145, 16);
             this.label2.TabIndex = 65;
-            this.label2.Text = "Tên chức vụ*";
+            this.label2.Text = "Tên trình độ ngoại ngữ*";
             // 
             // btClose
             // 
@@ -96,9 +96,9 @@
             this.txtTitle.BackColor = System.Drawing.Color.White;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.ForeColor = System.Drawing.Color.Black;
-            this.txtTitle.Location = new System.Drawing.Point(112, 44);
+            this.txtTitle.Location = new System.Drawing.Point(173, 44);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(245, 20);
+            this.txtTitle.Size = new System.Drawing.Size(184, 20);
             this.txtTitle.TabIndex = 0;
             // 
             // label1
@@ -107,21 +107,21 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(15, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 16);
+            this.label1.Size = new System.Drawing.Size(140, 16);
             this.label1.TabIndex = 67;
-            this.label1.Text = "Mã chức vụ*";
+            this.label1.Text = "Mã trình độ ngoại ngữ*";
             // 
             // txtCode
             // 
             this.txtCode.BackColor = System.Drawing.Color.White;
             this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.ForeColor = System.Drawing.Color.Black;
-            this.txtCode.Location = new System.Drawing.Point(112, 18);
+            this.txtCode.Location = new System.Drawing.Point(173, 18);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(245, 20);
+            this.txtCode.Size = new System.Drawing.Size(184, 20);
             this.txtCode.TabIndex = 66;
             // 
-            // Add_ChucVu
+            // Add_NgoaiNgu
             // 
             this.AcceptButton = this.btSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,9 +136,9 @@
             this.Controls.Add(this.txtTitle);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Add_ChucVu";
+            this.Name = "Add_NgoaiNgu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Chức vụ";
+            this.Text = "Trình độ ngoại ngữ";
             this.Load += new System.EventHandler(this.Add_HT_CanBo_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
