@@ -67,11 +67,11 @@ namespace QLGV.Forms
         {
             var add = new Add_MonDay();
             add.Text = "Thêm môn dạy";
-            add.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
+            add.UpdateChanged += new EventHandler(addDM_UpdateChanged);
             add.ShowDialog();
         }
 
-        void addDM_DonViTienTe_UpdateChanged(object sender, EventArgs e)
+        void addDM_UpdateChanged(object sender, EventArgs e)
         {
             PopulateViewItems();
         }
@@ -93,11 +93,11 @@ namespace QLGV.Forms
                     return;
                 }
 
-                var addDM_DonViTienTe = new Add_MonDay();
-                addDM_DonViTienTe.ID = id;
-                addDM_DonViTienTe.Text = "Sửa môn dạy";
-                addDM_DonViTienTe.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
-                addDM_DonViTienTe.ShowDialog();
+                var addDM = new Add_MonDay();
+                addDM.ID = id;
+                addDM.Text = "Sửa môn dạy";
+                addDM.UpdateChanged += new EventHandler(addDM_UpdateChanged);
+                addDM.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -108,40 +108,40 @@ namespace QLGV.Forms
         private void btDelete_Click(object sender, EventArgs e)
         {
             this.Close();
-            try
-            {
-                if (viewItems.SelectedRows.Count == 0)
-                {
-                    GUIController.ShowMessageBox("Bạn phải chọn môn dạy cần xóa!");
-                    return;
-                }
+            //try
+            //{
+            //    if (viewItems.SelectedRows.Count == 0)
+            //    {
+            //        GUIController.ShowMessageBox("Bạn phải chọn môn dạy cần xóa!");
+            //        return;
+            //    }
 
-                int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
-                if (id == 0)
-                {
-                    GUIController.ShowMessageBox("Bạn phải chọn môn dạy cần xóa!");
-                    return;
-                }
+            //    int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
+            //    if (id == 0)
+            //    {
+            //        GUIController.ShowMessageBox("Bạn phải chọn môn dạy cần xóa!");
+            //        return;
+            //    }
 
-                if (GUIController.ShowConfirmBox("Bạn có muốn môn dạy không?"))
-                {
-                    int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from MonDay where id=@id","@id", id);
+            //    if (GUIController.ShowConfirmBox("Bạn có muốn môn dạy không?"))
+            //    {
+            //        int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from MonDay where id=@id","@id", id);
 
-                    if (isSuccess > 0)
-                    {
-                        GUIController.ShowMessageBox(string.Format("Xóa môn dạy thành công!"));
-                        PopulateViewItems();
-                    }
-                    else
-                    {
-                        GUIController.ShowMessageBox(string.Format("Xóa môn dạy thất bại!"));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                GUIController.ShowErrorBox(ex);
-            }
+            //        if (isSuccess > 0)
+            //        {
+            //            GUIController.ShowMessageBox(string.Format("Xóa môn dạy thành công!"));
+            //            PopulateViewItems();
+            //        }
+            //        else
+            //        {
+            //            GUIController.ShowMessageBox(string.Format("Xóa môn dạy thất bại!"));
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    GUIController.ShowErrorBox(ex);
+            //}
         }
 
         private void viewItems_MouseDoubleClick(object sender, MouseEventArgs e)

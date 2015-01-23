@@ -66,11 +66,11 @@ namespace QLGV.Forms
         {
             var add = new Add_DanToc();
             add.Text = "Thêm dân tộc";
-            add.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
+            add.UpdateChanged += new EventHandler(addDM_UpdateChanged);
             add.ShowDialog();
         }
 
-        void addDM_DonViTienTe_UpdateChanged(object sender, EventArgs e)
+        void addDM_UpdateChanged(object sender, EventArgs e)
         {
             PopulateViewItems();
         }
@@ -92,11 +92,11 @@ namespace QLGV.Forms
                     return;
                 }
 
-                var addDM_DonViTienTe = new Add_ChucVu();
-                addDM_DonViTienTe.ID = id;
-                addDM_DonViTienTe.Text = "Sửa dân tộc";
-                addDM_DonViTienTe.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
-                addDM_DonViTienTe.ShowDialog();
+                var addDM = new Add_DanToc();
+                addDM.ID = id;
+                addDM.Text = "Sửa dân tộc";
+                addDM.UpdateChanged += new EventHandler(addDM_UpdateChanged);
+                addDM.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -148,5 +148,10 @@ namespace QLGV.Forms
         }
 
         #endregion
+
+        private void btClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

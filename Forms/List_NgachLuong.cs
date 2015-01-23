@@ -67,11 +67,11 @@ namespace QLGV.Forms
         {
             var add = new Add_NgachLuong();
             add.Text = "Thêm nghạch lương";
-            add.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
+            add.UpdateChanged += new EventHandler(addDM_UpdateChanged);
             add.ShowDialog();
         }
 
-        void addDM_DonViTienTe_UpdateChanged(object sender, EventArgs e)
+        void addDM_UpdateChanged(object sender, EventArgs e)
         {
             PopulateViewItems();
         }
@@ -93,11 +93,11 @@ namespace QLGV.Forms
                     return;
                 }
 
-                var addDM_DonViTienTe = new Add_NgachLuong();
-                addDM_DonViTienTe.ID = id;
-                addDM_DonViTienTe.Text = "Sửa nghạch lương";
-                addDM_DonViTienTe.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
-                addDM_DonViTienTe.ShowDialog();
+                var addDM = new Add_NgachLuong();
+                addDM.ID = id;
+                addDM.Text = "Sửa nghạch lương";
+                addDM.UpdateChanged += new EventHandler(addDM_UpdateChanged);
+                addDM.ShowDialog();
             }
             catch (Exception ex)
             {

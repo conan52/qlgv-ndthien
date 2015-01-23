@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(List_ChucDanhKH));
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btNew = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btEdit = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -41,18 +41,6 @@
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewItems)).BeginInit();
             this.SuspendLayout();
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "address_f2.png");
-            this.imageList1.Images.SetKeyName(1, "apply_f2.png");
-            this.imageList1.Images.SetKeyName(2, "edit_f2.png");
-            this.imageList1.Images.SetKeyName(3, "extensions_f2.png");
-            this.imageList1.Images.SetKeyName(4, "new_f2.png");
-            this.imageList1.Images.SetKeyName(5, "search_f2.png");
-            this.imageList1.Images.SetKeyName(6, "stop_f2.png");
             // 
             // btNew
             // 
@@ -68,6 +56,19 @@
             this.btNew.Text = "Thêm mới";
             this.btNew.UseVisualStyleBackColor = true;
             this.btNew.Click += new System.EventHandler(this.btNew_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "address_f2.png");
+            this.imageList1.Images.SetKeyName(1, "apply_f2.png");
+            this.imageList1.Images.SetKeyName(2, "edit_f2.png");
+            this.imageList1.Images.SetKeyName(3, "extensions_f2.png");
+            this.imageList1.Images.SetKeyName(4, "new_f2.png");
+            this.imageList1.Images.SetKeyName(5, "search_f2.png");
+            this.imageList1.Images.SetKeyName(6, "stop_f2.png");
+            this.imageList1.Images.SetKeyName(7, "close.jpg");
             // 
             // btEdit
             // 
@@ -90,7 +91,7 @@
             this.btDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btDelete.ImageKey = "stop_f2.png";
+            this.btDelete.ImageKey = "close.jpg";
             this.btDelete.ImageList = this.imageList1;
             this.btDelete.Location = new System.Drawing.Point(403, 276);
             this.btDelete.Name = "btDelete";
@@ -154,7 +155,7 @@
             this.Controls.Add(this.viewItems);
             this.Name = "List_ChucDanhKH";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Danh sách chức danh khoa học";
             this.Load += new System.EventHandler(this.List_TrinhDoChuyenMon_Load);
             this.statusStrip1.ResumeLayout(false);
@@ -168,12 +169,12 @@
         #endregion
 
         private QLGV.UserControls.NDThienDataGridView viewItems;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btNew;
         private System.Windows.Forms.Button btEdit;
         private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCount;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

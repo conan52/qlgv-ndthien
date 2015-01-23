@@ -56,22 +56,22 @@ namespace QLGV.Forms
         private void btNew_Click(object sender, EventArgs e)
         {
             var nhomtruongid = cbNhomTruong.SelectedValue;
-            var addDM_DonViTienTe = new Add_Truong();
-            addDM_DonViTienTe.NhomID = nhomtruongid;
-            addDM_DonViTienTe.Text = "Thêm trường";
-            addDM_DonViTienTe.UpdateChanged += new EventHandler(Truong_UpdateChanged);
-            addDM_DonViTienTe.ShowDialog();
+            var addDM = new Add_Truong();
+            addDM.NhomID = nhomtruongid;
+            addDM.Text = "Thêm trường";
+            addDM.UpdateChanged += new EventHandler(Truong_UpdateChanged);
+            addDM.ShowDialog();
         }
 
         private void btEdit_Click(object sender, EventArgs e)
         {
             int id = int.Parse("0" + viewItemsTruong.SelectedRows[0].Tag);
             if (id == 0) return;
-            var addDM_DonViTienTe = new Add_Truong();
-            addDM_DonViTienTe.ID = id;
-            addDM_DonViTienTe.Text = "Sửa thông tin trường";
-            addDM_DonViTienTe.UpdateChanged += new EventHandler(Truong_UpdateChanged);
-            addDM_DonViTienTe.ShowDialog();
+            var addDM = new Add_Truong();
+            addDM.ID = id;
+            addDM.Text = "Sửa thông tin trường";
+            addDM.UpdateChanged += new EventHandler(Truong_UpdateChanged);
+            addDM.ShowDialog();
         }
 
         private void btDelete_Click(object sender, EventArgs e)
@@ -243,11 +243,11 @@ where id=@id",
                     return;
                 }
 
-                var addDM_DonViTienTe = new Add_CanBo();
-                addDM_DonViTienTe.ID = id;
-                addDM_DonViTienTe.details = true;
-                addDM_DonViTienTe.Text = "Chi tiết cán bộ";
-                addDM_DonViTienTe.ShowDialog();
+                var addDM = new Add_CanBo();
+                addDM.ID = id;
+                addDM.details = true;
+                addDM.Text = "Chi tiết cán bộ";
+                addDM.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -283,11 +283,11 @@ where id=@id",
                     return;
                 }
 
-                var addDM_DonViTienTe = new Add_CanBo();
-                addDM_DonViTienTe.ID = id;
-                addDM_DonViTienTe.Text = "Sửa cán bộ";
-                addDM_DonViTienTe.UpdateChanged += new EventHandler(CanBo_UpdateChanged);
-                addDM_DonViTienTe.ShowDialog();
+                var addDM = new Add_CanBo();
+                addDM.ID = id;
+                addDM.Text = "Sửa cán bộ";
+                addDM.UpdateChanged += new EventHandler(CanBo_UpdateChanged);
+                addDM.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -351,12 +351,12 @@ where id=@id",
                 }
                 int id1 = int.Parse("0" + viewItemsTruong.SelectedRows[0].Tag);
                 string dv = (string)SQLiteUtils.ExcuteScalar("select Title from TruongInfo where id=@id", "@id", id1);
-                var addDM_DonViTienTe = new ChangeCB();
-                addDM_DonViTienTe.ID = id;
-                addDM_DonViTienTe.Text = "Chuyển đơn vị công tác cán bộ";
-                addDM_DonViTienTe.DVHienTai = dv;
-                addDM_DonViTienTe.UpdateChanged += new EventHandler(CanBo_UpdateChanged);
-                addDM_DonViTienTe.ShowDialog();
+                var addDM = new ChangeCB();
+                addDM.ID = id;
+                addDM.Text = "Chuyển đơn vị công tác cán bộ";
+                addDM.DVHienTai = dv;
+                addDM.UpdateChanged += new EventHandler(CanBo_UpdateChanged);
+                addDM.ShowDialog();
             }
             catch (Exception ex)
             {

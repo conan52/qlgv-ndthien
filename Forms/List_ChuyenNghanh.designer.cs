@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(List_ChuyenNghanh));
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btNew = new System.Windows.Forms.Button();
             this.btEdit = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
@@ -38,21 +37,11 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.viewItems = new QLGV.UserControls.NDThienDataGridView(this.components);
+            this.btClose = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewItems)).BeginInit();
             this.SuspendLayout();
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "address_f2.png");
-            this.imageList1.Images.SetKeyName(1, "apply_f2.png");
-            this.imageList1.Images.SetKeyName(2, "edit_f2.png");
-            this.imageList1.Images.SetKeyName(3, "extensions_f2.png");
-            this.imageList1.Images.SetKeyName(4, "new_f2.png");
-            this.imageList1.Images.SetKeyName(5, "search_f2.png");
-            this.imageList1.Images.SetKeyName(6, "stop_f2.png");
             // 
             // btNew
             // 
@@ -61,7 +50,7 @@
             this.btNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btNew.ImageKey = "new_f2.png";
             this.btNew.ImageList = this.imageList1;
-            this.btNew.Location = new System.Drawing.Point(151, 276);
+            this.btNew.Location = new System.Drawing.Point(12, 276);
             this.btNew.Name = "btNew";
             this.btNew.Size = new System.Drawing.Size(120, 26);
             this.btNew.TabIndex = 3;
@@ -76,7 +65,7 @@
             this.btEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btEdit.ImageKey = "edit_f2.png";
             this.btEdit.ImageList = this.imageList1;
-            this.btEdit.Location = new System.Drawing.Point(277, 276);
+            this.btEdit.Location = new System.Drawing.Point(138, 276);
             this.btEdit.Name = "btEdit";
             this.btEdit.Size = new System.Drawing.Size(120, 26);
             this.btEdit.TabIndex = 4;
@@ -92,7 +81,7 @@
             this.btDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btDelete.ImageKey = "stop_f2.png";
             this.btDelete.ImageList = this.imageList1;
-            this.btDelete.Location = new System.Drawing.Point(403, 276);
+            this.btDelete.Location = new System.Drawing.Point(264, 276);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(120, 26);
             this.btDelete.TabIndex = 5;
@@ -142,11 +131,40 @@
             this.viewItems.TabIndex = 2;
             this.viewItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.viewItems_MouseDoubleClick);
             // 
+            // btClose
+            // 
+            this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btClose.ImageKey = "close.jpg";
+            this.btClose.ImageList = this.imageList1;
+            this.btClose.Location = new System.Drawing.Point(389, 276);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(120, 26);
+            this.btClose.TabIndex = 16;
+            this.btClose.Text = "Đóng";
+            this.btClose.UseVisualStyleBackColor = true;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "address_f2.png");
+            this.imageList1.Images.SetKeyName(1, "apply_f2.png");
+            this.imageList1.Images.SetKeyName(2, "edit_f2.png");
+            this.imageList1.Images.SetKeyName(3, "extensions_f2.png");
+            this.imageList1.Images.SetKeyName(4, "new_f2.png");
+            this.imageList1.Images.SetKeyName(5, "search_f2.png");
+            this.imageList1.Images.SetKeyName(6, "stop_f2.png");
+            this.imageList1.Images.SetKeyName(7, "close.jpg");
+            // 
             // List_ChuyenNghanh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 332);
+            this.Controls.Add(this.btClose);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.btEdit);
@@ -168,12 +186,13 @@
         #endregion
 
         private QLGV.UserControls.NDThienDataGridView viewItems;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btNew;
         private System.Windows.Forms.Button btEdit;
         private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCount;
+        private System.Windows.Forms.Button btClose;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

@@ -67,11 +67,11 @@ namespace QLGV.Forms
         {
             var add = new Add_NgoaiNgu();
             add.Text = "Thêm ngoại ngữ";
-            add.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
+            add.UpdateChanged += new EventHandler(addDM_UpdateChanged);
             add.ShowDialog();
         }
 
-        void addDM_DonViTienTe_UpdateChanged(object sender, EventArgs e)
+        void addDM_UpdateChanged(object sender, EventArgs e)
         {
             PopulateViewItems();
         }
@@ -93,11 +93,11 @@ namespace QLGV.Forms
                     return;
                 }
 
-                var addDM_DonViTienTe = new Add_NgoaiNgu();
-                addDM_DonViTienTe.ID = id;
-                addDM_DonViTienTe.Text = "Sửa ngoại ngữ";
-                addDM_DonViTienTe.UpdateChanged += new EventHandler(addDM_DonViTienTe_UpdateChanged);
-                addDM_DonViTienTe.ShowDialog();
+                var addDM = new Add_NgoaiNgu();
+                addDM.ID = id;
+                addDM.Text = "Sửa ngoại ngữ";
+                addDM.UpdateChanged += new EventHandler(addDM_UpdateChanged);
+                addDM.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -108,40 +108,40 @@ namespace QLGV.Forms
         private void btDelete_Click(object sender, EventArgs e)
         {
             this.Close();
-            try
-            {
-                if (viewItems.SelectedRows.Count == 0)
-                {
-                    GUIController.ShowMessageBox("Bạn phải chọn ngoại ngữ cần xóa!");
-                    return;
-                }
+            //try
+            //{
+            //    if (viewItems.SelectedRows.Count == 0)
+            //    {
+            //        GUIController.ShowMessageBox("Bạn phải chọn ngoại ngữ cần xóa!");
+            //        return;
+            //    }
 
-                int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
-                if (id == 0)
-                {
-                    GUIController.ShowMessageBox("Bạn phải chọn ngoại ngữ cần xóa!");
-                    return;
-                }
+            //    int id = int.Parse("0" + viewItems.SelectedRows[0].Tag);
+            //    if (id == 0)
+            //    {
+            //        GUIController.ShowMessageBox("Bạn phải chọn ngoại ngữ cần xóa!");
+            //        return;
+            //    }
 
-                if (GUIController.ShowConfirmBox("Bạn có muốn ngoại ngữ không?"))
-                {
-                    int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from NgoaiNgu where id=@id","@id", id);
+            //    if (GUIController.ShowConfirmBox("Bạn có muốn ngoại ngữ không?"))
+            //    {
+            //        int isSuccess = SQLiteUtils.ExcuteNonQuery("delete from NgoaiNgu where id=@id","@id", id);
 
-                    if (isSuccess > 0)
-                    {
-                        GUIController.ShowMessageBox(string.Format("Xóa ngoại ngữ thành công!"));
-                        PopulateViewItems();
-                    }
-                    else
-                    {
-                        GUIController.ShowMessageBox(string.Format("Xóa ngoại ngữ thất bại!"));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                GUIController.ShowErrorBox(ex);
-            }
+            //        if (isSuccess > 0)
+            //        {
+            //            GUIController.ShowMessageBox(string.Format("Xóa ngoại ngữ thành công!"));
+            //            PopulateViewItems();
+            //        }
+            //        else
+            //        {
+            //            GUIController.ShowMessageBox(string.Format("Xóa ngoại ngữ thất bại!"));
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    GUIController.ShowErrorBox(ex);
+            //}
         }
 
         private void viewItems_MouseDoubleClick(object sender, MouseEventArgs e)
