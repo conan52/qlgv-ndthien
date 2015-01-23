@@ -55,7 +55,7 @@ namespace QLGV.Forms
             }
             if (formName == typeof(List_NgachLuong).Name)
             {
-                if (lstNgachLuong == null || lstChucVu.IsDisposed)
+                if (lstNgachLuong == null || lstNgachLuong.IsDisposed)
                 {
                     lstNgachLuong = new List_NgachLuong();
                 }
@@ -65,7 +65,7 @@ namespace QLGV.Forms
             }
             if (formName == typeof(List_MonDay).Name)
             {
-                if (lstMonDay == null || lstChucVu.IsDisposed)
+                if (lstMonDay == null || lstMonDay.IsDisposed)
                 {
                     lstMonDay = new List_MonDay();
                 }
@@ -75,7 +75,7 @@ namespace QLGV.Forms
             }
             if (formName == typeof(List_QLNN).Name)
             {
-                if (lstQLNN == null || lstChucVu.IsDisposed)
+                if (lstQLNN == null || lstQLNN.IsDisposed)
                 {
                     lstQLNN = new List_QLNN();
                 }
@@ -95,7 +95,7 @@ namespace QLGV.Forms
             }
             if (formName == typeof(List_ChucDanhKH).Name)
             {
-                if (lstChucDanhKH == null || lstChucVu.IsDisposed)
+                if (lstChucDanhKH == null || lstChucDanhKH.IsDisposed)
                 {
                     lstChucDanhKH = new List_ChucDanhKH();
                 }
