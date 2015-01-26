@@ -356,6 +356,7 @@
             this.ClientSize = new System.Drawing.Size(866, 524);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "SysMain";
